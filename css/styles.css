@@ -349,6 +349,11 @@ h1,
   background: #16332b;
 }
 
+.btn:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
 .btn:focus-visible,
 .nav a:focus-visible,
 .wordmark:focus-visible {

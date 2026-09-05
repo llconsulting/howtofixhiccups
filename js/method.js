@@ -77,6 +77,12 @@
   let durationMs = 0;
   let swallowAt = 0;
   let running = false;
+  let token = 0;
+
+  function invalidate() {
+    token += 1;
+    window.cancelAnimationFrame(raf);
+  }
 
   function announce(text) {
     els.live.textContent = "";
@@ -93,6 +99,7 @@
   }
 
   function renderIdle() {
+    invalidate();
     running = false;
     stepIndex = -1;
     els.kicker.textContent = "Callie's method";
@@ -109,8 +116,8 @@
   }
 
   function finish() {
+    invalidate();
     running = false;
-    window.cancelAnimationFrame(raf);
     els.kicker.textContent = "That's the sequence";
     els.label.textContent = "You can rest";
     els.copy.textContent =
@@ -127,13 +134,15 @@
   }
 
   function beginStep(index) {
-    stepIndex = index;
     const step = STEPS[index];
     if (!step) {
       finish();
       return;
     }
 
+    const myToken = ++token;
+    window.cancelAnimationFrame(raf);
+    stepIndex = index;
     running = true;
     startedAt = performance.now();
     els.kicker.textContent = step.kicker;
@@ -150,13 +159,17 @@
       els.count.textContent = "in";
       els.unit.textContent = "breathe";
       els.next.hidden = false;
+      els.next.disabled = true;
       els.next.textContent = step.nextLabel;
+      window.setTimeout(() => {
+        if (myToken === token) els.next.disabled = false;
+      }, 280);
       setProgress(0, "");
       announce(`${step.label}. ${step.copy}`);
     } else {
       durationMs = step.durationMs;
       swallowAt = 0;
-      els.next.hidden = Boolean(step.optional) === false;
+      els.next.disabled = false;
       if (step.optional) {
         els.next.hidden = false;
         els.next.textContent = "I'm done";
@@ -170,39 +183,32 @@
       announce(`${step.label}. ${step.copy} ${seconds} seconds.`);
     }
 
-    window.cancelAnimationFrame(raf);
-    raf = window.requestAnimationFrame(tick);
-  }
+    const tick = (now) => {
+      if (myToken !== token || !running) return;
+      const elapsed = now - startedAt;
+      setProgress(elapsed / durationMs, step.id);
 
-  function tick(now) {
-    const step = STEPS[stepIndex];
-    if (!step || !running) return;
-
-    const elapsed = now - startedAt;
-    const fraction = elapsed / durationMs;
-    setProgress(fraction, step.id);
-
-    if (step.kind === "guided") {
-      if (elapsed >= swallowAt) {
-        els.copy.textContent = step.swallowCopy;
-        els.count.textContent = "now";
-        els.unit.textContent = "swallow";
+      if (step.kind === "guided") {
+        if (elapsed >= swallowAt) {
+          els.copy.textContent = step.swallowCopy;
+          els.count.textContent = "now";
+          els.unit.textContent = "swallow";
+        } else {
+          els.count.textContent = "in";
+          els.unit.textContent = "breathe";
+        }
       } else {
-        els.count.textContent = "in";
-        els.unit.textContent = "breathe";
+        els.count.textContent = String(Math.max(0, Math.ceil((durationMs - elapsed) / 1000)));
       }
+
       if (elapsed >= durationMs) {
-        beginStep(stepIndex + 1);
+        if (myToken !== token) return;
+        beginStep(index + 1);
         return;
       }
-    } else {
-      const remaining = Math.max(0, Math.ceil((durationMs - elapsed) / 1000));
-      els.count.textContent = String(remaining);
-      if (elapsed >= durationMs) {
-        beginStep(stepIndex + 1);
-        return;
-      }
-    }
+
+      raf = window.requestAnimationFrame(tick);
+    };
 
     raf = window.requestAnimationFrame(tick);
   }
@@ -212,17 +218,18 @@
   }
 
   function next() {
-    const step = STEPS[stepIndex];
-    if (!step) return;
+    const index = stepIndex;
+    const step = STEPS[index];
+    if (!step || !running) return;
+    invalidate();
     if (step.optional) {
       finish();
       return;
     }
-    beginStep(stepIndex + 1);
+    beginStep(index + 1);
   }
 
   function reset() {
-    window.cancelAnimationFrame(raf);
     renderIdle();
     announce("Sequence reset.");
   }
