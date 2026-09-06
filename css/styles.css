@@ -362,25 +362,27 @@ h1,
 
 .share-btn {
   appearance: none;
-  display: inline-block;
-  margin: 0.85rem auto 0;
-  min-height: 2.5rem;
-  padding: 0.4rem 1.05rem;
-  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: min(16.5rem, 100%);
+  min-height: var(--tap);
+  margin: 1.05rem auto 0;
+  padding: 0.85rem 1.3rem;
+  border: 1.5px solid var(--accent);
   border-radius: 999px;
-  background: var(--bg-elevated);
-  color: var(--ink);
+  background: var(--accent-soft);
+  color: var(--accent);
   font: inherit;
-  font-size: 0.875rem;
+  font-size: 1.05rem;
   font-weight: 600;
-  letter-spacing: 0.01em;
+  letter-spacing: -0.015em;
   cursor: pointer;
-  box-shadow: var(--shadow);
 }
 
 .share-btn:hover {
-  background: var(--accent-soft);
-  color: var(--accent);
+  background: #d7e8f8;
+  color: var(--accent-hover);
 }
 
 .share-btn[hidden] {

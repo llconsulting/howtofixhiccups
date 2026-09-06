@@ -62,7 +62,7 @@
       kind: "count",
       durationMs: 30000,
       unit: "seconds",
-      share: true
+      copyLink: true
     },
     {
       id: "exhale",
@@ -72,8 +72,7 @@
       copy: "Blow thin, like the tiniest straw. Keep that stream going for the full count.",
       kind: "count",
       durationMs: 10000,
-      unit: "seconds",
-      share: true
+      unit: "seconds"
     },
     {
       id: "extra",
@@ -207,43 +206,50 @@
   function showShare(on) {
     if (!els.share) return;
     els.share.hidden = !on;
-    if (!on) els.share.textContent = "Share";
+    if (!on) els.share.textContent = "Copy link";
   }
 
-  function trackShare() {
-    const key = "htfh-share-count";
-    let count = 0;
+  function logHoldCopy() {
+    const step = STEPS[stepIndex];
+    const phase = step ? step.id : "unknown";
+    const beforeBlowEnd = phase === "hold" || phase === "exhale" || phase === "extra";
+    let proves = 0;
     try {
-      count = Number(window.localStorage.getItem(key) || 0) + 1;
-      window.localStorage.setItem(key, String(count));
+      const raw = window.localStorage.getItem("htfh-hold-copy");
+      const data = raw ? JSON.parse(raw) : { taps: [] };
+      if (!Array.isArray(data.taps)) data.taps = [];
+      data.taps.push({ t: Date.now(), phase, beforeBlowEnd });
+      proves = data.taps.filter((tap) => tap.beforeBlowEnd).length;
+      data.proves = proves;
+      window.localStorage.setItem("htfh-hold-copy", JSON.stringify(data));
+      window.localStorage.setItem("htfh-share-count", String(proves));
     } catch {
-      count += 1;
+      proves += 1;
     }
-    if (els.share) els.share.dataset.count = String(count);
+    if (els.share) els.share.dataset.proves = String(proves);
   }
 
   async function shareLink() {
     try {
-      if (navigator.share) {
-        await navigator.share({
-          title: "How to fix hiccups",
-          url: SHARE_URL
-        });
-        trackShare();
-        return;
-      }
-    } catch (err) {
-      if (err && err.name === "AbortError") return;
-    }
-    try {
       await navigator.clipboard.writeText(SHARE_URL);
       if (els.share) els.share.textContent = "Copied";
-      trackShare();
+      logHoldCopy();
       window.setTimeout(() => {
-        if (els.share) els.share.textContent = "Share";
+        if (els.share && !els.share.hidden) els.share.textContent = "Copy link";
       }, 1600);
+      return;
     } catch {
       /* Clipboard can fail in locked-down browsers. */
+    }
+    try {
+      if (!navigator.share) return;
+      await navigator.share({
+        title: "How to fix hiccups",
+        url: SHARE_URL
+      });
+      logHoldCopy();
+    } catch {
+      /* Native share can be cancelled. */
     }
   }
 
@@ -384,7 +390,7 @@
     }
     if (els.timerWrap) els.timerWrap.hidden = step.kind !== "count";
     if (els.extraNote) els.extraNote.hidden = !(step.id === "exhale" || step.optional);
-    showShare(Boolean(step.share));
+    showShare(Boolean(step.copyLink));
     markBeat(step.beat);
     showStill(step.id);
     playClip(step.id);
