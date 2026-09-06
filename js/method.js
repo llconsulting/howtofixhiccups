@@ -219,7 +219,6 @@
     } catch {
       count += 1;
     }
-    console.log("share", count);
     if (els.share) els.share.dataset.count = String(count);
   }
 

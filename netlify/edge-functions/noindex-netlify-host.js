@@ -1,6 +1,6 @@
 /**
- * Host-specific noindex for the Netlify hostname only.
- * howtofixhiccups.netlify.app (and other *.netlify.app hosts) must not be indexed.
+ * Runs on every deploy context, including production.
+ * howtofixhiccups.netlify.app and other *.netlify.app hosts stay noindex.
  * howtofixhiccups.com is never rewritten and never noindexed here.
  */
 export default async (request, context) => {
@@ -12,7 +12,22 @@ export default async (request, context) => {
   const response = await context.next();
   const headers = new Headers(response.headers);
   headers.set("X-Robots-Tag", "noindex, nofollow");
-  return new Response(response.body, {
+
+  const type = headers.get("content-type") || "";
+  if (!type.toLowerCase().includes("text/html")) {
+    return new Response(response.body, {
+      status: response.status,
+      statusText: response.statusText,
+      headers
+    });
+  }
+
+  const html = await response.text();
+  const next = html.replace(
+    /(<meta\s+name=["']robots["']\s+content=["'])index,\s*follow(["']\s*>)/gi,
+    "$1noindex, nofollow$2"
+  );
+  return new Response(next, {
     status: response.status,
     statusText: response.statusText,
     headers

@@ -1,7 +1,15 @@
 [build]
   publish = "."
 
-# Production (.com) stays indexable. Do not set noindex here.
+# Production and preview. Host check lives in the function: *.netlify.app
+# is noindex; howtofixhiccups.com is untouched.
+[[edge_functions]]
+  function = "noindex-netlify-host"
+  path = "/*"
+
+# Production (.com) stays indexable. Do not set X-Robots-Tag here.
+# Main used to send X-Robots-Tag: index, follow on howtofixhiccups.netlify.app.
+# The edge function is what noindexes that host after merge.
 [[headers]]
   for = "/*"
   [headers.values]
