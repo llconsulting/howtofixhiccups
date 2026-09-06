@@ -9,7 +9,7 @@ Static site for a four-step method for ordinary hiccups. Faceless brand. Not med
 3. Hold breath 30 full seconds.
 4. Slowly blow out as through the tiniest straw for 10 full seconds (or 12 to 15 if you can).
 
-The home page has Start, a countdown, and a host-video slot. HowTo schema lists those four steps only.
+The home page has Start, a countdown, and host stills. HowTo schema lists those four steps only.
 
 ## Pages
 
@@ -22,7 +22,7 @@ Blog, notes, and about are dropped. `/about` 301s to `/`. `/blog` and ordinary-h
 
 ## Host media
 
-Stills and Clips Desk drops files in `media/video/`. Until then the home page shows a labeled placeholder. No generated face.
+Host stills are 800px WebP in `assets/ugc/`. Idle loads first. Later frames swap on step change. No video probe until binaries exist.
 
 ## Deploy
 

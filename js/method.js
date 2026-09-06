@@ -1,42 +1,28 @@
 (() => {
   const CIRCUMFERENCE = 339.292;
-  const FULL_VIDEOS = [
-    "/media/video/method-full.mp4",
-    "/assets/video/method-full.mp4",
-    "/media/video/walkthrough.mp4"
-  ];
-  const STEP_CLIPS = {
-    inhale1: ["/media/video/breath-swallow-1.mp4", "/assets/video/breath-swallow-1.mp4"],
-    inhale2: ["/media/video/breath-swallow-2.mp4", "/assets/video/breath-swallow-2.mp4"],
-    hold: ["/media/video/hold-30.mp4", "/assets/video/hold-30.mp4"],
-    exhale: ["/media/video/thin-straw-exhale.mp4", "/assets/video/thin-straw-exhale.mp4"],
-    extra: ["/media/video/thin-straw-exhale.mp4", "/assets/video/thin-straw-exhale.mp4"]
-  };
-  const INTRO_CLIPS = ["/media/video/start.mp4", "/assets/video/start.mp4"];
-  const CUES_SRC = ["/media/video/cues.json", "/assets/video/cues.json"];
   const STILLS = {
     idle: {
-      src: "/assets/ugc/ugc-host-01-start.png",
+      src: "/assets/ugc/host-idle.webp",
       alt: "Young woman with brown hair and green eyes smiling at the camera in a cream sweater"
     },
     inhale1: {
-      src: "/assets/ugc/ugc-host-02-breath-swallow-1.png",
+      src: "/assets/ugc/host-breath-1.webp",
       alt: "Same host mid first deep breath and swallow demo"
     },
     inhale2: {
-      src: "/assets/ugc/ugc-host-03-breath-swallow-2.png",
+      src: "/assets/ugc/host-breath-2.webp",
       alt: "Same host mid second stacked breath and swallow"
     },
     hold: {
-      src: "/assets/ugc/ugc-host-04-hold-30.png",
+      src: "/assets/ugc/host-hold.webp",
       alt: "Same host holding a calm breath for the timed hold"
     },
     exhale: {
-      src: "/assets/ugc/ugc-host-05-thin-straw-exhale.png",
+      src: "/assets/ugc/host-exhale.webp",
       alt: "Same host slowly exhaling as through a thin straw"
     },
     extra: {
-      src: "/assets/ugc/ugc-host-05-thin-straw-exhale.png",
+      src: "/assets/ugc/host-exhale.webp",
       alt: "Same host slowly exhaling as through a thin straw"
     }
   };
@@ -104,9 +90,7 @@
     card: document.getElementById("method"),
     timerWrap: document.getElementById("timer-wrap"),
     live: document.getElementById("live"),
-    video: document.getElementById("host-video"),
-    still: document.getElementById("host-still"),
-    placeholder: document.getElementById("host-placeholder")
+    still: document.getElementById("host-still")
   };
 
   if (!els.start || !els.timer) return;
@@ -115,14 +99,10 @@
   let stepIndex = -1;
   let startedAt = 0;
   let durationMs = 0;
-  let swallowAt = 0;
   let running = false;
   let token = 0;
   let lastShownSecond = null;
-  let hostReady = false;
-  let hostCues = {};
-  let fullVideoSrc = "";
-  let clipMap = {};
+  const warmed = new Set();
 
   function invalidate() {
     token += 1;
@@ -168,6 +148,14 @@
     }, 90);
   }
 
+  function warmStill(id) {
+    const still = STILLS[id];
+    if (!still || warmed.has(still.src)) return;
+    warmed.add(still.src);
+    const img = new Image();
+    img.src = still.src;
+  }
+
   function showStill(id) {
     if (!els.still) return;
     const still = STILLS[id] || STILLS.idle;
@@ -178,53 +166,6 @@
       els.still.alt = still.alt;
       els.still.classList.remove("is-changing");
     }, 80);
-  }
-
-  function cueFor(id) {
-    const value = hostCues[id];
-    return typeof value === "number" && Number.isFinite(value) ? value : null;
-  }
-
-  function playSrc(src, seek) {
-    if (!els.video || !src) return;
-    if (els.video.getAttribute("src") !== src) {
-      els.video.src = src;
-      els.video.load();
-    }
-    if (typeof seek === "number") {
-      try {
-        els.video.currentTime = seek;
-      } catch {
-        /* Ignore seek errors on a fresh source. */
-      }
-    }
-    const play = els.video.play();
-    if (play && typeof play.catch === "function") play.catch(() => {});
-  }
-
-  function syncHost(id) {
-    if (!hostReady || !els.video) return;
-    try {
-      if (fullVideoSrc) {
-        playSrc(fullVideoSrc, cueFor(id) ?? 0);
-        return;
-      }
-      if (clipMap[id]) playSrc(clipMap[id], 0);
-    } catch {
-      /* Autoplay can fail; the countdown still runs. */
-    }
-  }
-
-  function pauseHost(reset) {
-    if (!els.video) return;
-    els.video.pause();
-    if (reset) {
-      try {
-        els.video.currentTime = 0;
-      } catch {
-        /* Ignore seek errors on an empty source. */
-      }
-    }
   }
 
   function renderIdle() {
@@ -249,7 +190,6 @@
     els.reset.hidden = true;
     if (els.extraNote) els.extraNote.hidden = true;
     showStill("idle");
-    pauseHost(true);
   }
 
   function finish() {
@@ -275,7 +215,6 @@
     if (els.extraNote) els.extraNote.hidden = true;
     announce("That is the sequence.");
     showStill("idle");
-    pauseHost(false);
   }
 
   function beginStep(index) {
@@ -303,11 +242,11 @@
     if (els.timerWrap) els.timerWrap.hidden = step.kind !== "count";
     if (els.extraNote) els.extraNote.hidden = !(step.id === "exhale" || step.optional);
     showStill(step.id);
-    syncHost(step.id);
+    const upcoming = STEPS[index + 1];
+    if (upcoming) warmStill(upcoming.id);
 
     if (step.kind === "guided") {
       durationMs = 0;
-      swallowAt = 0;
       setCount("");
       els.unit.textContent = "";
       els.next.hidden = false;
@@ -322,7 +261,6 @@
     }
 
     durationMs = step.durationMs;
-    swallowAt = 0;
     els.next.disabled = false;
     if (step.optional) {
       els.next.hidden = false;
@@ -358,6 +296,7 @@
   }
 
   function start() {
+    warmStill("inhale1");
     beginStep(0);
   }
 
@@ -377,83 +316,8 @@
     announce("Stopped.");
   }
 
-  function revealHost() {
-    hostReady = true;
-    if (els.video) els.video.hidden = false;
-    if (els.still) els.still.hidden = true;
-    if (els.placeholder) els.placeholder.hidden = true;
-  }
-
-  function keepPlaceholder() {
-    hostReady = false;
-    if (els.video) {
-      els.video.hidden = true;
-      els.video.removeAttribute("src");
-      els.video.querySelectorAll("source").forEach((node) => node.remove());
-    }
-    if (els.still) els.still.hidden = false;
-    if (els.placeholder) els.placeholder.hidden = true;
-  }
-
-  function attachVideo(src) {
-    els.video.addEventListener("loadeddata", revealHost, { once: true });
-    els.video.addEventListener("error", keepPlaceholder, { once: true });
-    els.video.src = src;
-    els.video.load();
-  }
-
-  function loadHost() {
-    if (!els.video) return;
-    keepPlaceholder();
-
-    const probe = (url) =>
-      window.fetch(url, { method: "HEAD", cache: "no-store" }).then((res) => {
-        if (res.ok) return true;
-        if (res.status === 404) return false;
-        return window.fetch(url, { method: "GET", headers: { Range: "bytes=0-0" }, cache: "no-store" }).then((r) => r.ok);
-      }).catch(() => false);
-
-    const firstHit = (urls) =>
-      Promise.all(urls.map((url) => probe(url).then((ok) => (ok ? url : "")))).then((hits) => hits.find(Boolean) || "");
-
-    const clipIds = Object.keys(STEP_CLIPS);
-    Promise.all([
-      firstHit(FULL_VIDEOS),
-      firstHit(INTRO_CLIPS),
-      Promise.all(clipIds.map((id) => firstHit(STEP_CLIPS[id]).then((url) => (url ? [id, url] : null)))),
-      firstHit(CUES_SRC)
-    ]).then(([full, intro, clipHits, cues]) => {
-      fullVideoSrc = full;
-      clipMap = {};
-      clipHits.forEach((pair) => {
-        if (pair) clipMap[pair[0]] = pair[1];
-      });
-      if (intro) clipMap.intro = intro;
-
-      if (fullVideoSrc) attachVideo(fullVideoSrc);
-      else if (intro) attachVideo(intro);
-      else if (clipHits.some(Boolean)) attachVideo(clipHits.find(Boolean)[1]);
-
-      if (!cues) return null;
-      return window.fetch(cues, { cache: "no-store" }).then((res) => (res.ok ? res.json() : null));
-    }).then((data) => {
-      if (data && typeof data === "object") hostCues = data;
-    }).catch(() => {
-      /* Clips are optional. Stills stay up until Video Desk drops files. */
-    });
-  }
-
-  function preloadStills() {
-    Object.values(STILLS).forEach((still) => {
-      const img = new Image();
-      img.src = still.src;
-    });
-  }
-
   els.start.addEventListener("click", start);
   els.next.addEventListener("click", next);
   els.reset.addEventListener("click", reset);
   renderIdle();
-  preloadStills();
-  loadHost();
 })();

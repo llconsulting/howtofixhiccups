@@ -21,6 +21,97 @@
   [context.branch-deploy.headers.values]
     X-Robots-Tag = "noindex, nofollow"
 
+# Soft traps: never leave /index.html or leftover *.html as live URLs.
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/about.html"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/about/index.html"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/notes.html"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/notes/index.html"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog.html"
+  to = "/why/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/index.html"
+  to = "/why/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/why.html"
+  to = "/why/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/why/index.html"
+  to = "/why/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/when.html"
+  to = "/when/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/when/index.html"
+  to = "/when/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/privacy.html"
+  to = "/privacy/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/privacy/index.html"
+  to = "/privacy/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/why-hiccups-start/index.html"
+  to = "/why/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/when-to-stop/index.html"
+  to = "/when/"
+  status = 301
+  force = true
+
 # Dropped about / notes. Home is the live replacement.
 [[redirects]]
   from = "/about"

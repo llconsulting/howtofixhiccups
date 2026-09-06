@@ -1,15 +1,13 @@
 # UGC host stills
 
-Five-beat set from Stills PR #5, renamed to the rebuild map. Not a real person. No personal names.
+Live UI uses 800px WebP. JPEG twins are the same frames. Face stays. No personal names.
 
 | File | Phase |
 | --- | --- |
-| `ugc-host-01-start.png` | Start / idle |
-| `ugc-host-02-breath-swallow-1.png` | Step 1 |
-| `ugc-host-03-breath-swallow-2.png` | Step 2 |
-| `ugc-host-04-hold-30.png` | Hold 30 |
-| `ugc-host-05-thin-straw-exhale.png` | Thin straw blow |
+| `host-idle.webp` | Start / idle |
+| `host-breath-1.webp` | Step 1 |
+| `host-breath-2.webp` | Step 2 |
+| `host-hold.webp` | Hold 30 |
+| `host-exhale.webp` | Thin straw blow |
 
-JPG twins: `host-idle.jpg`, `host-breath-1.jpg`, `host-breath-2.jpg`, `host-hold.jpg`, `host-exhale.jpg`.
-
-Video still belongs in `/media/video/` when it lands. The page prefers a live clip over these stills.
+Only the idle still is eager. Later frames swap in on phase change.

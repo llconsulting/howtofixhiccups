@@ -1,3 +1,3 @@
-# Alternate video drop
+# Video slot
 
-Same filenames as `/media/video/`. Empty until Video Desk lands files.
+Empty. The live page does not request files from here.
