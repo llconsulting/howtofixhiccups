@@ -40,7 +40,7 @@
       beat: 0,
       kicker: "Step 1 of 4",
       label: "Breathe in. Then swallow.",
-      copy: "Tap when you have swallowed.",
+      copy: "Breathe all the way in. Swallow. Feel it finish before the next breath.",
       kind: "guided",
       nextLabel: "I swallowed"
     },
@@ -49,7 +49,7 @@
       beat: 1,
       kicker: "Step 2 of 4",
       label: "Second breath. Swallow all the way.",
-      copy: "Tap when you have swallowed.",
+      copy: "Add the second breath on top. Swallow completely before you hold.",
       kind: "guided",
       nextLabel: "I swallowed"
     },
@@ -58,7 +58,7 @@
       beat: 2,
       kicker: "Step 3 of 4",
       label: "Hold. Wait for the count to finish.",
-      copy: "Stay still.",
+      copy: "Hold until the count finishes. Stay still for all 30 seconds.",
       kind: "count",
       durationMs: 30000,
       unit: "seconds",
@@ -69,7 +69,7 @@
       beat: 3,
       kicker: "Step 4 of 4",
       label: "Blow thin. Stay on the count.",
-      copy: "A thin stream. Keep it gentle.",
+      copy: "Blow thin, like the tiniest straw. Keep that stream going for the full count.",
       kind: "count",
       durationMs: 10000,
       unit: "seconds",
@@ -198,6 +198,10 @@
     items.forEach((item, i) => {
       item.classList.toggle("is-current", beat === i);
     });
+    if (els.rail) {
+      const progress = beat < 0 ? 0 : Math.min(1, beat / 3);
+      els.rail.style.setProperty("--beat", String(progress));
+    }
   }
 
   function showShare(on) {

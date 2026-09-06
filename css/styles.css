@@ -314,14 +314,24 @@ h1,
   list-style: none;
 }
 
-.beat-rail::before {
+.beat-rail::before,
+.beat-rail::after {
   content: "";
   position: absolute;
   left: 18%;
-  right: 18%;
   top: 50%;
-  height: 1px;
+  height: 2px;
+  transform: translateY(-50%);
+}
+
+.beat-rail::before {
+  right: 18%;
   background: var(--line);
+}
+
+.beat-rail::after {
+  width: calc(64% * var(--beat, 0));
+  background: var(--accent);
 }
 
 .beat-rail li {
@@ -424,6 +434,11 @@ h1,
   color: var(--ink-soft);
   text-align: center;
   transition: opacity 220ms var(--ease);
+}
+
+.phase-copy:empty {
+  display: none;
+  min-height: 0;
 }
 
 .timer-wrap {
@@ -646,6 +661,7 @@ h1,
 
 .tutorial,
 .faq,
+.limits,
 .read-this {
   margin-top: 2.5rem;
 }
@@ -681,25 +697,36 @@ h1,
 
 .steps li {
   position: relative;
-  padding-left: 2.1rem;
+  padding: 0.7rem 0.75rem 0.7rem 2.2rem;
+  border-radius: 0.7rem;
+  transition: background 180ms var(--ease);
 }
 
 .steps li + li {
-  margin-top: 1rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--line);
+  margin-top: 0.35rem;
+}
+
+.steps li.is-current {
+  background: var(--accent-soft);
+  box-shadow: inset 3px 0 0 var(--accent);
 }
 
 .steps li.is-current strong {
   color: var(--accent);
 }
 
+.step-help {
+  display: block;
+  margin-top: 0.3rem;
+  color: var(--ink-soft);
+}
+
 .steps li::before {
   counter-increment: beat;
   content: counter(beat);
   position: absolute;
-  left: 0;
-  top: 0.05rem;
+  left: 0.7rem;
+  top: 0.75rem;
   color: var(--accent);
   font-size: 0.92rem;
   font-weight: 600;
