@@ -126,10 +126,16 @@
 
       <section class="studio" aria-labelledby="method-heading">
         <div class="method-card is-idle" id="method">
+          <ol class="beat-rail" id="beat-rail" aria-label="Four steps">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+          </ol>
           <div class="phase" id="phase">
             <p class="phase-kicker" id="phase-kicker">The method</p>
             <h2 class="phase-label" id="phase-label">Four steps</h2>
-            <p class="phase-copy" id="phase-copy">Press Start if you want the page to keep time.</p>
+            <p class="phase-copy" id="phase-copy">Start when you are ready.</p>
           </div>
           <div class="actions">
             <button class="btn" id="start-btn" type="button">Start</button>
@@ -152,6 +158,7 @@
             </div>
           </div>
           <p class="extra-note" id="extra-note" hidden>Keep it thin to 12 or 15 if you can.</p>
+          <button class="share-btn" id="share-btn" type="button" hidden>Share</button>
           <p class="lightheaded">Stop if you feel lightheaded.</p>
           <p class="live" id="live" aria-live="polite"></p>
         </div>
@@ -169,7 +176,7 @@
               decoding="async">
             <video id="host-video" class="host-video" playsinline muted preload="none" hidden></video>
           </div>
-          <figcaption class="host-caption">A parallel demo. The written steps below work if the picture does not load.</figcaption>
+          <figcaption class="host-caption">Follow along.</figcaption>
         </figure>
       </section>
 
@@ -180,7 +187,7 @@
           <span>Do not skip.</span>
           <span>Do not add extras.</span>
         </p>
-        <ol>
+        <ol id="written-steps">
           <li>
             <strong>Deep breath all the way in and swallow it.</strong>
             One full inhale. Swallow at the top of it.
@@ -265,7 +272,7 @@
         </a>
         <a class="page-link" href="/privacy/">
           <strong>Privacy</strong>
-          <span>A static site. No accounts.</span>
+          <span>We do not sell personal information.</span>
         </a>
       </nav>
     </div>

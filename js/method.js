@@ -37,7 +37,8 @@
   const STEPS = [
     {
       id: "inhale1",
-      kicker: "Breathe. Swallow. Stack. Swallow.",
+      beat: 0,
+      kicker: "Step 1 of 4",
       label: "Deep breath all the way in",
       copy: "Swallow it.",
       kind: "guided",
@@ -45,7 +46,8 @@
     },
     {
       id: "inhale2",
-      kicker: "Breathe. Swallow. Stack. Swallow.",
+      beat: 1,
+      kicker: "Step 2 of 4",
       label: "Another breath on top",
       copy: "Swallow completely.",
       kind: "guided",
@@ -53,24 +55,29 @@
     },
     {
       id: "hold",
-      kicker: "The method",
+      beat: 2,
+      kicker: "Step 3 of 4",
       label: "Hold. 30 full seconds.",
-      copy: "Use the countdown. A count in your head tends to shrink.",
+      copy: "Stay with the countdown.",
       kind: "count",
       durationMs: 30000,
-      unit: "seconds"
+      unit: "seconds",
+      share: true
     },
     {
       id: "exhale",
-      kicker: "The method",
+      beat: 3,
+      kicker: "Step 4 of 4",
       label: "Thin stream. 10 seconds.",
       copy: "Slowly blow out as through the tiniest straw.",
       kind: "count",
       durationMs: 10000,
-      unit: "seconds"
+      unit: "seconds",
+      share: true
     },
     {
       id: "extra",
+      beat: 3,
       kicker: "If you can",
       label: "Keep it thin to 12 or 15 if you can.",
       copy: "Same thin stream. Keep it gentle.",
@@ -98,7 +105,10 @@
     timerWrap: document.getElementById("timer-wrap"),
     live: document.getElementById("live"),
     still: document.getElementById("host-still"),
-    video: document.getElementById("host-video")
+    video: document.getElementById("host-video"),
+    share: document.getElementById("share-btn"),
+    rail: document.getElementById("beat-rail"),
+    written: document.getElementById("written-steps")
   };
 
   if (!els.start || !els.timer) return;
@@ -176,6 +186,64 @@
     }, 80);
   }
 
+  const SHARE_URL = "https://howtofixhiccups.com/";
+
+  function markBeat(beat) {
+    const dots = els.rail ? [...els.rail.children] : [];
+    dots.forEach((dot, i) => {
+      dot.classList.toggle("is-current", beat === i);
+      dot.classList.toggle("is-done", beat > i);
+    });
+    const items = els.written ? [...els.written.children] : [];
+    items.forEach((item, i) => {
+      item.classList.toggle("is-current", beat === i);
+    });
+  }
+
+  function showShare(on) {
+    if (!els.share) return;
+    els.share.hidden = !on;
+    if (!on) els.share.textContent = "Share";
+  }
+
+  function trackShare() {
+    const key = "htfh-share-count";
+    let count = 0;
+    try {
+      count = Number(window.localStorage.getItem(key) || 0) + 1;
+      window.localStorage.setItem(key, String(count));
+    } catch {
+      count += 1;
+    }
+    console.log("share", count);
+    if (els.share) els.share.dataset.count = String(count);
+  }
+
+  async function shareLink() {
+    try {
+      if (navigator.share) {
+        await navigator.share({
+          title: "How to fix hiccups",
+          url: SHARE_URL
+        });
+        trackShare();
+        return;
+      }
+    } catch (err) {
+      if (err && err.name === "AbortError") return;
+    }
+    try {
+      await navigator.clipboard.writeText(SHARE_URL);
+      if (els.share) els.share.textContent = "Copied";
+      trackShare();
+      window.setTimeout(() => {
+        if (els.share) els.share.textContent = "Share";
+      }, 1600);
+    } catch {
+      /* Clipboard can fail in locked-down browsers. */
+    }
+  }
+
   function hideClip() {
     if (!els.video) return;
     els.video.pause();
@@ -216,7 +284,7 @@
     lastShownSecond = null;
     els.kicker.textContent = "The method";
     els.label.textContent = "Four steps";
-    els.copy.textContent = "Press Start if you want the page to keep time.";
+    els.copy.textContent = "Start when you are ready.";
     if (els.phase) els.phase.classList.remove("is-changing");
     if (els.card) {
       els.card.classList.add("is-idle");
@@ -230,6 +298,8 @@
     els.next.hidden = true;
     els.reset.hidden = true;
     if (els.extraNote) els.extraNote.hidden = true;
+    showShare(false);
+    markBeat(-1);
     showStill("idle");
     hideClip();
   }
@@ -255,6 +325,8 @@
     els.reset.hidden = false;
     els.reset.textContent = "Stop";
     if (els.extraNote) els.extraNote.hidden = true;
+    showShare(false);
+    markBeat(4);
     announce("That is the sequence.");
     showStill("idle");
     hideClip();
@@ -284,6 +356,8 @@
     }
     if (els.timerWrap) els.timerWrap.hidden = step.kind !== "count";
     if (els.extraNote) els.extraNote.hidden = !(step.id === "exhale" || step.optional);
+    showShare(Boolean(step.share));
+    markBeat(step.beat);
     showStill(step.id);
     playClip(step.id);
     const upcoming = STEPS[index + 1];
@@ -294,11 +368,8 @@
       setCount("");
       els.unit.textContent = "";
       els.next.hidden = false;
-      els.next.disabled = true;
+      els.next.disabled = false;
       els.next.textContent = step.nextLabel;
-      window.setTimeout(() => {
-        if (myToken === token) els.next.disabled = false;
-      }, 280);
       setProgress(0);
       announce(`${step.label}. ${step.copy}`);
       return;
@@ -363,5 +434,6 @@
   els.start.addEventListener("click", start);
   els.next.addEventListener("click", next);
   els.reset.addEventListener("click", reset);
+  if (els.share) els.share.addEventListener("click", shareLink);
   renderIdle();
 })();
