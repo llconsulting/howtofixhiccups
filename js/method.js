@@ -17,27 +17,27 @@
   const STILLS = {
     idle: {
       src: "/assets/ugc/ugc-host-01-start.png",
-      alt: "Person on camera running the four-step hiccup method."
+      alt: "Young woman with brown hair and green eyes smiling at the camera in a cream sweater"
     },
     inhale1: {
       src: "/assets/ugc/ugc-host-02-breath-swallow-1.png",
-      alt: "Person on camera taking a deep breath, then swallowing."
+      alt: "Same host mid first deep breath and swallow demo"
     },
     inhale2: {
       src: "/assets/ugc/ugc-host-03-breath-swallow-2.png",
-      alt: "Person on camera adding a second breath, then swallowing."
+      alt: "Same host mid second stacked breath and swallow"
     },
     hold: {
       src: "/assets/ugc/ugc-host-04-hold-30.png",
-      alt: "Person on camera holding their breath."
+      alt: "Same host holding a calm breath for the timed hold"
     },
     exhale: {
       src: "/assets/ugc/ugc-host-05-thin-straw-exhale.png",
-      alt: "Person on camera blowing out slowly through pursed lips."
+      alt: "Same host slowly exhaling as through a thin straw"
     },
     extra: {
       src: "/assets/ugc/ugc-host-05-thin-straw-exhale.png",
-      alt: "Person on camera blowing out slowly through pursed lips."
+      alt: "Same host slowly exhaling as through a thin straw"
     }
   };
 
