@@ -1,11 +1,12 @@
 # howtofixhiccups excellence elite recheck
 
-Date: 2026-09-06 23:23 UTC (updated after `0e8b64e` restored header Privacy a tenth time)  
+Date: 2026-09-06 23:26 UTC (updated after `0a419e7` dropped header Privacy an eleventh time)  
 Role: Skeptic (louislynn Consulting)  
 Job: KEEP/CUT excellence elite recheck only. No rewrite. No merge. No publish. No spend. No Mike ping.  
 PR: https://github.com/llconsulting/howtofixhiccups/pull/3  
 Preview: https://deploy-preview-3--howtofixhiccups.netlify.app/  
-PR head at check: `0e8b64eb876c49f6ffe00188c0ea1894d1ce2c8a` (draft)  
+PR head at check: `0a419e788d32658fb159fa04c2494bdb24b4edee` (draft)  
+Eleventh drop: `0a419e788d32658fb159fa04c2494bdb24b4edee`  
 Tenth restore: `0e8b64eb876c49f6ffe00188c0ea1894d1ce2c8a`  
 Tenth drop + opacity: `c5977cb0c76133fc25928f3b76e289618d88bf0d`  
 Ninth restore: `460fba39aaf2584d19326392fcfadbcde12137a2`  
@@ -43,7 +44,7 @@ Parent mirror: `/workspace/louislynn-os/hiccups-site/howtofixhiccups-excellence-
 - **Overall:** KEEP WITH FIXES
 - **Merge gate:** NO
 - **Elite+clear+merge-ready?:** NO
-- **One-line why:** Header Privacy is back a tenth time; wash is gone; hero is still a 0.45x sip with H1+Start only. Step clips still MATCH. Do not call YES.
+- **One-line why:** Header Privacy dropped an eleventh time; hero is still a 0.45x sip with H1+Start only. Step clips still MATCH.
 
 Do not merge PR3.  
 Do not ping Mike.  
@@ -56,7 +57,7 @@ CoS owns the Mike ping on YES.
 | Bar | YES/NO | Evidence |
 | --- | --- | --- |
 | Hero | NO | Same sip file still wired (`straw-blow-loop-3s.mp4`, sha256 `1a525ec0…`). `c5977cb` removed the dark wash and set opacity 1. `playbackRate` is still 0.45. Plate is still H1 + Start only. `thin-straw-loop-3s.mp4` still 200 and unwired. 4s still 404. Full-opacity sip is still a sip. |
-| Copy | NO | Header chrome matches again after `0e8b64e`. Locked HUMAN lead / lede / notice / helper / links still sit in `band-intro`, not on the hero plate. Header YES is not a Copy YES while the plate is H1+Start only. Merge-ready stays NO. |
+| Copy | NO | Eleventh Privacy drop on `/` `/why/` `/when/` `/privacy/` and 404. Footer still has Privacy. Hero plate is still H1+Start only. HUMAN stack still in `band-intro`. |
 | Content | YES | Four live pages only: `/` `/why/` `/when/` `/privacy/` all 200. `/blog/` 301 `/why/`. `/about/` 301 `/`. `/blog/callies-sequence/` 301 `/`. HowTo four beats, adults, ordinary hiccups, no MedicalWebPage. `/docs/*` 404. Desk STATUS/MANIFEST 404. |
 | Motion | YES | CDP file-per-step MATCH. 01 breath+swallow 9.041667s. 02 second breath+swallow 9.041667s. 03 hold 30.083333s against 30s UI, no loop. 04 thin-straw 8.041667s (official lean remint; loops under the 10s UI). Hero 3s clean, not the 4s morph. Sampled frames show swallow on 01/02, still hold on 03, pursed thin-straw on 04. |
 
@@ -68,7 +69,7 @@ CoS owns the Mike ping on YES.
 | --- | --- | --- |
 | CLIPS 01/02/03 + clean 04 all 200 | PASS | GET 200. Sizes now: 01 6853515, 02 6961159, 03 18797271, 04 2016813. |
 | Hero muted 3s only (4s 404) | PASS | Wired `straw-blow-loop-3s.mp4` GET 200, ffprobe 3.000s. 4s GET 404. Technical 3s-only claim holds. Action is still the wrong beat. |
-| HUMAN excellence copy | FAIL | Body paste still on the page. Four-item header is back a tenth time. Hero plate is still H1+Start only, not the locked HUMAN stack. |
+| HUMAN excellence copy | FAIL | Body paste still on the page. Locked four-item header is gone an eleventh time. Hero plate is still H1+Start only. |
 | Exp1 Copy link intact (writes howtofixhiccups.com; Share-on-hold only) | PASS | Button hidden idle / step 1 / step 2 / step 4. Visible on hold (`shareHidden:false`, label `Copy link`). `SHARE_URL = "https://howtofixhiccups.com/"`. `copyLink: true` only on hold. No hero Share. Headless CDP clipboard read blocked (`NotAllowedError` / document not focused), so the write was not proven in this headless session. Code path and hold-only UI are live. Screenshot: `/opt/cursor/artifacts/screenshots/preview_hold_copy_link.webp`. |
 | no Callie | PASS | Grep of live `/` `/why/` `/when/` `/privacy/` HTML: 0 Callie. Visible chrome is `howtofixhiccups` / `the method`. `/blog/callies-sequence/` 301 home. `/README.md` 404. |
 | step-faithful v2 (01-04 + 3s hero) | PASS | See motion table and CDP srcs below. |
@@ -166,7 +167,8 @@ Live 04 at 22:10 UTC is still the 8s remint (2016813). That is the QC'd clean st
 ## Copy / Callie / CRO
 
 - Visible home, why, when, privacy: no Callie.
-- Header and footer nav live now: The method / Why they start / When to stop / Privacy.
+- Header nav now: The method / Why they start / When to stop. Privacy gone an eleventh time.
+- Footer nav still: The method / Why they start / When to stop / Privacy.
 - Home hero plate is still H1 + Start only. HUMAN lead / lede / notice / helper / links still sit in `band-intro` below.
 - When-page `about` hits are `about 48 hours` / `about two days`, not an About page.
 - No fight-the-prove CRO on the hero or inner pages.
@@ -641,9 +643,26 @@ Flip log:
 
 Kill the drop job. Hold the four-item header. Put the locked HUMAN stack back on the hero plate. Point hero at `thin-straw-loop-3s.mp4` at normal rate.
 
+## 23:26 UTC recheck after eleventh Privacy drop
+
+Head is `0a419e7` (`fix(nav): drop Privacy from header; keep footer and full-opacity hero`). Re-applies the drop after `0e8b64e`. Live GET at 23:26 UTC matches.
+
+- Header on `/` `/why/` `/when/` `/privacy/` and 404: The method / Why they start / When to stop
+- Footer still has Privacy
+- Hero plate still H1 + Start only
+- HUMAN stack still in `band-intro`
+- Hero still `straw-blow-loop-3s.mp4` at `playbackRate 0.45`, opacity 1, no wash
+- `thin-straw-loop-3s.mp4` still 200, unwired
+- 01-04 unchanged
+- noindex, no Callie
+
+Copy bar NO. Hero bar still NO. Elite+clear+merge-ready NO. Merge gate NO.
+
+Flip log now 21. Kill the drop job. Do not call YES on the next restore.
+
 ## Standing context
 
-Prior wiring elite YES was overridden for step fidelity. The 22:10 pass called YES on live files. Header chrome then flipped twenty times. Hero is a full-opacity 0.45x sip with H1+Start only. Step clips 01-04 still MATCH. Wired hero and plate do not.
+Prior wiring elite YES was overridden for step fidelity. The 22:10 pass called YES on live files. Header chrome then flipped twenty-one times. Hero is a full-opacity 0.45x sip with H1+Start only. Step clips 01-04 still MATCH. Wired hero, plate, and chrome do not.
 
 CoS watch MATCH on 01-04 still holds. The MATCH 3s hero (`thin-straw-loop-3s.mp4`, mid-cut of 04) is still on disk and unwired. The 10s 04 is not live and must not come back.
 
