@@ -1,6 +1,6 @@
 # howtofixhiccups.com
 
-Static site for a four-step method for ordinary hiccups. Faceless brand. Not medical advice.
+Four-step method for ordinary hiccups. Faceless brand. Not medical advice.
 
 ## The method
 
@@ -9,7 +9,7 @@ Static site for a four-step method for ordinary hiccups. Faceless brand. Not med
 3. Hold breath 30 full seconds.
 4. Slowly blow out as through the tiniest straw for 10 full seconds (or 12 to 15 if you can).
 
-The home page has Start, a countdown, and host stills. HowTo schema lists those four steps only.
+The home page has Start, a countdown, and host stills. A muted video slot sits on the stills for upcoming true-motion clips. HowTo schema lists those four steps only.
 
 ## Pages
 
@@ -22,7 +22,7 @@ Blog, notes, and about are dropped. `/about` 301s to `/`. `/blog` and ordinary-h
 
 ## Host media
 
-Host stills are 800px WebP in `assets/ugc/`. Idle loads first. Later frames swap on step change. No video probe until binaries exist.
+Host stills are 800px WebP in `assets/ugc/`. Idle loads first. Later frames swap on step change. Video is a same-brunette slot over the still; the still stays if the clip fails.
 
 ## Deploy
 

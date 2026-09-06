@@ -39,8 +39,8 @@
       id: "inhale1",
       beat: 0,
       kicker: "Step 1 of 4",
-      label: "Deep breath all the way in",
-      copy: "Swallow it.",
+      label: "Breathe in. Then swallow.",
+      copy: "Tap when you have swallowed.",
       kind: "guided",
       nextLabel: "I swallowed"
     },
@@ -48,8 +48,8 @@
       id: "inhale2",
       beat: 1,
       kicker: "Step 2 of 4",
-      label: "Another breath on top",
-      copy: "Swallow completely.",
+      label: "Second breath. Swallow all the way.",
+      copy: "Tap when you have swallowed.",
       kind: "guided",
       nextLabel: "I swallowed"
     },
@@ -57,8 +57,8 @@
       id: "hold",
       beat: 2,
       kicker: "Step 3 of 4",
-      label: "Hold. 30 full seconds.",
-      copy: "Stay with the countdown.",
+      label: "Hold. Wait for the count to finish.",
+      copy: "Stay still.",
       kind: "count",
       durationMs: 30000,
       unit: "seconds",
@@ -68,8 +68,8 @@
       id: "exhale",
       beat: 3,
       kicker: "Step 4 of 4",
-      label: "Thin stream. 10 seconds.",
-      copy: "Slowly blow out as through the tiniest straw.",
+      label: "Blow thin. Stay on the count.",
+      copy: "A thin stream. Keep it gentle.",
       kind: "count",
       durationMs: 10000,
       unit: "seconds",
@@ -79,8 +79,8 @@
       id: "extra",
       beat: 3,
       kicker: "If you can",
-      label: "Keep it thin to 12 or 15 if you can.",
-      copy: "Same thin stream. Keep it gentle.",
+      label: "Keep it thin to 12 to 15 if you can.",
+      copy: "Same thin stream.",
       kind: "count",
       durationMs: 5000,
       unit: "seconds",
@@ -244,30 +244,51 @@
     }
   }
 
+  function keepStill() {
+    if (!els.still) return;
+    els.still.hidden = false;
+    els.still.removeAttribute("hidden");
+  }
+
   function hideClip() {
     if (!els.video) return;
     els.video.pause();
+    els.video.classList.remove("is-on");
     els.video.hidden = true;
     els.video.removeAttribute("src");
     els.video.load();
+    keepStill();
   }
 
   function playClip(id) {
     if (!els.video) return;
+    keepStill();
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      hideClip();
+      return;
+    }
     const src = CLIPS[id];
     if (!src) {
       hideClip();
       return;
     }
     try {
+      els.video.muted = true;
+      els.video.defaultMuted = true;
+      els.video.playsInline = true;
+      els.video.loop = true;
       els.video.preload = "none";
+      els.video.classList.remove("is-on");
       if (els.video.getAttribute("src") !== src) {
+        els.video.hidden = true;
         els.video.src = src;
       }
       const play = els.video.play();
       if (play && typeof play.then === "function") {
         play.then(() => {
+          keepStill();
           els.video.hidden = false;
+          els.video.classList.add("is-on");
         }).catch(() => {
           hideClip();
         });
@@ -277,14 +298,18 @@
     }
   }
 
+  if (els.video) {
+    els.video.addEventListener("error", hideClip);
+  }
+
   function renderIdle() {
     invalidate();
     running = false;
     stepIndex = -1;
     lastShownSecond = null;
     els.kicker.textContent = "The method";
-    els.label.textContent = "Four steps";
-    els.copy.textContent = "Start when you are ready.";
+    els.label.textContent = "Start";
+    els.copy.textContent = "";
     if (els.phase) els.phase.classList.remove("is-changing");
     if (els.card) {
       els.card.classList.add("is-idle");
@@ -309,8 +334,8 @@
     running = false;
     paintPhase(
       "The method",
-      "That is the sequence.",
-      "If they are still going after one pass, you can try once more. If they last, keep coming back, or come with other symptoms, stop."
+      "Done. Breathe normally.",
+      "If they are still going after one pass, you can try once more."
     );
     if (els.card) {
       els.card.classList.remove("is-idle", "is-timing");

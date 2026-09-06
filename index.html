@@ -134,8 +134,8 @@
           </ol>
           <div class="phase" id="phase">
             <p class="phase-kicker" id="phase-kicker">The method</p>
-            <h2 class="phase-label" id="phase-label">Four steps</h2>
-            <p class="phase-copy" id="phase-copy">Start when you are ready.</p>
+            <h2 class="phase-label" id="phase-label">Start</h2>
+            <p class="phase-copy" id="phase-copy"></p>
           </div>
           <div class="actions">
             <button class="btn" id="start-btn" type="button">Start</button>
@@ -158,13 +158,13 @@
             </div>
             <button class="share-btn" id="share-btn" type="button" hidden aria-label="Share howtofixhiccups.com">Share</button>
           </div>
-          <p class="extra-note" id="extra-note" hidden>Keep it thin to 12 or 15 if you can.</p>
+          <p class="extra-note" id="extra-note" hidden>Keep it thin to 12 to 15 if you can.</p>
           <p class="lightheaded">Stop if you feel lightheaded.</p>
           <p class="live" id="live" aria-live="polite"></p>
         </div>
 
-        <figure class="host-card">
-          <div class="host-frame">
+        <figure class="host-card" data-host="brunette-ugc">
+          <div class="host-frame" data-slot="true-motion-ugc">
             <img
               id="host-still"
               class="host-still"
@@ -174,7 +174,18 @@
               height="450"
               fetchpriority="high"
               decoding="async">
-            <video id="host-video" class="host-video" playsinline muted preload="none" hidden></video>
+            <video
+              id="host-video"
+              class="host-video"
+              playsinline
+              webkit-playsinline
+              muted
+              loop
+              preload="none"
+              disablepictureinpicture
+              hidden
+              data-slot="true-motion-ugc"
+              aria-hidden="true"></video>
           </div>
           <figcaption class="host-caption">Follow along.</figcaption>
         </figure>

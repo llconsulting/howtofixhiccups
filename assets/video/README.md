@@ -1,6 +1,6 @@
 # Video slots
 
-Ken Burns clips from Video Desk. Stills remain the primary host UI.
+Same filenames as the countdown. Drop true-motion UGC of the same brunette here to replace the current Ken Burns files. Stills stay the host if a clip is missing, blocked, or prefers-reduced-motion.
 
 | File | Phase |
 | --- | --- |
@@ -11,4 +11,4 @@ Ken Burns clips from Video Desk. Stills remain the primary host UI.
 | `thin-straw-exhale.mp4` | Thin straw blow |
 | `method-full.mp4` | Full take (not used by the countdown) |
 
-Start never waits on these files. If a clip fails, the still stays up.
+Start never waits on these files. The still stays visible under the slot.
