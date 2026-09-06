@@ -1,12 +1,13 @@
 # howtofixhiccups excellence elite recheck
 
-Date: 2026-09-06 22:10 UTC  
+Date: 2026-09-06 22:19 UTC (updated after PR3 sync `01aee06`)  
 Role: Skeptic (louislynn Consulting)  
 Job: KEEP/CUT excellence elite recheck only. No rewrite. No merge. No publish. No spend. No Mike ping.  
 PR: https://github.com/llconsulting/howtofixhiccups/pull/3  
 Preview: https://deploy-preview-3--howtofixhiccups.netlify.app/  
-PR head at check: `53996a18272288f9e910b2856763e36014b336be` (draft)  
-Prior head at first GET: `673d04585bbb6bcf9f8c64413216264897d8af05`  
+PR head at check: `01aee06ea76cae5e9a5f33c0d52c8cdedf68cc70` (draft)  
+Prior YES head: `53996a18272288f9e910b2856763e36014b336be`  
+First GET head: `673d04585bbb6bcf9f8c64413216264897d8af05`  
 Recheck agent: https://cursor.com/agents/bc-45737fa2-d038-46ee-ad01-119e7aaa15ea
 
 Parent mirror: `/workspace/louislynn-os/hiccups-site/howtofixhiccups-excellence-elite-recheck-2026-09-06.md`
@@ -15,10 +16,10 @@ Parent mirror: `/workspace/louislynn-os/hiccups-site/howtofixhiccups-excellence-
 
 ## Verdict
 
-- **Overall:** KEEP
-- **Merge gate:** YES
-- **Elite+clear+merge-ready?:** YES
-- **One-line why:** Live preview still ships HUMAN copy, file-per-step v2 (01/02/03 + QC lean 8s 04), muted 3s hero, hold-only Copy link to howtofixhiccups.com, preview noindex, no Callie.
+- **Overall:** KEEP WITH FIXES
+- **Merge gate:** NO
+- **Elite+clear+merge-ready?:** NO
+- **One-line why:** Clips, 3s hero, body copy, and Exp1 still MATCH; `01aee06` dropped locked header Privacy on all four pages.
 
 Do not merge PR3.  
 Do not ping Mike.  
@@ -31,7 +32,7 @@ CoS owns the Mike ping on YES.
 | Bar | YES/NO | Evidence |
 | --- | --- | --- |
 | Hero | YES | CDP `heroSrc` is `/media/video/ugc-motion-v2-2026-09-06/hero-loop/thin-straw-loop-3s.mp4`. `duration=3`, `muted=true`, `loop=true`, `paused=false`. GET 200, ffprobe 3.000s, 72 frames, 1080x1920. `thin-straw-loop-4s.mp4` GET 404. Frames are uncaptioned thin-straw mid-cut, no eyelid/face warp in sampled frames. Hero copy and Start sit above the plate (`hero-copy` z-index 1). Screenshot: `/opt/cursor/artifacts/screenshots/preview_home_hero.webp`. |
-| Copy | YES | Live titles/H1s match the 2026-09-06 HUMAN deck. Home H1 `How to fix hiccups`. Lead `You have hiccups. This method is four steps you can do sitting still.` Deck line `Stay where you are. Breath, swallow, hold, then a thin blow.` is on the page. `/why/` `/when/` `/privacy/` use the same short-line rhythm. On-page body uses `12 to 15`. No Callie in served HTML. Cure and success-rate lines are denials (`We do not claim a cure.` / `We do not claim a success rate.`). |
+| Copy | NO | Body strings still match the 2026-09-06 HUMAN deck. Locked header chrome does not. Deck header nav is The method / Why they start / When to stop / Privacy. Live header on `/` `/why/` `/when/` `/privacy/` and 404 is The method / Why they start / When to stop only. Footer still has Privacy. `/privacy/` is still 200. This is a post-YES chrome break, not a body rewrite. |
 | Content | YES | Four live pages only: `/` `/why/` `/when/` `/privacy/` all 200. `/blog/` 301 `/why/`. `/about/` 301 `/`. `/blog/callies-sequence/` 301 `/`. HowTo four beats, adults, ordinary hiccups, no MedicalWebPage. `/docs/*` 404. Desk STATUS/MANIFEST 404. |
 | Motion | YES | CDP file-per-step MATCH. 01 breath+swallow 9.041667s. 02 second breath+swallow 9.041667s. 03 hold 30.083333s against 30s UI, no loop. 04 thin-straw 8.041667s (official lean remint; loops under the 10s UI). Hero 3s clean, not the 4s morph. Sampled frames show swallow on 01/02, still hold on 03, pursed thin-straw on 04. |
 
@@ -43,7 +44,7 @@ CoS owns the Mike ping on YES.
 | --- | --- | --- |
 | CLIPS 01/02/03 + clean 04 all 200 | PASS | GET 200. Sizes now: 01 6853515, 02 6961159, 03 18797271, 04 2016813. |
 | Hero muted 3s only (4s 404) | PASS | 3s GET 200, ffprobe 3.000s. 4s GET 404. CDP hero duration 3, muted, looping. |
-| HUMAN excellence copy | PASS | Live home/why/when/privacy strings match the excellence deck. Faceless brand. Method lock intact. |
+| HUMAN excellence copy | FAIL | Body paste still matches. Locked header chrome does not. `01aee06` removed Privacy from header on index, why, when, privacy, and 404. Footer link remains. |
 | Exp1 Copy link intact (writes howtofixhiccups.com; Share-on-hold only) | PASS | Button hidden idle / step 1 / step 2 / step 4. Visible on hold (`shareHidden:false`, label `Copy link`). `SHARE_URL = "https://howtofixhiccups.com/"`. `copyLink: true` only on hold. No hero Share. Headless CDP clipboard read blocked (`NotAllowedError` / document not focused), so the write was not proven in this headless session. Code path and hold-only UI are live. Screenshot: `/opt/cursor/artifacts/screenshots/preview_hold_copy_link.webp`. |
 | no Callie | PASS | Grep of live `/` `/why/` `/when/` `/privacy/` HTML: 0 Callie. Visible chrome is `howtofixhiccups` / `the method`. `/blog/callies-sequence/` 301 home. `/README.md` 404. |
 | step-faithful v2 (01-04 + 3s hero) | PASS | See motion table and CDP srcs below. |
@@ -141,16 +142,35 @@ Live 04 at 22:10 UTC is still the 8s remint (2016813). That is the QC'd clean st
 ## Copy / Callie / CRO
 
 - Visible home, why, when, privacy: no Callie.
-- Nav: The method / Why they start / When to stop / Privacy.
+- Header nav now: The method / Why they start / When to stop. Privacy gone.
+- Footer nav still: The method / Why they start / When to stop / Privacy.
 - When-page `about` hits are `about 48 hours` / `about two days`, not an About page.
 - No fight-the-prove CRO on the hero or inner pages.
 - Exp1 stays hold-window Copy link. Share API is clipboard-fail fallback only.
 
 ---
 
+## 22:19 UTC recheck after PR3 sync
+
+Head moved from `53996a1` to `01aee06` (`fix(nav): drop Privacy from header; keep footer link`). Home etag changed to `9915924374f1b948dc6e375fef2c7c83-ssl-df`.
+
+Unchanged and still live:
+- CLIPS 01/02/03/04 sizes and JS SHA `37e1e11ec48ed694117ee72d805bcba8961896ffa2eeb0021e4bba74f0b3179c`
+- Hero 3s src, 4s 404
+- noindex, no Callie
+- `/privacy/` 200
+- Footer still lists Privacy
+
+Changed:
+- Header nav lost Privacy on all four pages and 404.html
+- Excellence deck locked header chrome includes Privacy
+- Copy bar flips to NO. Elite+clear+merge-ready flips to NO. Merge gate flips to NO.
+
+Fix is restore Privacy in the header, or CoS must explicitly unlock that chrome line. Do not treat footer-only Privacy as a match.
+
 ## Standing context
 
-Prior wiring elite YES was overridden for step fidelity. This pass re-checks fidelity on the live files, not the wire map alone.
+Prior wiring elite YES was overridden for step fidelity. The 22:10 pass re-checked fidelity on the live files and called YES. `01aee06` then broke locked header chrome. This update overrides that YES.
 
 CoS watch MATCH on 01-04 + 3s hero still holds on the files that are live now: swallows on 01/02, 30s hold on 03, thin-straw 04 remint, 3s hero. The 10s 04 is not live and must not come back.
 
