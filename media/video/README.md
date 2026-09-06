@@ -1,33 +1,16 @@
-# Host walkthrough slot
+# Host video slot
 
-Stills and Clips Desk owns the on-camera walkthrough.
+Empty until Video Desk drops footage. No invented face or name.
 
-**Look:** late-20s brunette, green eyes. UGC / creator-style. Tasteful, not NSFW. No real-person name or surname on the files or in metadata.
-
-The home page probes these paths and plays whatever has landed:
+The home page already probes these files, then the same names under `/assets/video/`:
 
 | File | Role |
 | --- | --- |
-| `method-full.mp4` | Preferred single take, synced to Start |
-| `walkthrough.mp4` | Alternate full take |
 | `start.mp4` | Shared open |
 | `breath-swallow-1.mp4` | Step 1 |
 | `breath-swallow-2.mp4` | Step 2 |
 | `hold-30.mp4` | Step 3 |
 | `thin-straw-exhale.mp4` | Step 4 |
-| `poster.jpg` | Still while a file loads. Not a generated face. |
-| `cues.json` | Optional cue sheet for a full take (seconds from start) |
+| `method-full.mp4` | Optional single take |
 
-`cues.json` shape, if you add one:
-
-```json
-{
-  "inhale1": 0,
-  "inhale2": 8,
-  "hold": 16,
-  "exhale": 46,
-  "extra": 56
-}
-```
-
-Folders are empty until footage lands. The page shows a labeled placeholder. Do not invent a face or identity to fill the slot.
+Until a file lands, the UI uses the UGC stills. Start does not wait on video.

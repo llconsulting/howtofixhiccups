@@ -1,15 +1,19 @@
 (() => {
   const CIRCUMFERENCE = 339.292;
-  const FULL_VIDEOS = ["/media/video/method-full.mp4", "/media/video/walkthrough.mp4"];
+  const FULL_VIDEOS = [
+    "/media/video/method-full.mp4",
+    "/assets/video/method-full.mp4",
+    "/media/video/walkthrough.mp4"
+  ];
   const STEP_CLIPS = {
-    inhale1: "/media/video/breath-swallow-1.mp4",
-    inhale2: "/media/video/breath-swallow-2.mp4",
-    hold: "/media/video/hold-30.mp4",
-    exhale: "/media/video/thin-straw-exhale.mp4",
-    extra: "/media/video/thin-straw-exhale.mp4"
+    inhale1: ["/media/video/breath-swallow-1.mp4", "/assets/video/breath-swallow-1.mp4"],
+    inhale2: ["/media/video/breath-swallow-2.mp4", "/assets/video/breath-swallow-2.mp4"],
+    hold: ["/media/video/hold-30.mp4", "/assets/video/hold-30.mp4"],
+    exhale: ["/media/video/thin-straw-exhale.mp4", "/assets/video/thin-straw-exhale.mp4"],
+    extra: ["/media/video/thin-straw-exhale.mp4", "/assets/video/thin-straw-exhale.mp4"]
   };
-  const INTRO_CLIP = "/media/video/start.mp4";
-  const CUES_SRC = "/media/video/cues.json";
+  const INTRO_CLIPS = ["/media/video/start.mp4", "/assets/video/start.mp4"];
+  const CUES_SRC = ["/media/video/cues.json", "/assets/video/cues.json"];
   const STILLS = {
     idle: {
       src: "/assets/ugc/ugc-host-01-start.png",
@@ -410,14 +414,17 @@
         return window.fetch(url, { method: "GET", headers: { Range: "bytes=0-0" }, cache: "no-store" }).then((r) => r.ok);
       }).catch(() => false);
 
+    const firstHit = (urls) =>
+      Promise.all(urls.map((url) => probe(url).then((ok) => (ok ? url : "")))).then((hits) => hits.find(Boolean) || "");
+
     const clipIds = Object.keys(STEP_CLIPS);
     Promise.all([
-      Promise.all(FULL_VIDEOS.map((url) => probe(url).then((ok) => (ok ? url : "")))),
-      probe(INTRO_CLIP).then((ok) => (ok ? INTRO_CLIP : "")),
-      Promise.all(clipIds.map((id) => probe(STEP_CLIPS[id]).then((ok) => (ok ? [id, STEP_CLIPS[id]] : null)))),
-      probe(CUES_SRC)
-    ]).then(([fullHits, intro, clipHits, cues]) => {
-      fullVideoSrc = fullHits.find(Boolean) || "";
+      firstHit(FULL_VIDEOS),
+      firstHit(INTRO_CLIPS),
+      Promise.all(clipIds.map((id) => firstHit(STEP_CLIPS[id]).then((url) => (url ? [id, url] : null)))),
+      firstHit(CUES_SRC)
+    ]).then(([full, intro, clipHits, cues]) => {
+      fullVideoSrc = full;
       clipMap = {};
       clipHits.forEach((pair) => {
         if (pair) clipMap[pair[0]] = pair[1];
@@ -429,11 +436,11 @@
       else if (clipHits.some(Boolean)) attachVideo(clipHits.find(Boolean)[1]);
 
       if (!cues) return null;
-      return window.fetch(CUES_SRC, { cache: "no-store" }).then((res) => (res.ok ? res.json() : null));
+      return window.fetch(cues, { cache: "no-store" }).then((res) => (res.ok ? res.json() : null));
     }).then((data) => {
       if (data && typeof data === "object") hostCues = data;
     }).catch(() => {
-      /* Assets are optional until Stills and Clips Desk delivers them. */
+      /* Clips are optional. Stills stay up until Video Desk drops files. */
     });
   }
 
