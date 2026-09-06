@@ -314,7 +314,7 @@ Use only if the Start control stays.
 
 ## 3. Why hiccups start `/why-hiccups-start/`
 
-Ordinary language only. No clinic voice. No mechanism. No studies.
+Ordinary language only. Thin what-a-hiccup-is beat from public pages. No reflex-arc lecture. No clinic branding in the hero. No studies.
 
 ### Title
 
@@ -322,10 +322,10 @@ Ordinary language only. No clinic voice. No mechanism. No studies.
 Why hiccups start
 ```
 
-### Meta description (157 characters)
+### Meta description (156 characters)
 
 ```
-Ordinary hiccups often follow a fast meal, a fizzy drink, a laugh mid-swallow, or a gulp of air. Short context written in plain language. Not medical advice.
+Hiccups are sudden squeezes of the breathing muscle and a hic sound. Ordinary spells often last a few minutes. A meal or fizz is common. Not medical advice.
 ```
 
 ### H1
@@ -337,11 +337,13 @@ Why hiccups start
 ### Lead
 
 ```
-People get hiccups after ordinary moments.
-A fast meal.
-A fizzy drink.
-A laugh that hits while you swallow.
-A gulp of air you did not mean to take.
+Hiccups are repeated squeezes of the breathing muscle under your ribs.
+You do not choose them.
+Your vocal cords close all at once.
+That is the "hic" sound.
+
+A specific reason is often missing.
+Nerves that help control that muscle can get irritated.
 ```
 
 ### H2: The usual story
@@ -353,18 +355,20 @@ The usual story
 ### Body
 
 ```
-You were eating or talking or laughing.
-Then a hiccup showed up and stole the next sentence.
+People often notice a spell after ordinary moments.
+
+A large meal, or a fast one.
+A fizzy drink.
+Alcohol.
+Food or drink that is hot, spicy, or a sharp swing in temperature.
+Swallowing extra air, like with gum or smoking.
+Excitement or stress.
 
 That is the kind this site is for.
 Short.
 Annoying.
 Common.
-
-The method is on the home page if you want one quiet thing to try.
 ```
-
-Internal link on `the home page` → `/`
 
 ### H2: They often leave
 
@@ -375,13 +379,15 @@ They often leave
 ### Body
 
 ```
-Short hiccups are common.
-They often pass on their own.
+Ordinary spells usually last only a few minutes.
+They often go away on their own.
+That is common.
+It is not a guarantee.
 
-This page stays small.
-One method.
-One place to start.
+The method is on the home page if you want one quiet thing to try.
 ```
+
+Internal link on `the home page` → `/`
 
 ### H2: Lasting or severe spells
 
@@ -392,9 +398,11 @@ Lasting or severe spells
 ### Body
 
 ```
-Lasting hiccups belong with a clinician.
+Spells that last days or longer are less common.
+Those belong with a clinician.
+
 So do hiccups that keep returning.
-So do hiccups that arrive with pain, vomiting, or trouble breathing.
+So do hiccups that arrive with other warning signs.
 
 Read When to stop.
 ```
@@ -406,11 +414,21 @@ Internal link on `When to stop` → `/when-to-stop/`
 - Primary: `Go to the method` → `/`
 - Secondary: `When to stop` → `/when-to-stop/`
 
+### Sources footnote (tiny, URLs only)
+
+```
+Public references:
+https://www.mayoclinic.org/diseases-conditions/hiccups/symptoms-causes/syc-20352613
+https://my.clevelandclinic.org/health/diseases/17672-hiccups
+https://medlineplus.gov/ency/article/003068.htm
+https://www.nhs.uk/symptoms/hiccups/
+```
+
 ---
 
 ## 4. When to stop `/when-to-stop/`
 
-Clear stop rules. No scare theater. No invented hour counts.
+Clear stop rules. No scare theater. State repeated public thresholds. Sources vary. Do not invent one official cutoff.
 
 ### Title
 
@@ -421,7 +439,7 @@ When to stop
 ### Meta description (150 characters)
 
 ```
-Stop the method if hiccups last, keep returning, or arrive with other symptoms. Talk to a clinician. Use this page for stop rules. Not medical advice.
+Talk to a clinician if hiccups last about 48 hours or two days. Sources vary. Also stop if they block eating, sleep, or breathing. Not medical advice.
 ```
 
 ### H1
@@ -434,23 +452,29 @@ When to stop
 
 ```
 This method is for a short, ordinary spell.
-If you are unsure, that uncertainty is already a reason to ask a clinician.
+If a spell lasts toward two days, keeps coming back, or comes with other warning signs, talk to a clinician.
+Public pages do not all use the same cutoff.
 ```
 
-### H2: Close this tab
+### H2: When the spell lasts
 
 ```
-Close this tab
+When the spell lasts
 ```
 
 ### Body
 
 ```
-Stop the sequence and talk to a clinician if hiccups last.
-Stop if they keep coming back over days.
-Stop if they feel severe.
+Many major health pages say see a clinician if hiccups last more than about 48 hours, or two days.
 
-We will not pick a number of hours and call it a rule.
+Some pages say more than two or three days when there are no other warning signs.
+Some pages say more than a few days.
+
+Sources vary on the exact number.
+
+Also stop and see a clinician if hiccups are so severe they get in the way of eating, sleeping, or breathing.
+
+Stop if they keep coming back often and affect your life.
 ```
 
 ### H2: Get help if you also have
@@ -464,18 +488,23 @@ Get help if you also have
 ```
 - Trouble breathing
 - Chest pain
-- Vomiting
-- Severe belly pain
-- Confusion
-- Anything else that feels wrong
+- Trouble swallowing
+- Headache
+- Weakness or numbness
+- Loss of balance
+- Trouble walking, talking, or seeing
 ```
 
 ### After the list
 
 ```
+Warning signs like these belong with a doctor right away.
+
+If hiccups arrive with a suspected stroke or a suspected clot in the lung, seek emergency care.
+Use emergency services for those emergencies.
+
 A countdown on a website cannot sort that out.
 Tell someone what is going on.
-Use the care you would use for any other symptom that will not leave.
 ```
 
 ### H2: Do not loop the method
@@ -510,6 +539,16 @@ Internal link on `home page` → `/`
 
 - Primary: `Go to the method` → `/`
 - Secondary: `Why hiccups start` → `/why-hiccups-start/`
+
+### Sources footnote (tiny, URLs only)
+
+```
+Public references:
+https://www.mayoclinic.org/diseases-conditions/hiccups/symptoms-causes/syc-20352613
+https://my.clevelandclinic.org/health/diseases/17672-hiccups
+https://medlineplus.gov/ency/article/003068.htm
+https://www.nhs.uk/symptoms/hiccups/
+```
 
 ---
 
@@ -834,7 +873,7 @@ Pass run on this file before handoff.
 | Cure rates, studies, doctor endorsements | None |
 | NAP / credentials / named author | None |
 | Method order | Locked four steps, unchanged |
-| Scare timelines | No hour-count rule |
+| Scare timelines | No invented single cutoff. Public pages vary (about 48 hours / two days / a few days) |
 | Ads honesty | Placeholders, no live network claimed |
 
 Builder note: keep sentences short on the page. One idea per line is fine. Do not "enrich" this copy with a science graph or a founder story.
