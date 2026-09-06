@@ -209,47 +209,86 @@
     if (!on) els.share.textContent = "Copy link";
   }
 
-  function logHoldCopy() {
+  function inHoldWindow() {
     const step = STEPS[stepIndex];
-    const phase = step ? step.id : "unknown";
-    const beforeBlowEnd = phase === "hold" || phase === "exhale" || phase === "extra";
-    let proves = 0;
+    return Boolean(running && step && step.id === "hold");
+  }
+
+  function readHoldLog() {
     try {
       const raw = window.localStorage.getItem("htfh-hold-copy");
-      const data = raw ? JSON.parse(raw) : { taps: [] };
-      if (!Array.isArray(data.taps)) data.taps = [];
-      data.taps.push({ t: Date.now(), phase, beforeBlowEnd });
-      proves = data.taps.filter((tap) => tap.beforeBlowEnd).length;
-      data.proves = proves;
-      window.localStorage.setItem("htfh-hold-copy", JSON.stringify(data));
+      const data = raw ? JSON.parse(raw) : {};
+      let completed = Array.isArray(data.completed) ? data.completed : [];
+      const forwarded = Array.isArray(data.forwarded) ? data.forwarded : [];
+      if (!completed.length && Array.isArray(data.taps)) {
+        completed = data.taps
+          .filter((tap) => tap.phase === "hold" && tap.beforeBlowEnd)
+          .map((tap) => ({ t: tap.t, phase: "hold", ok: true }));
+      }
+      return { completed, forwarded };
+    } catch {
+      return { completed: [], forwarded: [] };
+    }
+  }
+
+  function writeHoldLog(data) {
+    const proves = data.completed.length;
+    const helperForwards = data.forwarded.length;
+    try {
+      window.localStorage.setItem("htfh-hold-copy", JSON.stringify({
+        completed: data.completed,
+        forwarded: data.forwarded,
+        proves,
+        helperForwards
+      }));
       window.localStorage.setItem("htfh-share-count", String(proves));
     } catch {
-      proves += 1;
+      /* Private prove only. */
     }
-    if (els.share) els.share.dataset.proves = String(proves);
+    if (els.share) {
+      els.share.dataset.proves = String(proves);
+      els.share.dataset.forwards = String(helperForwards);
+    }
+  }
+
+  function logHoldCompleted() {
+    if (!inHoldWindow()) return;
+    const data = readHoldLog();
+    data.completed.push({ t: Date.now(), phase: "hold", ok: true });
+    writeHoldLog(data);
+  }
+
+  function logHoldForward() {
+    if (!inHoldWindow()) return;
+    const data = readHoldLog();
+    data.forwarded.push({ t: Date.now(), phase: "hold", incomplete: true });
+    writeHoldLog(data);
   }
 
   async function shareLink() {
+    if (!inHoldWindow()) return;
     try {
       await navigator.clipboard.writeText(SHARE_URL);
       if (els.share) els.share.textContent = "Copied";
-      logHoldCopy();
+      logHoldCompleted();
       window.setTimeout(() => {
         if (els.share && !els.share.hidden) els.share.textContent = "Copy link";
       }, 1600);
       return;
     } catch {
-      /* Clipboard can fail in locked-down browsers. */
+      /* Failed clipboard is not a score. */
     }
+    if (!navigator.share) return;
     try {
-      if (!navigator.share) return;
       await navigator.share({
         title: "How to fix hiccups",
         url: SHARE_URL
       });
-      logHoldCopy();
-    } catch {
-      /* Native share can be cancelled. */
+      if (inHoldWindow()) logHoldCompleted();
+    } catch (err) {
+      if (err && err.name === "AbortError") {
+        logHoldForward();
+      }
     }
   }
 
