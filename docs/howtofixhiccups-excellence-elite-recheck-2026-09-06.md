@@ -1,11 +1,12 @@
 # howtofixhiccups excellence elite recheck
 
-Date: 2026-09-06 22:32 UTC (updated after `dff29eb` restored header Privacy a second time)  
+Date: 2026-09-06 22:58 UTC (updated after `d8e4d16` dropped header Privacy a third time)  
 Role: Skeptic (louislynn Consulting)  
 Job: KEEP/CUT excellence elite recheck only. No rewrite. No merge. No publish. No spend. No Mike ping.  
 PR: https://github.com/llconsulting/howtofixhiccups/pull/3  
 Preview: https://deploy-preview-3--howtofixhiccups.netlify.app/  
-PR head at check: `dff29eb0b98e1d97f935e941c4da4dd79f24bb2f` (draft)  
+PR head at check: `d8e4d16f6bcd365540f3a9e1159b3a6beed54ae9` (draft)  
+Third drop: `d8e4d16f6bcd365540f3a9e1159b3a6beed54ae9`  
 Second restore: `dff29eb0b98e1d97f935e941c4da4dd79f24bb2f`  
 Second drop: `e3f38733c873d149481f3e05863fa3bde81998db`  
 First restore: `fbce82af214b7e263e9a7d0ff9bd006123839c47`  
@@ -23,7 +24,7 @@ Parent mirror: `/workspace/louislynn-os/hiccups-site/howtofixhiccups-excellence-
 - **Overall:** KEEP WITH FIXES
 - **Merge gate:** NO
 - **Elite+clear+merge-ready?:** NO
-- **One-line why:** Live four-item header is back and clips MATCH; Privacy has been dropped and restored twice, so the chrome lock is not clear.
+- **One-line why:** Third Privacy drop (`d8e4d16`) after two restores; clips still MATCH; locked header chrome is not held.
 
 Do not merge PR3.  
 Do not ping Mike.  
@@ -36,7 +37,7 @@ CoS owns the Mike ping on YES.
 | Bar | YES/NO | Evidence |
 | --- | --- | --- |
 | Hero | YES | CDP `heroSrc` is `/media/video/ugc-motion-v2-2026-09-06/hero-loop/thin-straw-loop-3s.mp4`. `duration=3`, `muted=true`, `loop=true`, `paused=false`. GET 200, ffprobe 3.000s, 72 frames, 1080x1920. `thin-straw-loop-4s.mp4` GET 404. Frames are uncaptioned thin-straw mid-cut, no eyelid/face warp in sampled frames. Hero copy and Start sit above the plate (`hero-copy` z-index 1). Screenshot: `/opt/cursor/artifacts/screenshots/preview_home_hero.webp`. |
-| Copy | YES | Body strings match. Live header chrome matches again after `dff29eb`: The method / Why they start / When to stop / Privacy on `/` `/why/` `/when/` `/privacy/` and 404. Footer matches. This bar is YES on the live page. Merge-ready is still NO because the same lock was dropped twice in 14 minutes. |
+| Copy | NO | Body strings still match. Live header chrome does not. GET at 22:58 UTC on `/` `/why/` `/when/` `/privacy/` and 404: The method / Why they start / When to stop only. Footer still has Privacy. `d8e4d16` says it re-applies the drop after `dff29eb`. Footer-only is not a match. |
 | Content | YES | Four live pages only: `/` `/why/` `/when/` `/privacy/` all 200. `/blog/` 301 `/why/`. `/about/` 301 `/`. `/blog/callies-sequence/` 301 `/`. HowTo four beats, adults, ordinary hiccups, no MedicalWebPage. `/docs/*` 404. Desk STATUS/MANIFEST 404. |
 | Motion | YES | CDP file-per-step MATCH. 01 breath+swallow 9.041667s. 02 second breath+swallow 9.041667s. 03 hold 30.083333s against 30s UI, no loop. 04 thin-straw 8.041667s (official lean remint; loops under the 10s UI). Hero 3s clean, not the 4s morph. Sampled frames show swallow on 01/02, still hold on 03, pursed thin-straw on 04. |
 
@@ -48,7 +49,7 @@ CoS owns the Mike ping on YES.
 | --- | --- | --- |
 | CLIPS 01/02/03 + clean 04 all 200 | PASS | GET 200. Sizes now: 01 6853515, 02 6961159, 03 18797271, 04 2016813. |
 | Hero muted 3s only (4s 404) | PASS | 3s GET 200, ffprobe 3.000s. 4s GET 404. CDP hero duration 3, muted, looping. |
-| HUMAN excellence copy | PASS | Body paste matches. Live four-item header is back. Not merge-clear: two drop/restore cycles (`01aee06`/`fbce82a`, then `e3f3873`/`dff29eb`). |
+| HUMAN excellence copy | FAIL | Body paste still matches. Locked four-item header is gone a third time (`d8e4d16`). Footer-only Privacy is not a match. |
 | Exp1 Copy link intact (writes howtofixhiccups.com; Share-on-hold only) | PASS | Button hidden idle / step 1 / step 2 / step 4. Visible on hold (`shareHidden:false`, label `Copy link`). `SHARE_URL = "https://howtofixhiccups.com/"`. `copyLink: true` only on hold. No hero Share. Headless CDP clipboard read blocked (`NotAllowedError` / document not focused), so the write was not proven in this headless session. Code path and hold-only UI are live. Screenshot: `/opt/cursor/artifacts/screenshots/preview_hold_copy_link.webp`. |
 | no Callie | PASS | Grep of live `/` `/why/` `/when/` `/privacy/` HTML: 0 Callie. Visible chrome is `howtofixhiccups` / `the method`. `/blog/callies-sequence/` 301 home. `/README.md` 404. |
 | step-faithful v2 (01-04 + 3s hero) | PASS | See motion table and CDP srcs below. |
@@ -146,7 +147,8 @@ Live 04 at 22:10 UTC is still the 8s remint (2016813). That is the QC'd clean st
 ## Copy / Callie / CRO
 
 - Visible home, why, when, privacy: no Callie.
-- Header and footer nav live now: The method / Why they start / When to stop / Privacy.
+- Header nav now: The method / Why they start / When to stop. Privacy gone a third time.
+- Footer nav still: The method / Why they start / When to stop / Privacy.
 - When-page `about` hits are `about 48 hours` / `about two days`, not an About page.
 - No fight-the-prove CRO on the hero or inner pages.
 - Exp1 stays hold-window Copy link. Share API is clipboard-fail fallback only.
@@ -205,9 +207,31 @@ Flip log:
 
 CoS must stop the nav thrash. A third drop voids another YES. Do not merge on a restore that has already been reversed once.
 
+## 22:58 UTC recheck after third drop
+
+Head is `d8e4d16` (`fix(nav): drop Privacy from header; keep footer link`). Commit body says it re-applies the drop after `dff29eb`. Live GET at 22:58 UTC:
+
+- Header on `/` `/why/` `/when/` `/privacy/` and 404: The method / Why they start / When to stop
+- Footer still has Privacy
+- Clips unchanged: 01 6853515, 02 6961159, 03 18797271, 04 2016813
+- Hero 3s 200, 4s 404
+- JS SHA still `37e1e11ec48ed694117ee72d805bcba8961896ffa2eeb0021e4bba74f0b3179c`
+- noindex, no Callie
+
+Copy bar NO. Elite+clear+merge-ready NO. Merge gate NO.
+
+Flip log:
+1. `01aee06` drop
+2. `fbce82a` restore
+3. `e3f3873` drop
+4. `dff29eb` restore
+5. `d8e4d16` drop
+
+This is a competing-agent loop, not a settled chrome decision. Stop both the drop job and the restore job. Hold the four-item header. Do not call YES on the next restore.
+
 ## Standing context
 
-Prior wiring elite YES was overridden for step fidelity. The 22:10 pass called YES on live files. Header chrome then flipped four times. Live files still MATCH. The lock is not held.
+Prior wiring elite YES was overridden for step fidelity. The 22:10 pass called YES on live files. Header chrome then flipped five times. Live clips still MATCH. The chrome lock is not held.
 
 CoS watch MATCH on 01-04 + 3s hero still holds on the files that are live now: swallows on 01/02, 30s hold on 03, thin-straw 04 remint, 3s hero. The 10s 04 is not live and must not come back.
 
