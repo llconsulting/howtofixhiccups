@@ -1,11 +1,12 @@
 # howtofixhiccups excellence elite recheck
 
-Date: 2026-09-06 23:19 UTC (updated after `3177d9c` dropped header Privacy a ninth time)  
+Date: 2026-09-06 23:20 UTC (updated after `460fba3` restored header Privacy a ninth time)  
 Role: Skeptic (louislynn Consulting)  
 Job: KEEP/CUT excellence elite recheck only. No rewrite. No merge. No publish. No spend. No Mike ping.  
 PR: https://github.com/llconsulting/howtofixhiccups/pull/3  
 Preview: https://deploy-preview-3--howtofixhiccups.netlify.app/  
-PR head at check: `3177d9c917f214e939a9ccc9528b6aebf0744666` (draft)  
+PR head at check: `460fba39aaf2584d19326392fcfadbcde12137a2` (draft)  
+Ninth restore: `460fba39aaf2584d19326392fcfadbcde12137a2`  
 Ninth drop: `3177d9c917f214e939a9ccc9528b6aebf0744666`  
 Hero rewrite: `ff7fa3b57c3040ded77cefe4c357051077d75a13`  
 Eighth restore: `226c3f7d816e0e36ed41409405e8222cf7adce5c`  
@@ -40,7 +41,7 @@ Parent mirror: `/workspace/louislynn-os/hiccups-site/howtofixhiccups-excellence-
 - **Overall:** KEEP WITH FIXES
 - **Merge gate:** NO
 - **Elite+clear+merge-ready?:** NO
-- **One-line why:** Privacy dropped a ninth time; hero is now a washed slow-mo sip with H1+Start only. Step clips still MATCH.
+- **One-line why:** Header Privacy is back a ninth time; hero is still a washed 0.45x sip with H1+Start only. Step clips still MATCH. Do not call YES.
 
 Do not merge PR3.  
 Do not ping Mike.  
@@ -53,7 +54,7 @@ CoS owns the Mike ping on YES.
 | Bar | YES/NO | Evidence |
 | --- | --- | --- |
 | Hero | NO | Same sip file still wired (`straw-blow-loop-3s.mp4`, sha256 `1a525ec0…`). `ff7fa3b` then slowed it to `playbackRate 0.45`, set poster/video `opacity: 0.38`, and put a dark `.hero-plate::after` wash back. Plate is now H1 + Start only. `thin-straw-loop-3s.mp4` still 200 and unwired. 4s still 404. |
-| Copy | NO | Ninth Privacy drop on `/` `/why/` `/when/` `/privacy/` and 404. Footer still has Privacy. Locked HUMAN lead / lede / notice / helper / links were pulled out of the hero plate into `band-intro`. Strings still exist. The locked plate does not. |
+| Copy | NO | Header chrome matches again after `460fba3`. Locked HUMAN lead / lede / notice / helper / links still sit in `band-intro`, not on the hero plate. Header YES is not a Copy YES while the plate is H1+Start only. Merge-ready stays NO. |
 | Content | YES | Four live pages only: `/` `/why/` `/when/` `/privacy/` all 200. `/blog/` 301 `/why/`. `/about/` 301 `/`. `/blog/callies-sequence/` 301 `/`. HowTo four beats, adults, ordinary hiccups, no MedicalWebPage. `/docs/*` 404. Desk STATUS/MANIFEST 404. |
 | Motion | YES | CDP file-per-step MATCH. 01 breath+swallow 9.041667s. 02 second breath+swallow 9.041667s. 03 hold 30.083333s against 30s UI, no loop. 04 thin-straw 8.041667s (official lean remint; loops under the 10s UI). Hero 3s clean, not the 4s morph. Sampled frames show swallow on 01/02, still hold on 03, pursed thin-straw on 04. |
 
@@ -65,7 +66,7 @@ CoS owns the Mike ping on YES.
 | --- | --- | --- |
 | CLIPS 01/02/03 + clean 04 all 200 | PASS | GET 200. Sizes now: 01 6853515, 02 6961159, 03 18797271, 04 2016813. |
 | Hero muted 3s only (4s 404) | PASS | Wired `straw-blow-loop-3s.mp4` GET 200, ffprobe 3.000s. 4s GET 404. Technical 3s-only claim holds. Action is still the wrong beat. |
-| HUMAN excellence copy | FAIL | Body paste still on the page. Locked four-item header is gone a ninth time. Hero plate is no longer the locked HUMAN stack. |
+| HUMAN excellence copy | FAIL | Body paste still on the page. Four-item header is back. Hero plate is still H1+Start only, not the locked HUMAN stack. |
 | Exp1 Copy link intact (writes howtofixhiccups.com; Share-on-hold only) | PASS | Button hidden idle / step 1 / step 2 / step 4. Visible on hold (`shareHidden:false`, label `Copy link`). `SHARE_URL = "https://howtofixhiccups.com/"`. `copyLink: true` only on hold. No hero Share. Headless CDP clipboard read blocked (`NotAllowedError` / document not focused), so the write was not proven in this headless session. Code path and hold-only UI are live. Screenshot: `/opt/cursor/artifacts/screenshots/preview_hold_copy_link.webp`. |
 | no Callie | PASS | Grep of live `/` `/why/` `/when/` `/privacy/` HTML: 0 Callie. Visible chrome is `howtofixhiccups` / `the method`. `/blog/callies-sequence/` 301 home. `/README.md` 404. |
 | step-faithful v2 (01-04 + 3s hero) | PASS | See motion table and CDP srcs below. |
@@ -163,9 +164,8 @@ Live 04 at 22:10 UTC is still the 8s remint (2016813). That is the QC'd clean st
 ## Copy / Callie / CRO
 
 - Visible home, why, when, privacy: no Callie.
-- Header nav now: The method / Why they start / When to stop. Privacy gone a ninth time.
-- Footer nav still: The method / Why they start / When to stop / Privacy.
-- Home hero plate is H1 + Start only. HUMAN lead / lede / notice / helper / links sit in `band-intro` below.
+- Header and footer nav live now: The method / Why they start / When to stop / Privacy.
+- Home hero plate is still H1 + Start only. HUMAN lead / lede / notice / helper / links still sit in `band-intro` below.
 - When-page `about` hits are `about 48 hours` / `about two days`, not an About page.
 - No fight-the-prove CRO on the hero or inner pages.
 - Exp1 stays hold-window Copy link. Share API is clipboard-fail fallback only.
@@ -556,9 +556,46 @@ Flip log:
 
 Hold the four-item header. Put the locked HUMAN stack back on the hero plate. Point hero at `thin-straw-loop-3s.mp4` at normal rate with no wash. Do not call YES on the next restore.
 
+## 23:20 UTC recheck after ninth Privacy restore
+
+Head is `460fba3` (`Restore Privacy in header after the ninth drop.`). Commit body says leave the hero plate and slow loop as-is. Live GET at 23:20 UTC matches.
+
+- Header on `/` `/why/` `/when/` `/privacy/` and 404: four-item nav including Privacy
+- Lock comment is back
+- Hero plate still H1 + Start only
+- HUMAN stack still in `band-intro`
+- Hero still `straw-blow-loop-3s.mp4` at `playbackRate 0.45`, opacity 0.38, dark wash
+- `thin-straw-loop-3s.mp4` still 200, unwired
+- 01-04 unchanged
+- noindex, no Callie
+
+Copy bar stays NO (plate still emptied). Hero bar still NO. Elite+clear+merge-ready NO. Merge gate NO. Do not call YES on a restore that leaves the wrong hero and the wrong plate.
+
+Flip log:
+1. `01aee06` drop
+2. `fbce82a` restore
+3. `e3f3873` drop
+4. `dff29eb` restore
+5. `d8e4d16` drop
+6. `9591591` restore
+7. `378764f` drop + hero 404
+8. `73f4366` restore
+9. `9966878` drop
+10. `2f172fd` restore
+11. `440c640` drop
+12. `b5ad5dc` restore
+13. `4e058f9` drop
+14. `817e7bf` restore
+15. `9699fc5` drop
+16. `226c3f7` restore
+17. `3177d9c` drop
+18. `460fba3` restore
+
+Kill the drop job. Hold the four-item header. Put the locked HUMAN stack back on the hero plate. Point hero at `thin-straw-loop-3s.mp4` at normal rate with no wash.
+
 ## Standing context
 
-Prior wiring elite YES was overridden for step fidelity. The 22:10 pass called YES on live files. Header chrome then flipped seventeen times. Hero is a washed 0.45x sip with H1+Start only. Step clips 01-04 still MATCH. Wired hero, plate, and chrome do not.
+Prior wiring elite YES was overridden for step fidelity. The 22:10 pass called YES on live files. Header chrome then flipped eighteen times. Hero is a washed 0.45x sip with H1+Start only. Step clips 01-04 still MATCH. Wired hero and plate do not.
 
 CoS watch MATCH on 01-04 still holds. The MATCH 3s hero (`thin-straw-loop-3s.mp4`, mid-cut of 04) is still on disk and unwired. The 10s 04 is not live and must not come back.
 
