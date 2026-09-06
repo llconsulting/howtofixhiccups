@@ -29,6 +29,43 @@
   [context.branch-deploy.headers.values]
     X-Robots-Tag = "noindex, nofollow"
 
+# Unused Ken Burns clips are not a product. Do not serve them.
+[[redirects]]
+  from = "/assets/video/breath-swallow-1.mp4"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/assets/video/breath-swallow-2.mp4"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/assets/video/hold-30.mp4"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/assets/video/thin-straw-exhale.mp4"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/assets/video/start.mp4"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/assets/video/method-full.mp4"
+  to = "/404.html"
+  status = 404
+  force = true
+
 # Do not publish desk notes or the repo README as live pages.
 [[redirects]]
   from = "/README.md"
