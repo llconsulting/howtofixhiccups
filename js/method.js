@@ -2,7 +2,7 @@
   const CIRCUMFERENCE = 339.292;
   // Full v2 pack. Idle/done stay on stills (do not play old start.mp4).
   // Exhale is clean 04. Skip hero-loop/thin-straw-loop-4s.
-  // Hero muted: hero-loop/straw-blow-loop-3s.mp4 only.
+  // Hero muted: hero-loop/straw-blow-loop-3s.mp4 only, playbackRate 0.45.
   const UGC_MOTION_V2 = "/media/video/ugc-motion-v2-2026-09-06";
   const CLIPS = {
     idle: [],
@@ -126,6 +126,13 @@
     written: document.getElementById("written-steps")
   };
 
+  const HERO_PLAYBACK_RATE = 0.45;
+
+  function setHeroPlaybackRate(hero) {
+    hero.defaultPlaybackRate = HERO_PLAYBACK_RATE;
+    hero.playbackRate = HERO_PLAYBACK_RATE;
+  }
+
   function playHeroPlate() {
     const hero = document.getElementById("hero-video");
     if (!hero) return;
@@ -142,12 +149,19 @@
     hero.defaultMuted = true;
     hero.playsInline = true;
     hero.loop = true;
+    setHeroPlaybackRate(hero);
+    if (hero.dataset.rateBound !== "1") {
+      hero.dataset.rateBound = "1";
+      hero.addEventListener("loadedmetadata", () => setHeroPlaybackRate(hero));
+      hero.addEventListener("playing", () => setHeroPlaybackRate(hero));
+    }
     if (hero.getAttribute("src") !== src) {
       hero.setAttribute("src", src);
     }
     const play = hero.play();
     if (play && typeof play.then === "function") {
       play.then(() => {
+        setHeroPlaybackRate(hero);
         hero.hidden = false;
       }).catch(() => {
         hero.hidden = true;

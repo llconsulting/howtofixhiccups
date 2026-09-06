@@ -159,15 +159,31 @@ a.btn-secondary:hover {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  min-height: 28.5rem;
+  display: flex;
+  align-items: center;
+  min-height: 32rem;
   padding: 0;
-  background: #ececef;
+  background: #1d1d1f;
 }
 
 .hero-plate {
   position: absolute;
   inset: 0;
   z-index: 0;
+}
+
+.hero-plate::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(
+    108deg,
+    rgb(29 29 31 / 0.9) 0%,
+    rgb(29 29 31 / 0.74) 42%,
+    rgb(29 29 31 / 0.48) 100%
+  );
+  pointer-events: none;
 }
 
 .hero-poster,
@@ -179,7 +195,7 @@ a.btn-secondary:hover {
   max-width: none;
   object-fit: cover;
   object-position: 74% 40%;
-  opacity: 1;
+  opacity: 0.38;
 }
 
 .hero-video {
@@ -193,27 +209,18 @@ a.btn-secondary:hover {
 .hero-copy {
   position: relative;
   z-index: 1;
-  padding-top: 4.4rem;
-  padding-bottom: 3.4rem;
+  padding-top: 5.4rem;
+  padding-bottom: 5rem;
 }
 
-.band-hero.has-plate .hero-copy,
-.band-hero.has-plate h1,
-.band-hero.has-plate .hero-lead,
-.band-hero.has-plate .lede,
-.band-hero.has-plate .notice,
-.band-hero.has-plate .hero-helper {
-  text-shadow:
-    0 1px 1px rgb(245 245 247 / 0.95),
-    0 0 14px rgb(245 245 247 / 0.82),
-    0 0 32px rgb(245 245 247 / 0.55);
-}
-
-.band-hero.has-plate h1,
-.band-hero.has-plate .hero-lead,
-.band-hero.has-plate .lede,
-.band-hero.has-plate .notice {
-  max-width: 22.5rem;
+.band-hero.has-plate h1 {
+  max-width: 14ch;
+  margin: 0;
+  color: #fff;
+  font-size: clamp(3rem, 9vw, 5.35rem);
+  font-weight: 800;
+  letter-spacing: -0.038em;
+  line-height: 0.96;
 }
 
 .hero-cta {
@@ -223,16 +230,72 @@ a.btn-secondary:hover {
   margin: 0 0 1.2rem;
 }
 
+.band-hero.has-plate .hero-cta {
+  margin: 1.55rem 0 0;
+}
+
 .hero-cta .btn {
   display: inline-grid;
   place-items: center;
   text-decoration: none;
 }
 
+.band-hero.has-plate .hero-cta .btn {
+  min-width: 10rem;
+  min-height: 3.5rem;
+  padding: 1rem 1.9rem;
+  background: #0071e3;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.band-hero.has-plate .hero-cta .btn:hover {
+  background: #0077ed;
+  color: #fff;
+}
+
 .hero-helper {
   margin: -0.25rem 0 1.15rem;
   color: var(--ink-faint);
   font-size: 0.875rem;
+}
+
+.band-intro {
+  background: var(--band-paper);
+  padding: 3.15rem 0 3.4rem;
+}
+
+.intro-copy {
+  max-width: 34rem;
+}
+
+.intro-copy .hero-lead {
+  margin: 0 0 0.9rem;
+  font-weight: 600;
+}
+
+.intro-copy .lede {
+  margin: 0 0 1.2rem;
+}
+
+.intro-copy .notice {
+  display: block;
+  margin: 0 0 1.25rem;
+}
+
+.intro-copy .hero-helper {
+  margin: 0 0 1.55rem;
+}
+
+.intro-copy .hero-links {
+  gap: 0.85rem 1.5rem;
+}
+
+.intro-copy .hero-links a {
+  text-decoration: none;
+  font-weight: 600;
 }
 
 .band-studio {
@@ -295,9 +358,29 @@ h1,
 .h1 {
   margin: 0 0 0.85rem;
   font-size: clamp(2.35rem, 8vw, 4.25rem);
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: -0.045em;
   line-height: 1.05;
+}
+
+.page h1 {
+  margin-bottom: 1rem;
+  letter-spacing: -0.042em;
+}
+
+.page .hero-lead {
+  margin-bottom: 0.85rem;
+  font-size: clamp(1.12rem, 2.4vw, 1.38rem);
+  line-height: 1.4;
+}
+
+.page .band-hero {
+  padding-top: 2.15rem;
+  padding-bottom: 1.7rem;
+}
+
+.page .crumbs {
+  margin-bottom: 1.15rem;
 }
 
 .hero-lead {
@@ -748,16 +831,24 @@ h1,
 
 .steps h2,
 .prose h2 {
-  margin: 0 0 1.15rem;
+  margin: 0 0 0.85rem;
   font-size: clamp(1.45rem, 2.6vw, 1.75rem);
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: -0.035em;
 }
 
+.page .prose h2 {
+  margin: 2.15rem 0 0.65rem;
+}
+
+.page .prose h2:first-child {
+  margin-top: 0;
+}
+
 .prose h3 {
-  margin: 1.6rem 0 0.55rem;
+  margin: 1.75rem 0 0.4rem;
   font-size: 1.05rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: -0.02em;
 }
 
@@ -883,7 +974,12 @@ h1,
 }
 
 .prose p {
-  margin: 0 0 1.15rem;
+  margin: 0 0 0.72rem;
+}
+
+.page .prose p + h2,
+.page .prose ul + h2 {
+  margin-top: 2.15rem;
 }
 
 .prose .lede,
@@ -984,17 +1080,26 @@ h1,
 
   .hero,
   .band-hero:not(.has-plate) {
-    padding-top: 3.8rem;
-    padding-bottom: 3.1rem;
+    padding-top: 3.1rem;
+    padding-bottom: 2.4rem;
+  }
+
+  .page .band-hero {
+    padding-top: 2.85rem;
+    padding-bottom: 2rem;
   }
 
   .band-hero.has-plate {
-    min-height: 32rem;
+    min-height: 36rem;
   }
 
   .hero-copy {
-    padding-top: 5.1rem;
-    padding-bottom: 4rem;
+    padding-top: 6.2rem;
+    padding-bottom: 5.8rem;
+  }
+
+  .band-intro {
+    padding: 3.6rem 0 3.8rem;
   }
 
   .studio {
@@ -1045,30 +1150,28 @@ h1,
 
   .hero,
   .band-hero:not(.has-plate) {
-    padding-top: 1.55rem;
-    padding-bottom: 1.85rem;
+    padding-top: 1.45rem;
+    padding-bottom: 1.55rem;
   }
 
   .band-hero.has-plate {
-    min-height: 0;
+    min-height: 24rem;
   }
 
   .hero-copy {
-    padding-top: 2.15rem;
-    padding-bottom: 2.05rem;
+    padding-top: 3.4rem;
+    padding-bottom: 3.2rem;
   }
 
   .hero-poster,
   .hero-video {
     object-position: 50% 20%;
-    opacity: 1;
+    opacity: 0.32;
   }
 
-  .band-hero.has-plate h1,
-  .band-hero.has-plate .hero-lead,
-  .band-hero.has-plate .lede,
-  .band-hero.has-plate .notice {
-    max-width: 28rem;
+  .band-hero.has-plate h1 {
+    max-width: 12ch;
+    font-size: clamp(2.65rem, 13vw, 3.5rem);
   }
 
   .hero-links {
@@ -1087,6 +1190,10 @@ h1,
 
   .band-hero:not(.has-plate) .lede {
     display: none;
+  }
+
+  .band-intro {
+    padding: 2.35rem 0 2.55rem;
   }
 }
 
