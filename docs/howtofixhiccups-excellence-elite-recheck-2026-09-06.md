@@ -1,11 +1,12 @@
 # howtofixhiccups excellence elite recheck
 
-Date: 2026-09-06 23:07 UTC (updated after `73f4366` restored header Privacy a fourth time)  
+Date: 2026-09-06 23:10 UTC (updated after `9966878` dropped header Privacy a fifth time)  
 Role: Skeptic (louislynn Consulting)  
 Job: KEEP/CUT excellence elite recheck only. No rewrite. No merge. No publish. No spend. No Mike ping.  
 PR: https://github.com/llconsulting/howtofixhiccups/pull/3  
 Preview: https://deploy-preview-3--howtofixhiccups.netlify.app/  
-PR head at check: `73f436681469b271e663f60b555ac530e6c784e3` (draft)  
+PR head at check: `9966878cf5275e21de13a8b4c9b7b3544bff48fd` (draft)  
+Fifth drop: `9966878cf5275e21de13a8b4c9b7b3544bff48fd`  
 Fourth restore: `73f436681469b271e663f60b555ac530e6c784e3`  
 Hero binary: `6c6b86a7fd85927b5786d4b2d61d3f503576db24`  
 Broken-path commit: `378764f2a0841ca2429dbaf1d1c8b79d3ea98532`  
@@ -28,7 +29,7 @@ Parent mirror: `/workspace/louislynn-os/hiccups-site/howtofixhiccups-excellence-
 - **Overall:** KEEP WITH FIXES
 - **Merge gate:** NO
 - **Elite+clear+merge-ready?:** NO
-- **One-line why:** Header Privacy is back; wired hero is still a sip-through-straw, not the 04 thin-blow. Step clips still MATCH.
+- **One-line why:** Header Privacy dropped a fifth time; wired hero is still a sip-through-straw, not the 04 thin-blow. Step clips still MATCH.
 
 Do not merge PR3.  
 Do not ping Mike.  
@@ -41,7 +42,7 @@ CoS owns the Mike ping on YES.
 | Bar | YES/NO | Evidence |
 | --- | --- | --- |
 | Hero | NO | Wired file now 200. ffprobe 3.000s, 72 frames, 1080x1920, sha256 `1a525ec0fddd673f27fc3646ffd5502547c8a56530d3f6d2d71697548545cbb1`. 4s still 404. Frames show a literal plastic straw in the mouth, sipping. That is not step 4 thin-blow (pursed lips, no prop). The QC'd `thin-straw-loop-3s.mp4` mid-cut of 04 is still 200 and unwired. |
-| Copy | YES | Body strings match. Live header chrome matches again after `73f4366` on `/` `/why/` `/when/` `/privacy/` and 404. Footer matches. This bar is YES on the live page. Merge-ready stays NO. |
+| Copy | NO | Body strings still match. Live header chrome does not. Fifth Privacy drop on `/` `/why/` `/when/` `/privacy/` and 404. Footer still has Privacy. The HTML lock comment from `9591591` / `73f4366` was deleted with the link. |
 | Content | YES | Four live pages only: `/` `/why/` `/when/` `/privacy/` all 200. `/blog/` 301 `/why/`. `/about/` 301 `/`. `/blog/callies-sequence/` 301 `/`. HowTo four beats, adults, ordinary hiccups, no MedicalWebPage. `/docs/*` 404. Desk STATUS/MANIFEST 404. |
 | Motion | YES | CDP file-per-step MATCH. 01 breath+swallow 9.041667s. 02 second breath+swallow 9.041667s. 03 hold 30.083333s against 30s UI, no loop. 04 thin-straw 8.041667s (official lean remint; loops under the 10s UI). Hero 3s clean, not the 4s morph. Sampled frames show swallow on 01/02, still hold on 03, pursed thin-straw on 04. |
 
@@ -53,7 +54,7 @@ CoS owns the Mike ping on YES.
 | --- | --- | --- |
 | CLIPS 01/02/03 + clean 04 all 200 | PASS | GET 200. Sizes now: 01 6853515, 02 6961159, 03 18797271, 04 2016813. |
 | Hero muted 3s only (4s 404) | PASS | Wired `straw-blow-loop-3s.mp4` GET 200, ffprobe 3.000s. 4s GET 404. Technical 3s-only claim holds. Action is still the wrong beat. |
-| HUMAN excellence copy | PASS | Body paste matches. Live four-item header is back. Not merge-clear: four drop/restore cycles. Hero action still wrong. |
+| HUMAN excellence copy | FAIL | Body paste still matches. Locked four-item header is gone a fifth time. |
 | Exp1 Copy link intact (writes howtofixhiccups.com; Share-on-hold only) | PASS | Button hidden idle / step 1 / step 2 / step 4. Visible on hold (`shareHidden:false`, label `Copy link`). `SHARE_URL = "https://howtofixhiccups.com/"`. `copyLink: true` only on hold. No hero Share. Headless CDP clipboard read blocked (`NotAllowedError` / document not focused), so the write was not proven in this headless session. Code path and hold-only UI are live. Screenshot: `/opt/cursor/artifacts/screenshots/preview_hold_copy_link.webp`. |
 | no Callie | PASS | Grep of live `/` `/why/` `/when/` `/privacy/` HTML: 0 Callie. Visible chrome is `howtofixhiccups` / `the method`. `/blog/callies-sequence/` 301 home. `/README.md` 404. |
 | step-faithful v2 (01-04 + 3s hero) | PASS | See motion table and CDP srcs below. |
@@ -151,7 +152,8 @@ Live 04 at 22:10 UTC is still the 8s remint (2016813). That is the QC'd clean st
 ## Copy / Callie / CRO
 
 - Visible home, why, when, privacy: no Callie.
-- Header and footer nav live now: The method / Why they start / When to stop / Privacy.
+- Header nav now: The method / Why they start / When to stop. Privacy gone a fifth time.
+- Footer nav still: The method / Why they start / When to stop / Privacy.
 - When-page `about` hits are `about 48 hours` / `about two days`, not an About page.
 - No fight-the-prove CRO on the hero or inner pages.
 - Exp1 stays hold-window Copy link. Share API is clipboard-fail fallback only.
@@ -316,9 +318,37 @@ Flip log:
 7. `378764f` drop + hero 404
 8. `73f4366` restore (sip hero left on)
 
+## 23:10 UTC recheck after fifth Privacy drop
+
+Head is `9966878` (`fix(nav): drop Privacy from header; keep footer and straw-blow hero`). Commit body says it re-applies the drop after `73f4366`. Live GET at 23:10 UTC:
+
+- Header on `/` `/why/` `/when/` `/privacy/` and 404: The method / Why they start / When to stop
+- Footer still has Privacy
+- HTML lock comment deleted with the header Privacy link
+- Hero still `straw-blow-loop-3s.mp4` (sip, 3.000s, 200)
+- `thin-straw-loop-3s.mp4` still 200, unwired
+- 01-04 unchanged: 6853515 / 6961159 / 18797271 / 2016813
+- 4s still 404
+- noindex, no Callie
+
+Copy bar NO. Hero bar still NO. Elite+clear+merge-ready NO. Merge gate NO.
+
+Flip log:
+1. `01aee06` drop
+2. `fbce82a` restore
+3. `e3f3873` drop
+4. `dff29eb` restore
+5. `d8e4d16` drop
+6. `9591591` restore
+7. `378764f` drop + hero 404
+8. `73f4366` restore
+9. `9966878` drop
+
+This is the fifth drop. The lock comment did not hold. Stop both the drop job and the restore job. Hold the four-item header. Point hero back at `thin-straw-loop-3s.mp4`. Do not call YES on the next restore.
+
 ## Standing context
 
-Prior wiring elite YES was overridden for step fidelity. The 22:10 pass called YES on live files. Header chrome then flipped eight times. Hero was pointed at a missing file, then at a 3s sip-through-straw. Step clips 01-04 still MATCH. Wired hero and chrome do not.
+Prior wiring elite YES was overridden for step fidelity. The 22:10 pass called YES on live files. Header chrome then flipped nine times. Hero was pointed at a missing file, then at a 3s sip-through-straw. Step clips 01-04 still MATCH. Wired hero and chrome do not.
 
 CoS watch MATCH on 01-04 still holds. The MATCH 3s hero (`thin-straw-loop-3s.mp4`, mid-cut of 04) is still on disk and unwired. The 10s 04 is not live and must not come back.
 
