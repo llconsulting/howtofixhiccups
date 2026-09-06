@@ -427,6 +427,21 @@ h1,
   text-transform: uppercase;
 }
 
+.method-card.is-idle .timer-wrap {
+  display: none;
+}
+
+.method-card:not(.is-idle) .start-helper {
+  display: none;
+}
+
+.start-helper {
+  margin: 0.65rem 0 0;
+  color: var(--ink-faint);
+  text-align: center;
+  font-size: 0.875rem;
+}
+
 .actions {
   display: flex;
   flex-wrap: wrap;

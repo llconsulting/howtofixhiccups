@@ -103,6 +103,7 @@
     next: document.getElementById("next-btn"),
     reset: document.getElementById("reset-btn"),
     extraNote: document.getElementById("extra-note"),
+    card: document.getElementById("method"),
     live: document.getElementById("live"),
     video: document.getElementById("host-video"),
     still: document.getElementById("host-still"),
@@ -236,8 +237,12 @@
     els.label.textContent = "Four steps";
     els.copy.textContent = "Press Start if you want the page to keep time.";
     if (els.phase) els.phase.classList.remove("is-changing");
-    els.count.textContent = "30";
-    els.unit.textContent = "30 second hold ahead";
+    if (els.card) {
+      els.card.classList.add("is-idle");
+      els.card.classList.remove("is-running");
+    }
+    els.count.textContent = "";
+    els.unit.textContent = "";
     setProgress(0);
     els.start.hidden = false;
     els.next.hidden = true;
@@ -255,6 +260,10 @@
       "That is the sequence.",
       "If they are still going after one pass, you can try once more. If they last, keep coming back, or come with other symptoms, stop."
     );
+    if (els.card) {
+      els.card.classList.remove("is-idle");
+      els.card.classList.add("is-running");
+    }
     els.count.textContent = "✓";
     els.unit.textContent = "done";
     setProgress(1);
@@ -285,15 +294,19 @@
     els.start.hidden = true;
     els.reset.hidden = false;
     els.reset.textContent = "Stop";
+    if (els.card) {
+      els.card.classList.remove("is-idle");
+      els.card.classList.add("is-running");
+    }
     if (els.extraNote) els.extraNote.hidden = !(step.id === "exhale" || step.optional);
     showStill(step.id);
     syncHost(step.id);
 
     if (step.kind === "guided") {
-      durationMs = step.inhaleMs + step.swallowMs;
-      swallowAt = step.inhaleMs;
-      setCount("in");
-      els.unit.textContent = "breathe";
+      durationMs = 0;
+      swallowAt = 0;
+      setCount("");
+      els.unit.textContent = "";
       els.next.hidden = false;
       els.next.disabled = true;
       els.next.textContent = step.nextLabel;
@@ -302,52 +315,39 @@
       }, 280);
       setProgress(0);
       announce(`${step.label}. ${step.copy}`);
-    } else {
-      durationMs = step.durationMs;
-      swallowAt = 0;
-      els.next.disabled = false;
-      if (step.optional) {
-        els.next.hidden = false;
-        els.next.textContent = "I'm done";
-      } else {
-        els.next.hidden = true;
-      }
-      const seconds = Math.ceil(step.durationMs / 1000);
-      setCount(seconds);
-      lastShownSecond = seconds;
-      els.unit.textContent = step.unit;
-      setProgress(0);
-      announce(`${step.label}. ${step.copy} ${seconds} seconds.`);
+      return;
     }
+
+    durationMs = step.durationMs;
+    swallowAt = 0;
+    els.next.disabled = false;
+    if (step.optional) {
+      els.next.hidden = false;
+      els.next.textContent = "I'm done";
+    } else {
+      els.next.hidden = true;
+    }
+    const seconds = Math.ceil(step.durationMs / 1000);
+    setCount(seconds);
+    lastShownSecond = seconds;
+    els.unit.textContent = step.unit;
+    setProgress(0);
+    announce(`${step.label}. ${step.copy} ${seconds} seconds.`);
 
     const tick = (now) => {
       if (myToken !== token || !running) return;
       const elapsed = now - startedAt;
       setProgress(elapsed / durationMs);
-
-      if (step.kind === "guided") {
-        if (elapsed >= swallowAt) {
-          els.copy.textContent = step.swallowCopy;
-          setCount("now");
-          els.unit.textContent = "swallow";
-        } else {
-          setCount("in");
-          els.unit.textContent = "breathe";
-        }
-      } else {
-        const remaining = Math.max(0, Math.ceil((durationMs - elapsed) / 1000));
-        if (remaining !== lastShownSecond) {
-          lastShownSecond = remaining;
-          setCount(remaining);
-        }
+      const remaining = Math.max(0, Math.ceil((durationMs - elapsed) / 1000));
+      if (remaining !== lastShownSecond) {
+        lastShownSecond = remaining;
+        setCount(remaining);
       }
-
       if (elapsed >= durationMs) {
         if (myToken !== token) return;
         beginStep(index + 1);
         return;
       }
-
       raf = window.requestAnimationFrame(tick);
     };
 

@@ -146,12 +146,18 @@
           <figcaption class="host-caption">Walkthrough stills, synced to Start. Video drops in /media/video/ when it lands.</figcaption>
         </figure>
 
-        <div class="method-card" id="method">
+        <div class="method-card is-idle" id="method">
           <div class="phase" id="phase">
             <p class="phase-kicker" id="phase-kicker">The method</p>
             <h2 class="phase-label" id="phase-label">Four steps</h2>
             <p class="phase-copy" id="phase-copy">Press Start if you want the page to keep time.</p>
           </div>
+          <div class="actions">
+            <button class="btn" id="start-btn" type="button">Start</button>
+            <button class="btn" id="next-btn" type="button" hidden>I swallowed</button>
+            <button class="btn btn-secondary" id="reset-btn" type="button" hidden>Stop</button>
+          </div>
+          <p class="start-helper" id="start-helper">30 second hold ahead</p>
           <div class="timer-wrap">
             <div class="timer" id="timer">
               <svg viewBox="0 0 120 120" aria-hidden="true">
@@ -160,16 +166,11 @@
               </svg>
               <div class="timer-readout">
                 <div>
-                  <span class="timer-count" id="timer-count">30</span>
-                  <span class="timer-unit" id="timer-unit">30 second hold ahead</span>
+                  <span class="timer-count" id="timer-count"></span>
+                  <span class="timer-unit" id="timer-unit"></span>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="actions">
-            <button class="btn" id="start-btn" type="button">Start</button>
-            <button class="btn" id="next-btn" type="button" hidden>I swallowed</button>
-            <button class="btn btn-secondary" id="reset-btn" type="button" hidden>Stop</button>
           </div>
           <p class="extra-note" id="extra-note" hidden>Keep it thin to 12 or 15 if you can.</p>
           <p class="lightheaded">Stop if you feel lightheaded.</p>
