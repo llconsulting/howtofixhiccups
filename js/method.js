@@ -1,7 +1,7 @@
 (() => {
   const CIRCUMFERENCE = 339.292;
   // Interim true-motion pack. Stills is reminting ugc-motion-v2-2026-09-06
-  // (swallow visible + 30s hold). Swap this path when v2 lands — do not wait on it here.
+  // (swallow visible + 30s hold). Swap this path when v2 lands. Do not wait on it here.
   const UGC_MOTION = "/media/video/ugc-motion-2026-09-06";
   const CLIPS = {
     idle: [`${UGC_MOTION}/start.mp4`],
@@ -22,37 +22,39 @@
   const STILLS = {
     idle: {
       src: "/assets/ugc/host-idle.webp",
-      alt: "Young woman with brown hair and green eyes smiling at the camera in a cream sweater"
+      alt: "Person on camera, ready to start the four-step hiccup method."
     },
     inhale1: {
       src: "/assets/ugc/host-breath-1.webp",
-      alt: "Same host mid first deep breath and swallow demo"
+      alt: "Person on camera taking a deep breath, then swallowing."
     },
     inhale2: {
       src: "/assets/ugc/host-breath-2.webp",
-      alt: "Same host mid second stacked breath and swallow"
+      alt: "Person on camera adding a second breath, then swallowing."
     },
     hold: {
       src: "/assets/ugc/host-hold.webp",
-      alt: "Same host holding a calm breath for the timed hold"
+      alt: "Person on camera holding their breath."
     },
     exhale: {
       src: "/assets/ugc/host-exhale.webp",
-      alt: "Same host slowly exhaling as through a thin straw"
+      alt: "Person on camera blowing out slowly through pursed lips."
     },
     extra: {
       src: "/assets/ugc/host-exhale.webp",
-      alt: "Same host slowly exhaling as through a thin straw"
+      alt: "Person on camera blowing out slowly through pursed lips."
     }
   };
 
+  // One screen per step: inhale label + swallow helper, then I swallowed.
+  // Deck also lists a later swallow-confirm line if we ever split the tap.
   const STEPS = [
     {
       id: "inhale1",
       beat: 0,
       kicker: "Step 1 of 4",
-      label: "Breathe in. Then swallow.",
-      copy: "Breathe all the way in. Swallow. Feel it finish before the next breath.",
+      label: "Breathe all the way in.",
+      copy: "Wait until the swallow finishes. Then tap.",
       kind: "guided",
       nextLabel: "I swallowed"
     },
@@ -60,8 +62,8 @@
       id: "inhale2",
       beat: 1,
       kicker: "Step 2 of 4",
-      label: "Second breath. Swallow all the way.",
-      copy: "Add the second breath on top. Swallow completely before you hold.",
+      label: "Second breath on top.",
+      copy: "Swallow all the way. Then tap.",
       kind: "guided",
       nextLabel: "I swallowed"
     },
@@ -69,8 +71,8 @@
       id: "hold",
       beat: 2,
       kicker: "Step 3 of 4",
-      label: "Hold. Wait for the count to finish.",
-      copy: "Hold until the count finishes. Stay still for all 30 seconds.",
+      label: "Hold.",
+      copy: "Keep the air in. Stay still. Full 30.",
       kind: "count",
       durationMs: 30000,
       unit: "seconds",
@@ -80,8 +82,8 @@
       id: "exhale",
       beat: 3,
       kicker: "Step 4 of 4",
-      label: "Blow thin. Stay on the count.",
-      copy: "Blow thin, like the tiniest straw. Keep that stream going for the full count.",
+      label: "Thin blow.",
+      copy: "Like the tiniest straw. Stay on the count.",
       kind: "count",
       durationMs: 10000,
       unit: "seconds"
@@ -90,12 +92,13 @@
       id: "extra",
       beat: 3,
       kicker: "If you can",
-      label: "Keep it thin to 12 to 15 if you can.",
-      copy: "Same thin stream.",
+      label: "Keep it thin.",
+      copy: "Twelve to 15 if you can.",
       kind: "count",
       durationMs: 5000,
       unit: "seconds",
-      optional: true
+      optional: true,
+      nextLabel: "Done"
     }
   ];
 
@@ -449,7 +452,7 @@
     paintPhase(
       "The method",
       "Done. Breathe normally.",
-      "If they are still going after one pass, you can try once more."
+      "One more pass the same evening is fine for a short spell."
     );
     if (els.card) {
       els.card.classList.remove("is-idle", "is-timing");
@@ -466,7 +469,7 @@
     if (els.extraNote) els.extraNote.hidden = true;
     showShare(false);
     markBeat(4);
-    announce("That is the sequence.");
+    announce("That is the method.");
     showStill("idle");
     playClip("idle");
   }
@@ -518,7 +521,7 @@
     els.next.disabled = false;
     if (step.optional) {
       els.next.hidden = false;
-      els.next.textContent = "I'm done";
+      els.next.textContent = step.nextLabel || "Done";
     } else {
       els.next.hidden = true;
     }
