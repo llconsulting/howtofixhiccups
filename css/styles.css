@@ -179,6 +179,7 @@ a.btn-secondary:hover {
   max-width: none;
   object-fit: cover;
   object-position: 74% 40%;
+  opacity: 1;
 }
 
 .hero-video {
@@ -189,33 +190,23 @@ a.btn-secondary:hover {
   display: none;
 }
 
-.hero-plate::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  pointer-events: none;
-  background:
-    linear-gradient(
-      90deg,
-      rgb(245 245 247 / 0.96) 0%,
-      rgb(245 245 247 / 0.88) 36%,
-      rgb(245 245 247 / 0.42) 58%,
-      rgb(245 245 247 / 0.14) 100%
-    ),
-    linear-gradient(
-      180deg,
-      rgb(245 245 247 / 0.22) 0%,
-      transparent 38%,
-      rgb(245 245 247 / 0.18) 100%
-    );
-}
-
 .hero-copy {
   position: relative;
   z-index: 1;
   padding-top: 4.4rem;
   padding-bottom: 3.4rem;
+}
+
+.band-hero.has-plate .hero-copy,
+.band-hero.has-plate h1,
+.band-hero.has-plate .hero-lead,
+.band-hero.has-plate .lede,
+.band-hero.has-plate .notice,
+.band-hero.has-plate .hero-helper {
+  text-shadow:
+    0 1px 1px rgb(245 245 247 / 0.95),
+    0 0 14px rgb(245 245 247 / 0.82),
+    0 0 32px rgb(245 245 247 / 0.55);
 }
 
 .band-hero.has-plate h1,
@@ -1070,17 +1061,6 @@ h1,
   .hero-poster,
   .hero-video {
     object-position: 50% 20%;
-  }
-
-  .hero-plate::after {
-    background:
-      linear-gradient(
-        180deg,
-        rgb(245 245 247 / 0.96) 0%,
-        rgb(245 245 247 / 0.9) 46%,
-        rgb(245 245 247 / 0.58) 74%,
-        rgb(245 245 247 / 0.28) 100%
-      );
   }
 
   .band-hero.has-plate h1,
