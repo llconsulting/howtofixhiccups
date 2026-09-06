@@ -1,12 +1,13 @@
 # howtofixhiccups excellence elite recheck
 
-Date: 2026-09-06 23:04 UTC (updated after `378764f` dropped Privacy and broke the hero src)  
+Date: 2026-09-06 23:06 UTC (updated after `6c6b86a` landed the straw-blow hero binary)  
 Role: Skeptic (louislynn Consulting)  
 Job: KEEP/CUT excellence elite recheck only. No rewrite. No merge. No publish. No spend. No Mike ping.  
 PR: https://github.com/llconsulting/howtofixhiccups/pull/3  
 Preview: https://deploy-preview-3--howtofixhiccups.netlify.app/  
-PR head at check: `378764f2a0841ca2429dbaf1d1c8b79d3ea98532` (draft)  
-Broken hero + fourth drop: `378764f2a0841ca2429dbaf1d1c8b79d3ea98532`  
+PR head at check: `6c6b86a7fd85927b5786d4b2d61d3f503576db24` (draft)  
+Hero binary: `6c6b86a7fd85927b5786d4b2d61d3f503576db24`  
+Broken-path commit: `378764f2a0841ca2429dbaf1d1c8b79d3ea98532`  
 Third restore: `95915915cdc94c6522f1f15079a35657b46f6826`  
 Third drop: `d8e4d16f6bcd365540f3a9e1159b3a6beed54ae9`  
 Second restore: `dff29eb0b98e1d97f935e941c4da4dd79f24bb2f`  
@@ -26,7 +27,7 @@ Parent mirror: `/workspace/louislynn-os/hiccups-site/howtofixhiccups-excellence-
 - **Overall:** KEEP WITH FIXES
 - **Merge gate:** NO
 - **Elite+clear+merge-ready?:** NO
-- **One-line why:** `378764f` points hero at `straw-blow-loop-3s.mp4` which 404s, and drops header Privacy a fourth time. Step clips still MATCH.
+- **One-line why:** New 3s hero is a sip-through-straw, not the 04 thin-blow; header Privacy still dropped. Step clips still MATCH.
 
 Do not merge PR3.  
 Do not ping Mike.  
@@ -38,7 +39,7 @@ CoS owns the Mike ping on YES.
 
 | Bar | YES/NO | Evidence |
 | --- | --- | --- |
-| Hero | NO | Live `data-src` is `/media/video/ugc-motion-v2-2026-09-06/hero-loop/straw-blow-loop-3s.mp4`. GET 404. Commit admits path swap only, binary not shipped. The QC'd 3s file `thin-straw-loop-3s.mp4` is still 200 and unwired. 4s still 404. |
+| Hero | NO | Wired file now 200. ffprobe 3.000s, 72 frames, 1080x1920, sha256 `1a525ec0fddd673f27fc3646ffd5502547c8a56530d3f6d2d71697548545cbb1`. 4s still 404. Frames show a literal plastic straw in the mouth, sipping. That is not step 4 thin-blow (pursed lips, no prop). The QC'd `thin-straw-loop-3s.mp4` mid-cut of 04 is still 200 and unwired. |
 | Copy | NO | Body strings still match. Live header chrome does not. Fourth Privacy drop on `/` `/why/` `/when/` `/privacy/` and 404. Footer still has Privacy. |
 | Content | YES | Four live pages only: `/` `/why/` `/when/` `/privacy/` all 200. `/blog/` 301 `/why/`. `/about/` 301 `/`. `/blog/callies-sequence/` 301 `/`. HowTo four beats, adults, ordinary hiccups, no MedicalWebPage. `/docs/*` 404. Desk STATUS/MANIFEST 404. |
 | Motion | YES | CDP file-per-step MATCH. 01 breath+swallow 9.041667s. 02 second breath+swallow 9.041667s. 03 hold 30.083333s against 30s UI, no loop. 04 thin-straw 8.041667s (official lean remint; loops under the 10s UI). Hero 3s clean, not the 4s morph. Sampled frames show swallow on 01/02, still hold on 03, pursed thin-straw on 04. |
@@ -50,7 +51,7 @@ CoS owns the Mike ping on YES.
 | Claim | PASS/FAIL | Evidence |
 | --- | --- | --- |
 | CLIPS 01/02/03 + clean 04 all 200 | PASS | GET 200. Sizes now: 01 6853515, 02 6961159, 03 18797271, 04 2016813. |
-| Hero muted 3s only (4s 404) | FAIL | Wired 3s path `straw-blow-loop-3s.mp4` GET 404. Old 3s `thin-straw-loop-3s.mp4` still 200, not wired. 4s still 404. |
+| Hero muted 3s only (4s 404) | PASS | Wired `straw-blow-loop-3s.mp4` GET 200, ffprobe 3.000s. 4s GET 404. Technical 3s-only claim holds. Action is still the wrong beat. |
 | HUMAN excellence copy | FAIL | Body paste still matches. Locked four-item header is gone a fourth time. |
 | Exp1 Copy link intact (writes howtofixhiccups.com; Share-on-hold only) | PASS | Button hidden idle / step 1 / step 2 / step 4. Visible on hold (`shareHidden:false`, label `Copy link`). `SHARE_URL = "https://howtofixhiccups.com/"`. `copyLink: true` only on hold. No hero Share. Headless CDP clipboard read blocked (`NotAllowedError` / document not focused), so the write was not proven in this headless session. Code path and hold-only UI are live. Screenshot: `/opt/cursor/artifacts/screenshots/preview_hold_copy_link.webp`. |
 | no Callie | PASS | Grep of live `/` `/why/` `/when/` `/privacy/` HTML: 0 Callie. Visible chrome is `howtofixhiccups` / `the method`. `/blog/callies-sequence/` 301 home. `/README.md` 404. |
@@ -58,7 +59,7 @@ CoS owns the Mike ping on YES.
 | swallow on breath | PASS | 01 caption `Breathe in deeply, then swallow`. Frames show inhale then visible swallow. 02 caption `Another breath in — swallow completely`. CDP step 1 plays 01, step 2 plays 02. |
 | hold duration matches 30s UI | PASS | 03 ffprobe 30.083333s. CDP `hostDur` 30.083333. UI starts at 30 and ticks (29, 28, 18, 8) then hands to step 4. Clip does not loop. Burn-in: `Hold for 30 seconds`. |
 | exhale matches step 4 | PASS | Live 04 is the CoS QC lean 8s remint (`e74e554` / `53996a1`), not the prior 10.041667s file. Caption `Slow thin-straw exhale`. Frames are pursed thin-straw through late samples, no end lip morph in this pass. CDP step 4 `hostSrc` 04, `hostDur` 8.041667, UI count `10`, Copy link hidden. |
-| hero is clean 3s not AI-morph 4s | FAIL | Wired hero src 404s. Cannot play a clean 3s loop if the file is missing. |
+| hero is clean 3s not AI-morph 4s | FAIL | File is 3s and not the 4s morph. It is also not the 04 thin-blow. Sampled frames are a sip through a plastic straw. That is not a clean mid-cut of step 4. |
 | preview still noindex | PASS | `X-Robots-Tag: noindex, nofollow` plus `noindex` on `/` `/why/` `/when/` `/privacy/`. Served HTML robots meta rewritten to `noindex, nofollow`. |
 | no fight-the-prove CRO | PASS | No second prove widget. Hero Start jumps to `#method` and focuses Start. It does not auto-run the sequence. Copy link is hold-only. |
 | walkthrough still 404 | PASS | `/media/video/ugc-motion-v2-2026-09-06/method-walkthrough.mp4` 404. `/walkthrough/` 404. `/method-walkthrough/` 404. `03-hold-a.mp4` / `03-hold-b.mp4` / `raw/` 404. |
@@ -275,6 +276,23 @@ Flip log:
 5. `d8e4d16` drop
 6. `9591591` restore
 7. `378764f` drop + hero 404
+
+## 23:06 UTC recheck after hero binary land
+
+Head is `6c6b86a` (`fix(media): land CoS-PASS straw-blow-loop-3s hero binary`). Live GET at 23:06 UTC:
+
+- `straw-blow-loop-3s.mp4` GET 200, 880176 bytes, duration 3.000s
+- SHA matches the commit
+- Frames: literal straw, sip, not pursed thin-blow
+- `thin-straw-loop-3s.mp4` still 200, unwired
+- Header Privacy still dropped
+- 01-04 unchanged
+- 4s still 404
+- noindex, no Callie
+
+Hero 404 is gone. Hero bar stays NO (wrong action). Copy bar stays NO. Merge gate stays NO.
+
+Do not treat a drinking-straw sip as the method hero. Put `thin-straw-loop-3s.mp4` back. Restore header Privacy. Stop the nav/hero thrash.
 
 ## Standing context
 
