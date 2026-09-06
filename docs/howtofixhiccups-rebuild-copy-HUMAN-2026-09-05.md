@@ -1,8 +1,8 @@
 ---
-title: howtofixhiccups rebuild copy deck
+title: howtofixhiccups rebuild copy deck (HUMAN)
 date: 2026-09-05
 status: draft-for-web-builder
-intended_box_mirror: /workspace/louislynn-os/hiccups-site/howtofixhiccups-rebuild-copy-2026-09-05.md
+intended_box_mirror: /workspace/louislynn-os/hiccups-site/howtofixhiccups-rebuild-copy-HUMAN-2026-09-05.md
 notes: >
   CoS mirror path for louislynn-os. One file. Preview-ready paste strings.
   Do not merge production HTML from this deck. Brand is faceless.
@@ -130,7 +130,7 @@ Start
 ### Hero helper (under the Start control)
 
 ```
-30 second hold ahead
+Step 3 is a 30 second hold.
 ```
 
 ### Hero disclaimer
@@ -169,7 +169,8 @@ Deep breath all the way in and swallow it.
 Step helper:
 
 ```
-One full inhale. Swallow at the top of it.
+Breathe all the way in.
+Swallow. Feel it finish before the next breath.
 ```
 
 **2.**
@@ -181,7 +182,8 @@ Another breath in on top of that and swallow completely.
 Step helper:
 
 ```
-Stack the second breath. Do not dump the first one to make room.
+Add the second breath on top.
+Swallow completely before you hold.
 ```
 
 **3.**
@@ -193,7 +195,8 @@ Hold breath 30 full seconds.
 Step helper:
 
 ```
-Use the countdown. A count in your head tends to shrink.
+Hold until the count finishes.
+Stay still for all 30 seconds.
 ```
 
 **4.**
@@ -205,7 +208,8 @@ Slowly blow out as through the tiniest straw for 10 full seconds. Go to 12 to 15
 Step helper:
 
 ```
-A thin stream. Keep it gentle.
+Blow thin, like the tiniest straw.
+Keep that stream going for the full count.
 ```
 
 ### H2: How to run it
@@ -225,12 +229,11 @@ You do not need anyone else.
 
 This page is for adults with ordinary hiccups.
 
-Press Start if you want the page to keep time.
-The hold is 30 full seconds.
-That number is the hold length.
-We do not promise they stop at 30 seconds.
-The blow is 10 full seconds of a thin stream.
-If you still have air and it stays gentle, keep that same thin stream going to 12 or 15 seconds.
+Press Start.
+Follow the prompts.
+Swallow before the next breath.
+Hold until the count finishes.
+Blow thin for the full count.
 
 If you feel lightheaded, stop and breathe normally.
 
@@ -380,11 +383,12 @@ Use only if the Start control stays.
 | State | Copy |
 | --- | --- |
 | Idle button | `Start` |
-| After press, before hold | `Breathe. Swallow. Stack. Swallow.` |
-| Hold | `Hold. 30 full seconds.` |
-| Blow | `Thin stream. 10 seconds.` |
-| Optional extra blow | `Keep it thin to 12 or 15 if you can.` |
-| Done | `That is the sequence.` |
+| Step 1 | `Breathe in. Then swallow.` |
+| Step 2 | `Second breath. Swallow all the way.` |
+| Hold | `Hold. Wait for the count to finish.` |
+| Blow | `Blow thin. Stay on the count.` |
+| Extra blow | `Keep it thin to 12 to 15 if you can.` |
+| Done | `Done. Breathe normally.` |
 | Stop / reset | `Stop` |
 | Lightheaded note | `Stop if you feel lightheaded.` |
 
