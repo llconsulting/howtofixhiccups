@@ -9,6 +9,9 @@
   --accent: #0066cc;
   --accent-hover: #0055aa;
   --accent-soft: #e8f1fb;
+  --band-paper: #ffffff;
+  --band-mist: #e8e8ed;
+  --band-wash: #e8f1fb;
   --shadow: 0 1px 2px rgba(29, 29, 31, 0.04), 0 18px 48px rgba(29, 29, 31, 0.06);
   --radius: 1.35rem;
   --radius-sm: 0.9rem;
@@ -133,8 +136,43 @@ a.btn-secondary:hover {
 }
 
 .hero,
-.page {
+.page:not(:has(.band)) {
   padding: 2.25rem 0 4.5rem;
+}
+
+.page {
+  padding: 0;
+}
+
+.band {
+  padding: 3.15rem 0;
+}
+
+.band-hero {
+  background: var(--bg);
+  padding-top: 2.35rem;
+  padding-bottom: 2rem;
+}
+
+.band-studio {
+  background: var(--band-paper);
+}
+
+.band-steps {
+  background: var(--band-wash);
+}
+
+.band-guide {
+  background: var(--band-paper);
+}
+
+.band-faq {
+  background: var(--band-mist);
+}
+
+.band-limits {
+  background: var(--bg);
+  padding-bottom: 3.6rem;
 }
 
 .crumbs {
@@ -222,7 +260,7 @@ h1,
 .studio {
   display: grid;
   gap: 1.15rem;
-  margin: 0 0 2.75rem;
+  margin: 0;
 }
 
 .method-card {
@@ -332,6 +370,7 @@ h1,
 .beat-rail::after {
   width: calc(64% * var(--beat, 0));
   background: var(--accent);
+  transition: width 420ms var(--ease);
 }
 
 .beat-rail li {
@@ -404,7 +443,8 @@ h1,
 
 .phase.is-changing .phase-label,
 .phase.is-changing .phase-copy {
-  opacity: 0.35;
+  opacity: 0;
+  transform: translateY(6px);
 }
 
 .phase-kicker,
@@ -427,7 +467,7 @@ h1,
   font-weight: 600;
   letter-spacing: -0.035em;
   line-height: 1.15;
-  transition: opacity 220ms var(--ease);
+  transition: opacity 280ms var(--ease), transform 280ms var(--ease);
 }
 
 .phase-copy {
@@ -435,7 +475,7 @@ h1,
   margin: 0;
   color: var(--ink-soft);
   text-align: center;
-  transition: opacity 220ms var(--ease);
+  transition: opacity 280ms var(--ease), transform 280ms var(--ease);
 }
 
 .phase-copy:empty {
@@ -491,6 +531,7 @@ h1,
   stroke-linecap: round;
   stroke-dasharray: 339.292;
   stroke-dashoffset: 339.292;
+  transition: stroke-dashoffset 90ms linear;
 }
 
 .timer-readout {
@@ -665,7 +706,11 @@ h1,
 .faq,
 .limits,
 .read-this {
-  margin-top: 2.5rem;
+  margin-top: 0;
+}
+
+.limits + .read-this {
+  margin-top: 2.4rem;
 }
 
 .cta-row {
@@ -773,6 +818,12 @@ h1,
   background: var(--bg-elevated);
   color: inherit;
   text-decoration: none;
+  transition: transform 220ms var(--ease), box-shadow 220ms var(--ease);
+}
+
+.page-link:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
 }
 
 .page-link strong {
@@ -800,6 +851,7 @@ h1,
 
 .site-footer {
   border-top: 1px solid var(--line);
+  background: var(--band-paper);
   padding: 1.6rem 0 2.4rem;
   color: var(--ink-faint);
   font-size: 0.875rem;
@@ -839,7 +891,8 @@ h1,
 }
 
 @media (min-width: 860px) {
-  .hero {
+  .hero,
+  .band-hero {
     padding-top: 3.4rem;
   }
 
@@ -889,7 +942,8 @@ h1,
     gap: 0.2rem 0.85rem;
   }
 
-  .hero {
+  .hero,
+  .band-hero {
     padding-top: 1.35rem;
   }
 
@@ -918,6 +972,65 @@ h1,
   }
 }
 
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .band {
+    animation: enter 720ms var(--ease) both;
+  }
+
+  .band-studio {
+    animation-delay: 50ms;
+  }
+
+  .band-steps,
+  .band-guide {
+    animation-delay: 90ms;
+  }
+
+  .band-faq {
+    animation-delay: 110ms;
+  }
+
+  .band-limits {
+    animation-delay: 130ms;
+  }
+
+  h1 {
+    animation: enter 640ms var(--ease) both;
+  }
+
+  .hero-lead span {
+    animation: enter 680ms var(--ease) both;
+  }
+
+  .hero-lead span:nth-child(1) {
+    animation-delay: 40ms;
+  }
+
+  .hero-lead span:nth-child(2) {
+    animation-delay: 90ms;
+  }
+
+  .hero-lead span:nth-child(3) {
+    animation-delay: 140ms;
+  }
+
+  .hero-lead span:nth-child(4) {
+    animation-delay: 190ms;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -928,8 +1041,13 @@ h1,
   .timer-count,
   .btn,
   .beat-rail li,
+  .beat-rail::after,
   .host-video,
-  .timer-wrap {
+  .timer-wrap,
+  .page-link,
+  .band,
+  h1,
+  .hero-lead span {
     transition: none;
     animation: none;
   }
