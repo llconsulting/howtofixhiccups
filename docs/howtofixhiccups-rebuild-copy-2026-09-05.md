@@ -72,6 +72,18 @@ howtofixhiccups
 The method · Why they start · When to stop · Privacy
 ```
 
+### AEO ownership (no extra routes)
+
+Soft FAQ coverage on the page that owns the question. Do not add blog posts, baby pages, pet pages, pregnancy pages, or evolution pages.
+
+| Owns | Page |
+| --- | --- |
+| Method, water, 30-second hold meaning, adults, hold is step 3, after eating or alcohol, how many passes, page limits | `/` |
+| Random or sudden start, everyday triggers, the hic sound, what a short bout tells you, reflux mention, frequent return | `/why-hiccups-start/` |
+| How long / ~48 hours, two days or all day, urgent flags, no diagnosis of named diseases, post-procedure or new medicine, when to stop home methods | `/when-to-stop/` |
+
+No folk-remedy ranking. No timed result claims. No mechanism for why the method works.
+
 ---
 
 ## 2. Home `/`
@@ -211,14 +223,19 @@ You do not need water.
 You do not need a spoon.
 You do not need anyone else.
 
+This page is for adults with ordinary hiccups.
+
 Press Start if you want the page to keep time.
 The hold is 30 full seconds.
+That number is the hold length.
+We do not promise they stop at 30 seconds.
 The blow is 10 full seconds of a thin stream.
 If you still have air and it stays gentle, keep that same thin stream going to 12 or 15 seconds.
 
 If you feel lightheaded, stop and breathe normally.
 
-If they are still going after one pass, you can try once more.
+One calm pass.
+Once more the same evening is fine for a short spell.
 If they last, keep coming back, or show up with other symptoms, stop.
 Read When to stop.
 ```
@@ -237,15 +254,55 @@ Start the method
 Common questions
 ```
 
-Keep this block on the home page. Do not turn it into posts.
+Keep this block on the home page. Soft AEO coverage. Do not turn it into posts.
 
-#### H3: Do I need a drink or a spoon?
+#### H3: Does this always work?
 
 ```
 No.
-Breath and a swallow.
-That is the whole kit.
+There is no 100% method on this site.
+The four steps are still here if you want to try them.
+Ordinary hiccups often leave on their own.
 ```
+
+#### H3: Do I need water, sugar, or someone to scare me?
+
+```
+No.
+This method is breath and a swallow only.
+Water is optional.
+```
+
+#### H3: Will they stop in 30 seconds?
+
+```
+Thirty seconds is the hold on step 3.
+We do not promise they stop at 30 seconds.
+```
+
+#### H3: Is holding my breath enough?
+
+```
+Hold is step 3.
+Do the two swallows first.
+This is one four-step method.
+```
+
+#### H3: Can I use this for a baby or a pet?
+
+```
+This page is for adults with ordinary hiccups, not babies or pets.
+```
+
+#### H3: Can I try after a meal or a drink?
+
+```
+Yes, if you feel safe to sit or stand still and breathe.
+If you feel dizzy or unsafe, stop.
+If the spell lasts, read When to stop.
+```
+
+Internal link on `When to stop` → `/when-to-stop/`
 
 #### H3: What if I lose the first breath on step 2?
 
@@ -263,13 +320,34 @@ Breathe normally.
 Sit down if you need to.
 ```
 
-#### H3: Can I repeat it?
+#### H3: How many times can I run it?
 
 ```
-Once more is fine for a short spell.
-Do not turn this into a loop.
-Lasting or severe hiccups belong with a clinician.
+One calm pass.
+Once more the same evening is fine for a short spell.
+If it has been going for days, stop and read When to stop.
 ```
+
+Internal link on `When to stop` → `/when-to-stop/`
+
+### H2: What this page is not
+
+```
+What this page is not
+```
+
+### Limits body
+
+```
+A folk listicle of sugar, scare, or lemon tricks.
+A cure claim.
+A page for days-long bouts.
+
+Days-long bouts belong with a clinician.
+Read When to stop.
+```
+
+Internal link on `When to stop` → `/when-to-stop/`
 
 ### H2: Read this
 
@@ -281,7 +359,7 @@ Read this
 
 ```
 This site is not medical advice.
-The method is a home sequence for ordinary hiccups.
+The method is a home sequence for ordinary adult hiccups.
 We do not claim a cure.
 We do not claim a success rate.
 Short hiccups often leave on their own.
@@ -309,6 +387,8 @@ Use only if the Start control stays.
 | Done | `That is the sequence.` |
 | Stop / reset | `Stop` |
 | Lightheaded note | `Stop if you feel lightheaded.` |
+
+Builder note: never write timed result claims such as "stops in 30 seconds." The 30 is hold length only.
 
 ---
 
@@ -409,6 +489,67 @@ Read When to stop.
 
 Internal link on `When to stop` → `/when-to-stop/`
 
+### H2: Common questions
+
+```
+Common questions
+```
+
+Keep these on this page. Do not spin them into posts.
+
+#### H3: Why do hiccups start out of nowhere?
+
+```
+A specific reason is often missing.
+Everyday things can still start a short spell.
+A large or fast meal.
+A fizzy drink.
+Alcohol.
+Spice or a sharp swing in temperature.
+Extra air.
+Excitement or stress.
+```
+
+#### H3: Why after eating, spice, alcohol, stress, or a laugh?
+
+```
+A full or fast meal can start a short spell.
+So can spicy food, alcohol, stress, excitement, or a laugh that hits while you swallow.
+A specific reason is still often missing.
+```
+
+#### H3: What is the "hic"?
+
+```
+The diaphragm squeezes and the voice box closes. That is the hic.
+```
+
+#### H3: What do hiccups tell you?
+
+```
+A short bout usually tells you little.
+If they last or come with other symptoms, read When to stop.
+```
+
+Internal link on `When to stop` → `/when-to-stop/`
+
+#### H3: Could this be heartburn or reflux?
+
+```
+People sometimes notice hiccups with reflux discomfort.
+This page cannot diagnose that.
+If hiccups last and you also have heartburn, talk to a clinician.
+```
+
+#### H3: What if I get them all day or they keep coming back?
+
+```
+Look at the everyday triggers on this page.
+If they return often and affect your life, read When to stop.
+```
+
+Internal link on `When to stop` → `/when-to-stop/`
+
 ### Page CTAs
 
 - Primary: `Go to the method` → `/`
@@ -488,9 +629,11 @@ Get help if you also have
 ```
 - Trouble breathing
 - Chest pain
+- Fainting
+- Sudden weakness or numbness
+- Confusion
 - Trouble swallowing
 - Headache
-- Weakness or numbness
 - Loss of balance
 - Trouble walking, talking, or seeing
 ```
@@ -500,9 +643,12 @@ Get help if you also have
 ```
 Warning signs like these belong with a doctor right away.
 
+Ordinary hiccups alone are usually not treated as an emergency.
+
 If hiccups arrive with a suspected stroke or a suspected clot in the lung, seek emergency care.
 Use emergency services for those emergencies.
 
+This page is not an emergency protocol.
 A countdown on a website cannot sort that out.
 Tell someone what is going on.
 ```
@@ -516,6 +662,9 @@ Do not loop the method
 ### Body
 
 ```
+After one calm pass, you can try once more the same evening on a short ordinary bout.
+Stop sooner if the clock or your body says this is not ordinary.
+
 Repeating the sequence will not make a lasting problem safer.
 The method does not treat disease.
 Close the tab.
@@ -534,6 +683,61 @@ The walkthrough is on the home page.
 ```
 
 Internal link on `home page` → `/`
+
+### H2: Common questions
+
+```
+Common questions
+```
+
+Keep these on this page. Do not spin them into posts.
+
+#### H3: When should I worry, and how long is too long?
+
+```
+Ordinary spells often last a few minutes.
+Many public pages say see a clinician after about 48 hours, or two days.
+Sources vary.
+Also get help if eating, sleeping, or breathing is getting blocked.
+```
+
+#### H3: They have lasted two days, or all day, and will not stop.
+
+```
+Stop looping the home method.
+Talk to a clinician.
+```
+
+#### H3: Do I need emergency care?
+
+```
+Ordinary hiccups alone are usually not treated as an emergency.
+Get urgent help if they come with trouble breathing, chest pain, fainting, sudden weakness, or confusion.
+This page is not an emergency protocol.
+```
+
+#### H3: Could this be a heart attack, a stroke, or cancer?
+
+```
+This page does not diagnose heart attack, stroke, or cancer.
+Other worrying symptoms belong with clinical care.
+```
+
+#### H3: What if they started after surgery, anesthesia, chemo, steroids, or a new medicine?
+
+```
+That is outside this home method.
+Contact your care team or the clinician who prescribed the medicine.
+Do not stop a medicine because of this page.
+```
+
+#### H3: When should I stop trying this at home?
+
+```
+After one calm pass on an ordinary short bout.
+Once more the same evening is fine.
+Stop sooner if the clock or your body says this is not ordinary.
+```
 
 ### Page CTAs
 
@@ -841,11 +1045,13 @@ Optional `WebSite` on every page, still faceless:
 | Home hero | `/why-hiccups-start/` | Why hiccups start |
 | Home hero | `/when-to-stop/` | When to stop |
 | Home tutorial | `/when-to-stop/` | When to stop |
+| Home FAQ / limits | `/when-to-stop/` | When to stop |
 | Home close | `/why-hiccups-start/` | Why hiccups start |
 | Home close | `/when-to-stop/` | When to stop |
 | Home close | `/privacy/` | Privacy |
 | Why they start | `/` | the home page / Go to the method |
 | Why they start | `/when-to-stop/` | When to stop |
+| Why FAQ (what they tell you, frequent return) | `/when-to-stop/` | When to stop |
 | When to stop | `/` | home page / Go to the method |
 | When to stop | `/why-hiccups-start/` | Why hiccups start |
 | Privacy | `/` | Back to the method |
