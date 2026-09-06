@@ -1,1 +1,1 @@
-Web Builder: wire hiccup-method step stills from `media/` — see `media/MANIFEST.md`.
+Web Builder: wire hiccup-method step stills from `media/stills/` — see `media/stills/MANIFEST.md`.
