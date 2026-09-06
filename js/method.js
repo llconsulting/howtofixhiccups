@@ -1,5 +1,12 @@
 (() => {
   const CIRCUMFERENCE = 339.292;
+  const CLIPS = {
+    inhale1: "/assets/video/breath-swallow-1.mp4",
+    inhale2: "/assets/video/breath-swallow-2.mp4",
+    hold: "/assets/video/hold-30.mp4",
+    exhale: "/assets/video/thin-straw-exhale.mp4",
+    extra: "/assets/video/thin-straw-exhale.mp4"
+  };
   const STILLS = {
     idle: {
       src: "/assets/ugc/host-idle.webp",
@@ -90,7 +97,8 @@
     card: document.getElementById("method"),
     timerWrap: document.getElementById("timer-wrap"),
     live: document.getElementById("live"),
-    still: document.getElementById("host-still")
+    still: document.getElementById("host-still"),
+    video: document.getElementById("host-video")
   };
 
   if (!els.start || !els.timer) return;
@@ -168,6 +176,39 @@
     }, 80);
   }
 
+  function hideClip() {
+    if (!els.video) return;
+    els.video.pause();
+    els.video.hidden = true;
+    els.video.removeAttribute("src");
+    els.video.load();
+  }
+
+  function playClip(id) {
+    if (!els.video) return;
+    const src = CLIPS[id];
+    if (!src) {
+      hideClip();
+      return;
+    }
+    try {
+      els.video.preload = "none";
+      if (els.video.getAttribute("src") !== src) {
+        els.video.src = src;
+      }
+      const play = els.video.play();
+      if (play && typeof play.then === "function") {
+        play.then(() => {
+          els.video.hidden = false;
+        }).catch(() => {
+          hideClip();
+        });
+      }
+    } catch {
+      hideClip();
+    }
+  }
+
   function renderIdle() {
     invalidate();
     running = false;
@@ -190,6 +231,7 @@
     els.reset.hidden = true;
     if (els.extraNote) els.extraNote.hidden = true;
     showStill("idle");
+    hideClip();
   }
 
   function finish() {
@@ -215,6 +257,7 @@
     if (els.extraNote) els.extraNote.hidden = true;
     announce("That is the sequence.");
     showStill("idle");
+    hideClip();
   }
 
   function beginStep(index) {
@@ -242,6 +285,7 @@
     if (els.timerWrap) els.timerWrap.hidden = step.kind !== "count";
     if (els.extraNote) els.extraNote.hidden = !(step.id === "exhale" || step.optional);
     showStill(step.id);
+    playClip(step.id);
     const upcoming = STEPS[index + 1];
     if (upcoming) warmStill(upcoming.id);
 

@@ -256,10 +256,16 @@ h1,
 
 .host-still,
 .host-video {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   background: #ececef;
+}
+
+.host-video {
+  z-index: 1;
 }
 
 .host-still {
