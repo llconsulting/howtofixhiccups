@@ -1,12 +1,6 @@
 (() => {
   const CIRCUMFERENCE = 339.292;
-  const CLIPS = {
-    inhale1: "/assets/video/breath-swallow-1.mp4",
-    inhale2: "/assets/video/breath-swallow-2.mp4",
-    hold: "/assets/video/hold-30.mp4",
-    exhale: "/assets/video/thin-straw-exhale.mp4",
-    extra: "/assets/video/thin-straw-exhale.mp4"
-  };
+  const CLIPS = {};
   const STILLS = {
     idle: {
       src: "/assets/ugc/host-idle.webp",
