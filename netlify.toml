@@ -21,7 +21,7 @@
   [context.branch-deploy.headers.values]
     X-Robots-Tag = "noindex, nofollow"
 
-# Dropped blog / about / notes. Send them home. No Notes index.
+# Dropped about / notes. Home is the live replacement.
 [[redirects]]
   from = "/about"
   to = "/"
@@ -46,45 +46,83 @@
   status = 301
   force = true
 
+# Specific blog posts before the blog splat.
+[[redirects]]
+  from = "/blog/ordinary-hiccups"
+  to = "/why/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/ordinary-hiccups/"
+  to = "/why/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/when-hiccups-linger"
+  to = "/when/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/when-hiccups-linger/"
+  to = "/when/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/callies-sequence"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/callies-sequence/"
+  to = "/"
+  status = 301
+  force = true
+
+# Remaining blog URLs land on the short why page.
 [[redirects]]
   from = "/blog"
-  to = "/"
+  to = "/why/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/blog/"
-  to = "/"
+  to = "/why/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/blog/*"
-  to = "/"
+  to = "/why/"
   status = 301
   force = true
 
-# First rebuild used shorter slugs. Keep those working.
+# Long copy-deck slugs are not live routes.
 [[redirects]]
-  from = "/why"
-  to = "/why-hiccups-start/"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/why/"
-  to = "/why-hiccups-start/"
+  from = "/why-hiccups-start"
+  to = "/why/"
   status = 301
   force = true
 
 [[redirects]]
-  from = "/when"
-  to = "/when-to-stop/"
+  from = "/why-hiccups-start/"
+  to = "/why/"
   status = 301
   force = true
 
 [[redirects]]
-  from = "/when/"
-  to = "/when-to-stop/"
+  from = "/when-to-stop"
+  to = "/when/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/when-to-stop/"
+  to = "/when/"
   status = 301
   force = true

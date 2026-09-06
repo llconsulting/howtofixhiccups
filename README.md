@@ -14,11 +14,11 @@ The home page has Start, a countdown, and a host-video slot. HowTo schema lists 
 ## Pages
 
 - `/` the method + tutorial / countdown + host video
-- `/why-hiccups-start/`
-- `/when-to-stop/`
+- `/why/`
+- `/when/`
 - `/privacy/`
 
-Blog, notes, and about are dropped. Old URLs 301 to `/`.
+Blog, notes, and about are dropped. `/about` 301s to `/`. `/blog` and ordinary-hiccups 301 to `/why/`. Linger 301s to `/when/`. `callies-sequence` 301s to `/`. Long slugs `/why-hiccups-start/` and `/when-to-stop/` 301 to the short routes.
 
 ## Host media
 
