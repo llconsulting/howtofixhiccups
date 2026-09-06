@@ -1,32 +1,31 @@
 # howtofixhiccups.com
 
-Static site for [Callie's method](https://howtofixhiccups.com/) — a quiet, in-place sequence for ordinary hiccups.
+Static site for a four-beat, in-place sequence for ordinary hiccups. Faceless brand. Not medical advice.
 
 ## Sequence
 
 1. Deep breath in, then swallow.
 2. Second breath on top, then swallow.
 3. Hold 30 full seconds.
-4. Slowly blow out as through the tiniest straw for 10 seconds (12–15 if you can).
+4. Thin-straw blow for 10 seconds (12–15 if you can).
 
-The home page has an interactive **Start** control and countdown. This is not medical advice and does not claim a cure.
+The home page has Start, a countdown, and a host-video slot. HowTo schema lists those four steps only.
 
 ## Pages
 
-- `/` walkthrough
-- `/about/`
+- `/` method + tutorial / countdown + host video
+- `/why/` why hiccups start
+- `/when/` when to stop / see a clinician
 - `/privacy/`
-- `/blog/` and three notes
 
-On-page SEO includes unique H1s, metas, breadcrumbs, HowTo and BlogPosting JSON-LD, `robots.txt`, and `sitemap.xml`. Ad slots are empty placeholders.
+Blog index, note posts, and `/about/` are dropped. Old URLs 301 to the pages above.
+
+## Host media
+
+Stills & Clips Desk drops files in `media/host/`. Until then the home page shows a labeled placeholder — no generated face.
 
 ## Deploy
 
 No build command. Publish directory is `.`.
 
-```toml
-[build]
-  publish = "."
-```
-
-Canonical host: `https://howtofixhiccups.com`.
+Canonical host is always `https://howtofixhiccups.com/`. Deploy previews and `*.netlify.app` send `X-Robots-Tag: noindex`. Production `.com` is not noindexed.

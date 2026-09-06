@@ -1,6 +1,7 @@
 [build]
   publish = "."
 
+# Production (.com) stays indexable. Do not set noindex here.
 [[headers]]
   for = "/*"
   [headers.values]
@@ -8,4 +9,76 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     X-Frame-Options = "DENY"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
-    X-Robots-Tag = "index, follow"
+
+# Preview and branch deploys live on *.netlify.app — keep them out of the index.
+# Canonicals and JSON-LD always point at https://howtofixhiccups.com/.
+[[context.deploy-preview.headers]]
+  for = "/*"
+  [context.deploy-preview.headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[context.branch-deploy.headers]]
+  for = "/*"
+  [context.branch-deploy.headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+# Dropped blog / about surfaces. Trailing-slash destinations.
+[[redirects]]
+  from = "/about"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/about/"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog"
+  to = "/why/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/"
+  to = "/why/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/ordinary-hiccups"
+  to = "/why/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/ordinary-hiccups/"
+  to = "/why/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/when-hiccups-linger"
+  to = "/when/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/when-hiccups-linger/"
+  to = "/when/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/callies-sequence"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/callies-sequence/"
+  to = "/"
+  status = 301
+  force = true
