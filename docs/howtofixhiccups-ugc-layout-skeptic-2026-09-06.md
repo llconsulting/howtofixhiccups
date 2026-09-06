@@ -210,6 +210,21 @@ Weaker than ugc-motion on the product path: mid pair MAD 1.8 to 3.0 vs 4.5 to 6.
 - ugc-live on the live product src: KEEP it off. Primary pack is 200 and already playing. Fallback did not fire.
 - Dual chain + unused `method-walkthrough.mp4` (46MB, not in `CLIPS`): still unused fat. Note only. Not a product CUT.
 
+## CRO fold
+
+Source: CoS conversion note `louislynn-hiccups-conversion-2026-09-06.md`. Walked preview only. Record. Do not implement.
+
+Conversion on this site is finish the method. Not a lead form. Confirmed: no form, no email capture, Start begins the four steps.
+
+KEEP Exp1 Copy link. It is live on hold only. Clipboard writes `https://howtofixhiccups.com/` or `navigator.share`. Prove store `htfh-hold-copy`. This crawl already scored that PASS.
+
+VETO any CRO that removes Share-on-hold, hides Copy link, fights the prove, or adds a competing mid-hold CTA. Skeptic stand down. Do not implement fight-the-prove CRO.
+
+CRO P0: Share-on-hold present. Record only.
+CRO P1 note only: mid-method drop risk is two "I swallowed" confirms plus the 30s hold with Copy link, plus Why / When exits in the hero before Start. Secondary "Start the method" is `href="#method"` only. Start path is clean.
+
+Production `https://howtofixhiccups.netlify.app/` is still Callie (title includes "Callie's method", Callie count 10). That is not the walked host. Preview has no Callie. FAQ anti-cure language holds ("There is no 100% method on this site.").
+
 ## Merge
 
 NO.
