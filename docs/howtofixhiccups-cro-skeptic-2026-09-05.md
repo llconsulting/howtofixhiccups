@@ -36,7 +36,7 @@ Do not rewrite the CRO. Apply these cuts if anyone uses the file.
 2. **Show four beats on the Start card.** KEEP WITH FIXES. Rail is already there. Names are below the fold. Do not rebuild the card before prove.
 3. **No confirmation tap to start the hold clock.** KEEP as a later process row. Real: both swallows are `kind: "guided"` with `I swallowed`; hold ring stays hidden until the second tap. That delays entry to the Share window. Do not spend now. After five Share taps, this is a one-line advance, not a runner rewrite.
 4. **Timer assists. Stop not only off-ramp. Preview the next beat.** CUT. Skip / back / next-preview is new chrome in the prove window. Stop as reset is a later process row only. Do not add hold controls before Share is proven.
-5. **Video stays secondary. Host never first visual.** CUT. Mike: face is intentional. Prove already says timer is enough and host is optional. Optional ≠ strip the left-column face.
+5. **Video stays secondary. Host never first visual.** CUT. Mike: face is intentional. Prove already says timer is enough and host is optional. Optional is not strip the left-column face.
 6. **Keep faceless naming.** KEEP as already true on preview page copy, titles, and schema. This does not clear main README Callie. This does not flip Merge NO.
 
 ## Vs prove-Share lock
@@ -47,7 +47,7 @@ Share is already wired on the walked surface. Hold and blow expose Share. CRO wr
 
 Must-fix 4 is a direct fight: more buttons during hold compete with Share.
 
-Must-fix 1–3 packaged as “rebuild must-fix” is a fight: it spends engineering before five private taps. The swallow-tap *row* is not a fight. The rebuild *read* is.
+Must-fix 1-3 packaged as “rebuild must-fix” is a fight: it spends engineering before five private taps. The swallow-tap *row* is not a fight. The rebuild *read* is.
 
 Must-fix 5 is not required for prove. Timer alone is enough. Cutting the face does not help Share.
 
