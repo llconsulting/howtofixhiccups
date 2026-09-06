@@ -145,6 +145,55 @@
   status = 404
   force = true
 
+# v2 desk notes and unused fat / raw must not publish.
+[[redirects]]
+  from = "/media/video/ugc-motion-v2-2026-09-06/STATUS.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/media/video/ugc-motion-v2-2026-09-06/README.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/media/video/ugc-motion-v2-2026-09-06/MANIFEST.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/media/video/ugc-motion-v2-2026-09-06/method-walkthrough.mp4"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/media/video/ugc-motion-v2-2026-09-06/method-full.mp4"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/media/video/ugc-motion-v2-2026-09-06/raw/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/media/video/ugc-motion-v2-2026-09-06/03-hold-a.mp4"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/media/video/ugc-motion-v2-2026-09-06/03-hold-b.mp4"
+  to = "/404.html"
+  status = 404
+  force = true
+
 [[redirects]]
   from = "/media/video/hero/README.md"
   to = "/404.html"

@@ -1,15 +1,17 @@
 (() => {
   const CIRCUMFERENCE = 339.292;
-  // Interim true-motion pack. Stills is reminting ugc-motion-v2-2026-09-06
-  // (swallow visible + 30s hold). Swap this path when v2 lands. Do not wait on it here.
-  const UGC_MOTION = "/media/video/ugc-motion-2026-09-06";
+  // v2 01-03 only. Idle/done stay on stills (do not play old start.mp4).
+  // Skip v2 04-thin-straw-exhale (glitchy) and hero-loop/thin-straw-loop-* (AI morph).
+  // Exhale KEEP: prior ugc-motion thin-straw-exhale. Swap 01-03 folder if Video Desk moves it.
+  const UGC_MOTION_V2 = "/media/video/ugc-motion-v2-2026-09-06";
+  const UGC_EXHALE_KEEP = "/media/video/ugc-motion-2026-09-06/thin-straw-exhale.mp4";
   const CLIPS = {
-    idle: [`${UGC_MOTION}/start.mp4`],
-    inhale1: [`${UGC_MOTION}/breath-swallow-1.mp4`],
-    inhale2: [`${UGC_MOTION}/breath-swallow-2.mp4`],
-    hold: [`${UGC_MOTION}/hold.mp4`],
-    exhale: [`${UGC_MOTION}/thin-straw-exhale.mp4`],
-    extra: [`${UGC_MOTION}/thin-straw-exhale.mp4`]
+    idle: [],
+    inhale1: [`${UGC_MOTION_V2}/01-breath-swallow.mp4`],
+    inhale2: [`${UGC_MOTION_V2}/02-breath-swallow.mp4`],
+    hold: [`${UGC_MOTION_V2}/03-hold-30.mp4`],
+    exhale: [UGC_EXHALE_KEEP],
+    extra: [UGC_EXHALE_KEEP]
   };
   const POSTERS = {
     idle: "/media/stills/host-idle.jpg",
@@ -387,7 +389,7 @@
       els.video.muted = true;
       els.video.defaultMuted = true;
       els.video.playsInline = true;
-      els.video.loop = true;
+      els.video.loop = id !== "hold";
       els.video.preload = "none";
       els.video.setAttribute("poster", posterFor(id));
       els.video.classList.remove("is-on");
