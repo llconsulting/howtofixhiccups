@@ -195,12 +195,6 @@
   force = true
 
 [[redirects]]
-  from = "/media/video/ugc-motion-v2-2026-09-06/04-thin-straw-exhale.mp4"
-  to = "/404.html"
-  status = 404
-  force = true
-
-[[redirects]]
   from = "/media/video/ugc-motion-v2-2026-09-06/hero-loop/thin-straw-loop-4s.mp4"
   to = "/404.html"
   status = 404

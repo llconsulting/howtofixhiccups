@@ -1,18 +1,16 @@
 (() => {
   const CIRCUMFERENCE = 339.292;
-  // v2 01-03 only. Idle/done stay on stills (do not play old start.mp4).
-  // Skip v2 04-thin-straw-exhale (QC morph) and hero-loop/thin-straw-loop-4s.
-  // Hero muted: hero-loop/thin-straw-loop-3s.mp4 only (KEEP host-exhale cut).
-  // Exhale KEEP: prior ugc-motion thin-straw-exhale.
+  // Full v2 pack. Idle/done stay on stills (do not play old start.mp4).
+  // Exhale is clean 04. Skip hero-loop/thin-straw-loop-4s.
+  // Hero muted: hero-loop/thin-straw-loop-3s.mp4 only.
   const UGC_MOTION_V2 = "/media/video/ugc-motion-v2-2026-09-06";
-  const UGC_EXHALE_KEEP = "/media/video/ugc-motion-2026-09-06/thin-straw-exhale.mp4";
   const CLIPS = {
     idle: [],
     inhale1: [`${UGC_MOTION_V2}/01-breath-swallow.mp4`],
     inhale2: [`${UGC_MOTION_V2}/02-breath-swallow.mp4`],
     hold: [`${UGC_MOTION_V2}/03-hold-30.mp4`],
-    exhale: [UGC_EXHALE_KEEP],
-    extra: [UGC_EXHALE_KEEP]
+    exhale: [`${UGC_MOTION_V2}/04-thin-straw-exhale.mp4`],
+    extra: [`${UGC_MOTION_V2}/04-thin-straw-exhale.mp4`]
   };
   const POSTERS = {
     idle: "/media/stills/host-idle.jpg",
