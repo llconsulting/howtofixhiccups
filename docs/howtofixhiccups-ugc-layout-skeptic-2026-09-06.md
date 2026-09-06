@@ -10,7 +10,7 @@ PR: https://github.com/llconsulting/howtofixhiccups/pull/3
 Overall: KEEP clean
 Merge gate: NO
 Elite+clear+merge-ready?: NO
-One-line why: ugc-motion pack is wired, plays, and is true motion; layout, copy, and Exp1 hold. Unused 46MB walkthrough is still published, so this is not merge-ready.
+One-line why: ugc-motion pack is wired, plays, and is true motion; ugc-live fallback is weaker true-motion, not Ken Burns, and stayed off the live src. Unused 46MB walkthrough is still published, so this is not merge-ready.
 
 ## Crawl
 
@@ -82,7 +82,7 @@ Visual frames (same files):
 
 This is baked-in true motion with on-clip captions. Not a still with a CSS or Ken Burns pan.
 
-ugc-live fallback clips also show real motion (host-idle first-last PSNR 17.78, mid pair MAD 2.065). They were not the live `src` on this crawl.
+See CoS addendum for the ugc-live sibling pack. It was not the live `src` on this crawl.
 
 No Higgsfield spend this crawl. Pack was already 200.
 
@@ -167,8 +167,51 @@ Still true. Not a product CUT.
 
 Layout/motion elite?: YES
 
+## CoS addendum: prefer ugc-motion over ugc-live
+
+Same deploy `6a9db5d94ef8a300088f5993`. Same live `CLIPS` fallback chain. No merge of PR3 or PR20.
+
+Sibling PR20 (`https://github.com/llconsulting/howtofixhiccups/pull/20`) is context only. Title: "Wire Start to ugc-live true-motion (preview only)". State on this crawl: merged draft, stacked on PR3. Body reserved `ugc-motion-2026-09-06/` as "not the product" and pointed Start at `/media/video/ugc-live/host-*.mp4`. Current PR3 preview inverted that: ugc-motion is first, ugc-live is second. Do not merge either.
+
+### Product path (what played)
+
+KEEP ugc-motion as the product path.
+
+CDP `currentSrc` used only `/media/video/ugc-motion-2026-09-06/` (`start.mp4`, `breath-swallow-1.mp4`, `breath-swallow-2.mp4`, `hold.mp4`). ugc-live never became `src`. Primary pack is real true-motion (section 1).
+
+### Is ugc-live Ken Burns / still-zoom theater?
+
+NO. Do not CUT it as Ken Burns. It is weaker true-motion.
+
+All five fallback files GET 200, 1280x720, 24fps, h264:
+
+| Clip | first-last PSNR | first-last MAD | center MAD | best shift MAD | shift residual | best zoom MAD | mid pair MAD | mid pair PSNR |
+|---|---|---|---|---|---|---|---|---|
+| host-idle | 17.78 | 20.71 | 24.33 | 10.08 | 0.486 | 18.88 | 2.065 | 34.77 |
+| host-breath-1 | 16.69 | 22.49 | 30.98 | 18.16 | 0.808 | 22.49 | 2.966 | 33.09 |
+| host-breath-2 | 18.47 | 16.96 | 22.12 | 14.23 | 0.839 | 16.96 | 2.122 | 36.62 |
+| host-hold | 16.52 | 24.39 | 30.48 | 10.86 | 0.446 | 22.29 | 1.815 | 37.76 |
+| host-exhale | 13.93 | 34.44 | 35.26 | 30.52 | 0.886 | 34.44 | 2.138 | 34.62 |
+
+- first-last PSNR 13.93 to 18.47. Not a frozen still.
+- Zoom does not eat the MAD. breath-1, breath-2, exhale: `best_zoom_mad` equals first-last MAD. idle / hold: zoom only shaves ~2 MAD points. Not still-zoom theater.
+- breath-1, breath-2, exhale keep 81% to 89% of first-last MAD after the best small global shift. Local subject change.
+- idle / hold have more head/camera travel (shift residual 0.49 / 0.45) and still mid-window pair MAD 1.8 to 2.1. Consecutive frames are not near-identical.
+- Center MAD is at or above edge MAD on every clip. Opposite of an edge-only Ken Burns zoom.
+
+Visual (same files): same brunette host, landscape indoor set (door, wood shelf, plants). No baked captions. breath-1 f00 closed mouth, f03 mouth open mid-breath. exhale f00 slight pout, f04 tighter O-mouth blow. That is subject motion, not a pan of one still.
+
+Weaker than ugc-motion on the product path: mid pair MAD 1.8 to 3.0 vs 4.5 to 6.5; landscape 16:9 vs portrait 9:16; no on-clip step captions.
+
+### Fallback KEEP/CUT
+
+- ugc-motion primary: KEEP on the product path.
+- ugc-live as Ken Burns theater: CUT that claim. It is not Ken Burns.
+- ugc-live on the live product src: KEEP it off. Primary pack is 200 and already playing. Fallback did not fire.
+- Dual chain + unused `method-walkthrough.mp4` (46MB, not in `CLIPS`): still unused fat. Note only. Not a product CUT.
+
 ## Merge
 
 NO.
 
-Product is KEEP clean. Merge is not. Unused 46MB walkthrough is still on the publish tree. PR is still draft / do-not-merge from the authors. CoS: do not ping Mike for merge.
+Product is KEEP clean. Merge is not. Unused 46MB walkthrough is still on the publish tree. PR3 is still draft / do-not-merge from the authors. Do not merge PR3. Do not merge PR20. CoS: do not ping Mike for merge.
