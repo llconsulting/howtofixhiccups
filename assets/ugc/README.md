@@ -1,6 +1,6 @@
 # UGC host stills
 
-Live UI uses 800px WebP. JPEG twins are the same frames. Face stays. No personal names.
+Live UI uses 800×450 WebP made from `media/stills/host-*.jpg`. Face stays. No personal names.
 
 | File | Phase |
 | --- | --- |
