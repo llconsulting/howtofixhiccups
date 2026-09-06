@@ -1,46 +1,53 @@
 (() => {
   const CIRCUMFERENCE = 339.292;
-  const VIDEO_SRC = "/media/host/walkthrough.mp4";
-  const VIDEO_ALT = "/media/host/walkthrough.webm";
-  const CUES_SRC = "/media/host/cues.json";
+  const FULL_VIDEOS = ["/media/video/method-full.mp4", "/media/video/walkthrough.mp4"];
+  const STEP_CLIPS = {
+    inhale1: "/media/video/breath-swallow-1.mp4",
+    inhale2: "/media/video/breath-swallow-2.mp4",
+    hold: "/media/video/hold-30.mp4",
+    exhale: "/media/video/thin-straw-exhale.mp4",
+    extra: "/media/video/thin-straw-exhale.mp4"
+  };
+  const INTRO_CLIP = "/media/video/start.mp4";
+  const CUES_SRC = "/media/video/cues.json";
 
   const STEPS = [
     {
       id: "inhale1",
-      kicker: "Step 1 of 4",
-      label: "Deep breath in",
-      copy: "Fill your lungs. When you are ready, swallow.",
+      kicker: "Breathe. Swallow. Stack. Swallow.",
+      label: "Deep breath all the way in",
+      copy: "Swallow it.",
       kind: "guided",
       inhaleMs: 5000,
       swallowMs: 2800,
-      swallowCopy: "Swallow now.",
+      swallowCopy: "Swallow it.",
       nextLabel: "I swallowed"
     },
     {
       id: "inhale2",
-      kicker: "Step 2 of 4",
-      label: "Second breath on top",
-      copy: "Add another inhale without letting the first one go. Then swallow.",
+      kicker: "Breathe. Swallow. Stack. Swallow.",
+      label: "Another breath on top",
+      copy: "Swallow completely.",
       kind: "guided",
       inhaleMs: 5000,
       swallowMs: 2800,
-      swallowCopy: "Swallow now.",
+      swallowCopy: "Swallow completely.",
       nextLabel: "I swallowed"
     },
     {
       id: "hold",
-      kicker: "Step 3 of 4",
-      label: "Hold",
-      copy: "Hold for 30 full seconds. Stay as still as you can.",
+      kicker: "The method",
+      label: "Hold. 30 full seconds.",
+      copy: "Use the countdown. A count in your head tends to shrink.",
       kind: "count",
       durationMs: 30000,
       unit: "seconds"
     },
     {
       id: "exhale",
-      kicker: "Step 4 of 4",
-      label: "Thin straw blow",
-      copy: "Slowly blow out as through the thinnest straw.",
+      kicker: "The method",
+      label: "Thin stream. 10 seconds.",
+      copy: "Slowly blow out as through the tiniest straw.",
       kind: "count",
       durationMs: 10000,
       unit: "seconds"
@@ -48,8 +55,8 @@
     {
       id: "extra",
       kicker: "If you can",
-      label: "Keep the thin stream going",
-      copy: "Twelve to fifteen seconds if you still have a gentle stream of air.",
+      label: "Keep it thin to 12 or 15 if you can.",
+      copy: "Same thin stream. Keep it gentle.",
       kind: "count",
       durationMs: 5000,
       unit: "seconds",
@@ -87,6 +94,8 @@
   let lastShownSecond = null;
   let hostReady = false;
   let hostCues = {};
+  let fullVideoSrc = "";
+  let clipMap = {};
 
   function invalidate() {
     token += 1;
@@ -137,13 +146,31 @@
     return typeof value === "number" && Number.isFinite(value) ? value : null;
   }
 
+  function playSrc(src, seek) {
+    if (!els.video || !src) return;
+    if (els.video.getAttribute("src") !== src) {
+      els.video.src = src;
+      els.video.load();
+    }
+    if (typeof seek === "number") {
+      try {
+        els.video.currentTime = seek;
+      } catch {
+        /* Ignore seek errors on a fresh source. */
+      }
+    }
+    const play = els.video.play();
+    if (play && typeof play.catch === "function") play.catch(() => {});
+  }
+
   function syncHost(id) {
     if (!hostReady || !els.video) return;
-    const cue = cueFor(id);
     try {
-      if (cue !== null) els.video.currentTime = cue;
-      const play = els.video.play();
-      if (play && typeof play.catch === "function") play.catch(() => {});
+      if (fullVideoSrc) {
+        playSrc(fullVideoSrc, cueFor(id) ?? 0);
+        return;
+      }
+      if (clipMap[id]) playSrc(clipMap[id], 0);
     } catch {
       /* Autoplay can fail; the countdown still runs. */
     }
@@ -166,13 +193,12 @@
     running = false;
     stepIndex = -1;
     lastShownSecond = null;
-    els.kicker.textContent = "The sequence";
-    els.label.textContent = "Ready when you are";
-    els.copy.textContent =
-      "Start walks you through it. Two breaths with a swallow, a 30-second hold, then a thin blow.";
+    els.kicker.textContent = "The method";
+    els.label.textContent = "Four steps";
+    els.copy.textContent = "Press Start if you want the page to keep time.";
     if (els.phase) els.phase.classList.remove("is-changing");
     els.count.textContent = "30";
-    els.unit.textContent = "second hold ahead";
+    els.unit.textContent = "30 second hold ahead";
     setProgress(0);
     els.start.hidden = false;
     els.next.hidden = true;
@@ -185,9 +211,9 @@
     invalidate();
     running = false;
     paintPhase(
-      "That's the sequence",
-      "You can rest",
-      "If hiccups are still there, you may try it once more. If they linger, keep coming back, or arrive with other symptoms, talk to a clinician."
+      "The method",
+      "That is the sequence.",
+      "If they are still going after one pass, you can try once more. If they last, keep coming back, or show up with other symptoms, stop."
     );
     els.count.textContent = "✓";
     els.unit.textContent = "done";
@@ -195,9 +221,9 @@
     els.start.hidden = true;
     els.next.hidden = true;
     els.reset.hidden = false;
-    els.reset.textContent = "Start over";
+    els.reset.textContent = "Stop";
     if (els.extraNote) els.extraNote.hidden = true;
-    announce("Sequence finished.");
+    announce("That is the sequence.");
     pauseHost(false);
   }
 
@@ -217,7 +243,7 @@
     paintPhase(step.kicker, step.label, step.copy);
     els.start.hidden = true;
     els.reset.hidden = false;
-    els.reset.textContent = "Reset";
+    els.reset.textContent = "Stop";
     if (els.extraNote) els.extraNote.hidden = !(step.id === "exhale" || step.optional);
     syncHost(step.id);
 
@@ -303,7 +329,7 @@
 
   function reset() {
     renderIdle();
-    announce("Sequence reset.");
+    announce("Stopped.");
   }
 
   function revealHost() {
@@ -322,13 +348,10 @@
     if (els.placeholder) els.placeholder.hidden = false;
   }
 
-  function attachVideo(src, type) {
+  function attachVideo(src) {
     els.video.addEventListener("loadeddata", revealHost, { once: true });
     els.video.addEventListener("error", keepPlaceholder, { once: true });
-    const source = document.createElement("source");
-    source.src = src;
-    source.type = type;
-    els.video.appendChild(source);
+    els.video.src = src;
     els.video.load();
   }
 
@@ -343,16 +366,30 @@
         return window.fetch(url, { method: "GET", headers: { Range: "bytes=0-0" }, cache: "no-store" }).then((r) => r.ok);
       }).catch(() => false);
 
-    Promise.all([probe(VIDEO_SRC), probe(VIDEO_ALT), probe(CUES_SRC)]).then(([mp4, webm, cues]) => {
-      if (mp4) attachVideo(VIDEO_SRC, "video/mp4");
-      else if (webm) attachVideo(VIDEO_ALT, "video/webm");
+    const clipIds = Object.keys(STEP_CLIPS);
+    Promise.all([
+      Promise.all(FULL_VIDEOS.map((url) => probe(url).then((ok) => (ok ? url : "")))),
+      probe(INTRO_CLIP).then((ok) => (ok ? INTRO_CLIP : "")),
+      Promise.all(clipIds.map((id) => probe(STEP_CLIPS[id]).then((ok) => (ok ? [id, STEP_CLIPS[id]] : null)))),
+      probe(CUES_SRC)
+    ]).then(([fullHits, intro, clipHits, cues]) => {
+      fullVideoSrc = fullHits.find(Boolean) || "";
+      clipMap = {};
+      clipHits.forEach((pair) => {
+        if (pair) clipMap[pair[0]] = pair[1];
+      });
+      if (intro) clipMap.intro = intro;
 
-      if (!cues) return;
+      if (fullVideoSrc) attachVideo(fullVideoSrc);
+      else if (intro) attachVideo(intro);
+      else if (clipHits.some(Boolean)) attachVideo(clipHits.find(Boolean)[1]);
+
+      if (!cues) return null;
       return window.fetch(CUES_SRC, { cache: "no-store" }).then((res) => (res.ok ? res.json() : null));
     }).then((data) => {
       if (data && typeof data === "object") hostCues = data;
     }).catch(() => {
-      /* Assets are optional until Stills & Clips Desk delivers them. */
+      /* Assets are optional until Stills and Clips Desk delivers them. */
     });
   }
 

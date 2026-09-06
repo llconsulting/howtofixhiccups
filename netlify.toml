@@ -10,8 +10,7 @@
     X-Frame-Options = "DENY"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
 
-# Preview and branch deploys live on *.netlify.app — keep them out of the index.
-# Canonicals and JSON-LD always point at https://howtofixhiccups.com/.
+# Netlify hosts only. Canonicals stay on https://howtofixhiccups.com/.
 [[context.deploy-preview.headers]]
   for = "/*"
   [context.deploy-preview.headers.values]
@@ -22,7 +21,7 @@
   [context.branch-deploy.headers.values]
     X-Robots-Tag = "noindex, nofollow"
 
-# Dropped blog / about surfaces. Trailing-slash destinations.
+# Dropped blog / about / notes. Send them home. No Notes index.
 [[redirects]]
   from = "/about"
   to = "/"
@@ -36,49 +35,56 @@
   force = true
 
 [[redirects]]
+  from = "/notes"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/notes/"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/blog"
-  to = "/why/"
+  to = "/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/blog/"
-  to = "/why/"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/blog/ordinary-hiccups"
-  to = "/why/"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/blog/ordinary-hiccups/"
-  to = "/why/"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/blog/when-hiccups-linger"
-  to = "/when/"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/blog/when-hiccups-linger/"
-  to = "/when/"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/blog/callies-sequence"
   to = "/"
   status = 301
   force = true
 
 [[redirects]]
-  from = "/blog/callies-sequence/"
+  from = "/blog/*"
   to = "/"
+  status = 301
+  force = true
+
+# First rebuild used shorter slugs. Keep those working.
+[[redirects]]
+  from = "/why"
+  to = "/why-hiccups-start/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/why/"
+  to = "/why-hiccups-start/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/when"
+  to = "/when-to-stop/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/when/"
+  to = "/when-to-stop/"
   status = 301
   force = true
