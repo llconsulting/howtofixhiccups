@@ -1,8 +1,9 @@
 (() => {
   const CIRCUMFERENCE = 339.292;
   // v2 01-03 only. Idle/done stay on stills (do not play old start.mp4).
-  // Skip v2 04-thin-straw-exhale (glitchy) and hero-loop/thin-straw-loop-* (AI morph).
-  // Exhale KEEP: prior ugc-motion thin-straw-exhale. Swap 01-03 folder if Video Desk moves it.
+  // Skip v2 04-thin-straw-exhale (QC morph) and hero-loop/thin-straw-loop-4s.
+  // Hero muted: hero-loop/thin-straw-loop-3s.mp4 only (KEEP host-exhale cut).
+  // Exhale KEEP: prior ugc-motion thin-straw-exhale.
   const UGC_MOTION_V2 = "/media/video/ugc-motion-v2-2026-09-06";
   const UGC_EXHALE_KEEP = "/media/video/ugc-motion-2026-09-06/thin-straw-exhale.mp4";
   const CLIPS = {
