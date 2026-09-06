@@ -340,6 +340,10 @@ h1,
   min-height: 0;
 }
 
+.method-card.is-idle .phase-copy {
+  min-height: 0;
+}
+
 .phase.is-changing .phase-label,
 .phase.is-changing .phase-copy {
   opacity: 0.35;
