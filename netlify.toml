@@ -133,6 +133,18 @@
   status = 404
   force = true
 
+[[redirects]]
+  from = "/media/video/hero/README.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/media/video/hero/STATUS.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
 # Soft traps: never leave /index.html or leftover *.html as live URLs.
 [[redirects]]
   from = "/index.html"

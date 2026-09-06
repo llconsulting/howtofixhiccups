@@ -19,7 +19,7 @@
   <meta name="twitter:description" content="Four steps you can do in place. Not medical advice. Ordinary hiccups only.">
   <meta name="twitter:image" content="https://howtofixhiccups.com/og.png">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="preload" as="image" href="/assets/ugc/host-idle.webp" type="image/webp" fetchpriority="high">
+  <link rel="preload" as="image" href="/media/video/hero/slow-exhale.jpg" type="image/jpeg" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -109,17 +109,44 @@
   </header>
 
   <main id="main">
-    <section class="band band-hero">
-      <div class="wrap">
+    <section class="band band-hero has-plate">
+      <!--
+        Hero plate is a compressed loop from ugc-live/host-exhale.mp4
+        (Higgsfield slow-exhale KEEP). ugc-motion thin-straw-exhale.mp4
+        is 9:16 with burned-in captions, so it is not used as a background.
+      -->
+      <div class="hero-plate" aria-hidden="true">
+        <img
+          class="hero-poster"
+          src="/media/video/hero/slow-exhale.jpg"
+          alt=""
+          width="1280"
+          height="720"
+          fetchpriority="high"
+          decoding="async">
+        <video
+          id="hero-video"
+          class="hero-video"
+          muted
+          playsinline
+          loop
+          preload="none"
+          poster="/media/video/hero/slow-exhale.jpg"
+          data-src="/media/video/hero/slow-exhale.mp4"
+          hidden></video>
+      </div>
+      <div class="wrap hero-copy">
         <h1>How to fix hiccups</h1>
         <p class="hero-lead">
           <span>You have hiccups.</span>
-          <span>This is one method.</span>
-          <span>Four steps.</span>
+          <span>This is one method. Four steps.</span>
           <span>You can do them sitting still.</span>
         </p>
-        <p class="lede">A quiet sequence you can run in place. No water. No extra props.</p>
+        <p class="lede">A quiet sequence. No water. No extra props.</p>
         <p class="notice">Not medical advice. For ordinary, short-lived hiccups.</p>
+        <p class="hero-cta">
+          <a class="btn" href="#method">Start</a>
+        </p>
         <p class="hero-links">
           <a href="/why/">Why hiccups start</a>
           <a href="/when/">When to stop</a>

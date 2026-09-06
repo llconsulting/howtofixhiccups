@@ -1,5 +1,7 @@
 (() => {
   const CIRCUMFERENCE = 339.292;
+  // Interim true-motion pack. Stills is reminting ugc-motion-v2-2026-09-06
+  // (swallow visible + 30s hold). Swap this path when v2 lands — do not wait on it here.
   const UGC_MOTION = "/media/video/ugc-motion-2026-09-06";
   const CLIPS = {
     idle: [`${UGC_MOTION}/start.mp4`],
@@ -119,6 +121,37 @@
     rail: document.getElementById("beat-rail"),
     written: document.getElementById("written-steps")
   };
+
+  function playHeroPlate() {
+    const hero = document.getElementById("hero-video");
+    if (!hero) return;
+    const src = hero.getAttribute("data-src");
+    if (!src) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      hero.pause();
+      hero.removeAttribute("src");
+      hero.load();
+      hero.hidden = true;
+      return;
+    }
+    hero.muted = true;
+    hero.defaultMuted = true;
+    hero.playsInline = true;
+    hero.loop = true;
+    if (hero.getAttribute("src") !== src) {
+      hero.setAttribute("src", src);
+    }
+    const play = hero.play();
+    if (play && typeof play.then === "function") {
+      play.then(() => {
+        hero.hidden = false;
+      }).catch(() => {
+        hero.hidden = true;
+      });
+    }
+  }
+
+  playHeroPlate();
 
   if (!els.start || !els.timer) return;
 
@@ -541,5 +574,16 @@
   els.next.addEventListener("click", next);
   els.reset.addEventListener("click", reset);
   if (els.share) els.share.addEventListener("click", shareLink);
+  const heroStart = document.querySelector('.hero-cta a[href="#method"]');
+  if (heroStart) {
+    heroStart.addEventListener("click", (event) => {
+      event.preventDefault();
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (els.card) {
+        els.card.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+      }
+      els.start.focus();
+    });
+  }
   renderIdle();
 })();
