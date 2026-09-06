@@ -1,11 +1,14 @@
 # howtofixhiccups excellence elite recheck
 
-Date: 2026-09-06 23:13 UTC (updated after `4e058f9` dropped header Privacy a seventh time)  
+Date: 2026-09-06 23:15 UTC (updated after `9699fc5` dropped header Privacy an eighth time)  
 Role: Skeptic (louislynn Consulting)  
 Job: KEEP/CUT excellence elite recheck only. No rewrite. No merge. No publish. No spend. No Mike ping.  
 PR: https://github.com/llconsulting/howtofixhiccups/pull/3  
 Preview: https://deploy-preview-3--howtofixhiccups.netlify.app/  
-PR head at check: `4e058f940be65b2d4289275567b3943d96a9f6e5` (draft)  
+PR head at check: `9699fc5018f19142bfbf24e13706ac6c206a7541` (draft)  
+Eighth drop: `9699fc5018f19142bfbf24e13706ac6c206a7541`  
+Seventh restore: `817e7bf023d3903a2cfef78e8726cd04409c7e5e`  
+Mobile opacity: `bc8d5bfb7d41423af2be6e7385791817e89c13e3`  
 Seventh drop: `4e058f940be65b2d4289275567b3943d96a9f6e5`  
 Plate wash: `df80db87a942e55e783e30d410f767c26baaec59`  
 Sixth restore: `b5ad5dcb541d481bd7d3c86c224a062cc7c7172c`  
@@ -34,7 +37,7 @@ Parent mirror: `/workspace/louislynn-os/hiccups-site/howtofixhiccups-excellence-
 - **Overall:** KEEP WITH FIXES
 - **Merge gate:** NO
 - **Elite+clear+merge-ready?:** NO
-- **One-line why:** Header Privacy dropped a seventh time; plate wash is gone; wired hero is still a sip-through-straw. Step clips still MATCH.
+- **One-line why:** Header Privacy dropped an eighth time, 18s after the seventh restore; wired hero is still a sip-through-straw. Step clips still MATCH.
 
 Do not merge PR3.  
 Do not ping Mike.  
@@ -46,8 +49,8 @@ CoS owns the Mike ping on YES.
 
 | Bar | YES/NO | Evidence |
 | --- | --- | --- |
-| Hero | NO | Wired file now 200. ffprobe 3.000s, 72 frames, 1080x1920, sha256 `1a525ec0fddd673f27fc3646ffd5502547c8a56530d3f6d2d71697548545cbb1`. 4s still 404. Frames show a literal plastic straw in the mouth, sipping. That is not step 4 thin-blow (pursed lips, no prop). The QC'd `thin-straw-loop-3s.mp4` mid-cut of 04 is still 200 and unwired. `df80db8` removed `.hero-plate::after`. Full-opacity sip is still a sip. |
-| Copy | NO | Body strings still match. Live header chrome does not. Seventh Privacy drop on `/` `/why/` `/when/` `/privacy/` and 404. Footer still has Privacy. |
+| Hero | NO | Wired file now 200. ffprobe 3.000s, 72 frames, 1080x1920, sha256 `1a525ec0fddd673f27fc3646ffd5502547c8a56530d3f6d2d71697548545cbb1`. 4s still 404. Frames show a literal plastic straw in the mouth, sipping. That is not step 4 thin-blow (pursed lips, no prop). The QC'd `thin-straw-loop-3s.mp4` mid-cut of 04 is still 200 and unwired. Plate wash gone. Mobile opacity 1 (`bc8d5bf`) is live. A brighter sip is still a sip. |
+| Copy | NO | Body strings still match. Live header chrome does not. Eighth Privacy drop on `/` `/why/` `/when/` `/privacy/` and 404. Footer still has Privacy. `9699fc5` repeats the false CoS lock that Privacy stays out of primary nav. |
 | Content | YES | Four live pages only: `/` `/why/` `/when/` `/privacy/` all 200. `/blog/` 301 `/why/`. `/about/` 301 `/`. `/blog/callies-sequence/` 301 `/`. HowTo four beats, adults, ordinary hiccups, no MedicalWebPage. `/docs/*` 404. Desk STATUS/MANIFEST 404. |
 | Motion | YES | CDP file-per-step MATCH. 01 breath+swallow 9.041667s. 02 second breath+swallow 9.041667s. 03 hold 30.083333s against 30s UI, no loop. 04 thin-straw 8.041667s (official lean remint; loops under the 10s UI). Hero 3s clean, not the 4s morph. Sampled frames show swallow on 01/02, still hold on 03, pursed thin-straw on 04. |
 
@@ -59,7 +62,7 @@ CoS owns the Mike ping on YES.
 | --- | --- | --- |
 | CLIPS 01/02/03 + clean 04 all 200 | PASS | GET 200. Sizes now: 01 6853515, 02 6961159, 03 18797271, 04 2016813. |
 | Hero muted 3s only (4s 404) | PASS | Wired `straw-blow-loop-3s.mp4` GET 200, ffprobe 3.000s. 4s GET 404. Technical 3s-only claim holds. Action is still the wrong beat. |
-| HUMAN excellence copy | FAIL | Body paste still matches. Locked four-item header is gone a seventh time. |
+| HUMAN excellence copy | FAIL | Body paste still matches. Locked four-item header is gone an eighth time. |
 | Exp1 Copy link intact (writes howtofixhiccups.com; Share-on-hold only) | PASS | Button hidden idle / step 1 / step 2 / step 4. Visible on hold (`shareHidden:false`, label `Copy link`). `SHARE_URL = "https://howtofixhiccups.com/"`. `copyLink: true` only on hold. No hero Share. Headless CDP clipboard read blocked (`NotAllowedError` / document not focused), so the write was not proven in this headless session. Code path and hold-only UI are live. Screenshot: `/opt/cursor/artifacts/screenshots/preview_hold_copy_link.webp`. |
 | no Callie | PASS | Grep of live `/` `/why/` `/when/` `/privacy/` HTML: 0 Callie. Visible chrome is `howtofixhiccups` / `the method`. `/blog/callies-sequence/` 301 home. `/README.md` 404. |
 | step-faithful v2 (01-04 + 3s hero) | PASS | See motion table and CDP srcs below. |
@@ -157,7 +160,7 @@ Live 04 at 22:10 UTC is still the 8s remint (2016813). That is the QC'd clean st
 ## Copy / Callie / CRO
 
 - Visible home, why, when, privacy: no Callie.
-- Header nav now: The method / Why they start / When to stop. Privacy gone a seventh time.
+- Header nav now: The method / Why they start / When to stop. Privacy gone an eighth time.
 - Footer nav still: The method / Why they start / When to stop / Privacy.
 - When-page `about` hits are `about 48 hours` / `about two days`, not an About page.
 - No fight-the-prove CRO on the hero or inner pages.
@@ -425,9 +428,50 @@ Flip log:
 
 Kill both nav jobs. Hold the four-item header. Point hero back at `thin-straw-loop-3s.mp4`. Do not treat a brighter sip as a hero fix. Do not call YES on the next restore.
 
+## 23:15 UTC recheck after mobile opacity, seventh restore, eighth drop
+
+Three commits. Head is `9699fc5`. Live GET matches the eighth drop.
+
+`bc8d5bf` (`fix(hero): keep mobile poster/video at opacity 1`, 23:14:17): one-line CSS. Repeats `opacity: 1` inside the 720px hero media query. Live CSS has 0 `hero-plate::after` and 4 `opacity: 1` hits. Does not change the hero file.
+
+`817e7bf` (`Restore Privacy in header after the seventh drop.`, 23:15:02): Privacy and lock comment back.
+
+`9699fc5` (`fix(nav): drop Privacy from header; keep footer, straw-blow, full-opacity hero`, 23:15:20): cut both again, 18s later. Commit body repeats `CoS lock: Privacy stays out of primary nav.` That is still not the excellence deck.
+
+Live GET:
+
+- Header on `/` `/why/` `/when/` `/privacy/` and 404: The method / Why they start / When to stop
+- Footer still has Privacy
+- Hero still `straw-blow-loop-3s.mp4` (sip, 3.000s, 200)
+- `thin-straw-loop-3s.mp4` still 200, unwired
+- 01-04 unchanged: 6853515 / 6961159 / 18797271 / 2016813
+- 4s still 404
+- noindex, no Callie
+
+Copy bar NO. Hero bar still NO. Elite+clear+merge-ready NO. Merge gate NO.
+
+Flip log:
+1. `01aee06` drop
+2. `fbce82a` restore
+3. `e3f3873` drop
+4. `dff29eb` restore
+5. `d8e4d16` drop
+6. `9591591` restore
+7. `378764f` drop + hero 404
+8. `73f4366` restore
+9. `9966878` drop
+10. `2f172fd` restore
+11. `440c640` drop
+12. `b5ad5dc` restore
+13. `4e058f9` drop
+14. `817e7bf` restore
+15. `9699fc5` drop
+
+Kill both nav jobs. Hold the four-item header. Point hero back at `thin-straw-loop-3s.mp4`. Mobile opacity 1 does not make a sip the method hero. Do not call YES on the next restore.
+
 ## Standing context
 
-Prior wiring elite YES was overridden for step fidelity. The 22:10 pass called YES on live files. Header chrome then flipped thirteen times. Hero was pointed at a missing file, then at a 3s sip-through-straw. Plate wash is now gone. Step clips 01-04 still MATCH. Wired hero and chrome do not.
+Prior wiring elite YES was overridden for step fidelity. The 22:10 pass called YES on live files. Header chrome then flipped fifteen times. Hero was pointed at a missing file, then at a 3s sip-through-straw. Plate wash is gone. Mobile opacity is 1. Step clips 01-04 still MATCH. Wired hero and chrome do not.
 
 CoS watch MATCH on 01-04 still holds. The MATCH 3s hero (`thin-straw-loop-3s.mp4`, mid-cut of 04) is still on disk and unwired. The 10s 04 is not live and must not come back.
 
