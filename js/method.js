@@ -1,6 +1,22 @@
 (() => {
   const CIRCUMFERENCE = 339.292;
-  const CLIPS = {};
+  const UGC_LIVE = "/media/video/ugc-live";
+  const CLIPS = {
+    idle: `${UGC_LIVE}/host-idle.mp4`,
+    inhale1: `${UGC_LIVE}/host-breath-1.mp4`,
+    inhale2: `${UGC_LIVE}/host-breath-2.mp4`,
+    hold: `${UGC_LIVE}/host-hold.mp4`,
+    exhale: `${UGC_LIVE}/host-exhale.mp4`,
+    extra: `${UGC_LIVE}/host-exhale.mp4`
+  };
+  const POSTERS = {
+    idle: "/media/stills/host-idle.jpg",
+    inhale1: "/media/stills/host-breath-1.jpg",
+    inhale2: "/media/stills/host-breath-2.jpg",
+    hold: "/media/stills/host-hold.jpg",
+    exhale: "/media/stills/host-exhale.jpg",
+    extra: "/media/stills/host-exhale.jpg"
+  };
   const STILLS = {
     idle: {
       src: "/assets/ugc/host-idle.webp",
@@ -114,6 +130,7 @@
   let token = 0;
   let lastShownSecond = null;
   const warmed = new Set();
+  const blockedClips = new Set();
 
   function invalidate() {
     token += 1;
@@ -302,6 +319,14 @@
     keepStill();
   }
 
+  function posterFor(id) {
+    return POSTERS[id] || POSTERS.idle;
+  }
+
+  function markBlocked(src) {
+    if (src) blockedClips.add(src);
+  }
+
   function playClip(id) {
     if (!els.video) return;
     keepStill();
@@ -310,7 +335,7 @@
       return;
     }
     const src = CLIPS[id];
-    if (!src) {
+    if (!src || blockedClips.has(src)) {
       hideClip();
       return;
     }
@@ -320,6 +345,7 @@
       els.video.playsInline = true;
       els.video.loop = true;
       els.video.preload = "none";
+      els.video.setAttribute("poster", posterFor(id));
       els.video.classList.remove("is-on");
       if (els.video.getAttribute("src") !== src) {
         els.video.hidden = true;
@@ -332,6 +358,7 @@
           els.video.hidden = false;
           els.video.classList.add("is-on");
         }).catch(() => {
+          markBlocked(src);
           hideClip();
         });
       }
@@ -341,7 +368,10 @@
   }
 
   if (els.video) {
-    els.video.addEventListener("error", hideClip);
+    els.video.addEventListener("error", () => {
+      markBlocked(els.video.getAttribute("src"));
+      hideClip();
+    });
   }
 
   function renderIdle() {
@@ -368,7 +398,7 @@
     showShare(false);
     markBeat(-1);
     showStill("idle");
-    hideClip();
+    playClip("idle");
   }
 
   function finish() {
@@ -396,7 +426,7 @@
     markBeat(4);
     announce("That is the sequence.");
     showStill("idle");
-    hideClip();
+    playClip("idle");
   }
 
   function beginStep(index) {
