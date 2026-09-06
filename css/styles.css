@@ -1061,6 +1061,7 @@ h1,
   .hero-poster,
   .hero-video {
     object-position: 50% 20%;
+    opacity: 1;
   }
 
   .band-hero.has-plate h1,
