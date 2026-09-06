@@ -21,6 +21,43 @@
   [context.branch-deploy.headers.values]
     X-Robots-Tag = "noindex, nofollow"
 
+# Do not publish desk notes or the repo README as live pages.
+[[redirects]]
+  from = "/README.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/README"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/assets/ugc/README.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/assets/video/README.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/media/stills/README.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/media/video/README.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
 # Soft traps: never leave /index.html or leftover *.html as live URLs.
 [[redirects]]
   from = "/index.html"
