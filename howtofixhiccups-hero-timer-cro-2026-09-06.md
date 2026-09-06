@@ -1,88 +1,81 @@
 # howtofixhiccups — hero → timer CRO (light)
 
 **Date:** 2026-09-06  
-**Walk:** https://deploy-preview-3--howtofixhiccups.netlify.app/  
+**Revised:** 2026-09-06 per Skeptic KEEP WITH FIXES. Do not merge PR27 as ship. No implement.  
+**Walk (original):** https://deploy-preview-3--howtofixhiccups.netlify.app/  
 **Scope:** hero → Start → timer/hold only.  
 **Locks:** No implement without CoS. No merge/deploy/spend. Skeptic veto on fight-the-prove. No Callie. Faceless naming. No invented rates or traffic.
 
-Web mapping (filed, not re-audited): idle `start.mp4` autoplays with Start-here captions; hold `hold.mp4` ~10s loops under 30s UI; breath clips ~5s vs visitor-paced swallow. File-per-step wiring OK. Felt match NO.
+Skeptic NOW crawl (2026-09-06): deploy `6a9ddc8444e33d000826f16a`. Live hold is v2 `03-hold-30.mp4` (~30.08s, loop off). Live `CLIPS.idle` is `[]` (stills). Do not treat prior idle `start.mp4` / 10s hold-loop mapping as current tickets.
 
-## 1. Does idle/hero looping video delay or confuse Start?
+## 1. Hero Start → method
 
-**Yes.**
+**KEEP as finding (not implement-now).**
 
 Hero Start is the first Start. It does not start the method.
 
 - URL: `/` hero. Control: `<a class="btn" href="#method">Start</a>`.
-- Walk: tap scrolled to `#method`. Card still idle (`The method` / `Start` / `#start-btn`). No Step 1. No timer.
-- Only `#start-btn` calls `beginStep(0)`.
+- Evidence: tap scrolls to `#method` and focuses `#start-btn`. Card stays idle until `#start-btn` calls `beginStep(0)`.
+- Two Starts on first paint: hero jump + card Start. Same finding, not a second rebuild.
 
-Hero plate loops the end of the method under that first Start.
+## 2. Hero plate under the first Start
 
-- `#hero-video` is `loop` + `data-src="/media/video/hero/slow-exhale.mp4"` (10.04s). HTML: compressed from `ugc-live/host-exhale.mp4`.
-- Walk: pursed-lip / O-mouth blow cycles behind H1 + hero Start while copy says four steps / Start.
-- CoS: hero exhale-loop on the path into the timer.
+**KEEP as do-not-ship-this-loop. CUT as ship-a-new-loop.**
 
-Studio idle is a second loop next to the real Start.
+- `#hero-video` is `loop` + `data-src="/media/video/hero/slow-exhale.mp4"` (~10.04s) on the path into the timer.
+- Defect: looping exhale / blow face under the first Start reads as already in the method.
+- Do **not** ship this loop. Do **not** replace it with v2 `hero-loop/thin-straw-loop-*` (AI morph; skipped/glitchy). Do **not** treat HTML “slow-exhale KEEP” as a ship item.
+- If a hero plate stays: idle / ready **still**. Not a looping exhale. Stills remint owns any clean exhale. A 3s clean loop may land separately from CoS — do not recommend morph takes from this file.
 
-- `playClip("idle")` → `/media/video/ugc-motion-2026-09-06/start.mp4` (5.04s, `loop = true`). Figcaption: `Follow along.`
-- Filed: burned-in `Start here · Breathe easy`. This walk’s host-frame crop showed lower face only; lower-third not readable. Mapping not re-opened.
+## 3. Timer / hold path (current)
 
-Two Starts on first paint. First Start is a jump. Looping exhale reads as already in the method.
+**Stale hold-loop P0: CUT.**
 
-## 2. Does hold/exhale loop under the countdown kill trust mid-method?
+- Live hold is a ~30s file with loop off. Old `ugc-motion` 10s hold loop is not the live src.
+- KEEP as revert lock only: if someone reverts to a 10s hold under a 30s ring, the duration lie returns. Not a live P0.
+- Timer wrap stays hidden until the hold beat. KEEP.
+- Blow: prior `thin-straw-exhale.mp4` ~10s may still loop on non-hold / extra. KEEP as note only. Not P0. Do not spend. v2 04 stays skipped (glitchy).
 
-**Hold: yes (duration lie). Blow: closer, still a loop.**
+## 4. Prove stand-down
 
-- Hold URL: `/` after two `I swallowed` taps. Copy: `Stay still for all 30 seconds.` Ring counts 30.
-- Clip: `hold.mp4` 10.04s, `loop = true`. Restarts ~3× while the honest count is still running.
-- Filed: felt match NO. Pack STATUS: hold is Kling ~10s, not a padded 30.
-- Walk: face stays in a hold pose; clip length ≠ the ring. Trust break is the seam / restart.
+**KEEP.**
 
-- Blow: `thin-straw-exhale.mp4` 10.04s under a 10s ring (length match). Same file loops again on the optional extra 5s. Walk: O-mouth blow at Step 4 with the count on.
+- Mid-hold **Copy link** (`#share-btn`, hold `copyLink: true`) stays. Do not treat as a rebuild item.
+- Fight-the-prove stand-down: no Share-on-hold implement, no competing mid-hold CTA, no host-face demotion from this file.
 
-Do not treat mid-hold Copy link as a rebuild item. Present (`copyLink: true`). Skeptic veto / fight-the-prove stand-down.
+## 5. What to keep (principles, not implement tickets)
 
-## 3. What the rebuild must keep for a clean hero → Start → timer path
-
-Keep:
-
-- One Start that starts the runner (`#start-btn` / `beginStep(0)`). Hero Start must be that action, or must not say Start.
-- Timer hidden until the hold beat. Already true.
-- File-per-step clips. Wiring OK. Do not go back to one theater / `method-full`.
-- Visitor-paced `I swallowed`. Not a rebuild ticket.
+- One Start that starts the runner, or do not say Start. Later CoS row only.
+- Timer hidden until hold. Already true.
+- File-per-step clips. Do not go back to one theater / `method-full`. Wiring class ≠ elite+merge-ready.
+- Visitor-paced `I swallowed`. Do not rewrite the tap.
 - Written steps if the picture fails.
 - Faceless naming. No Callie.
 - Exp1 Copy link on hold. Do not implement against it.
 
-If a hero plate stays: idle / ready still. Not a looping exhale under the first Start.
-
-If a hold clip stays: one motion that lasts the 30s count, or a still. Do not loop a 10s hold under a 30s honest ring.
-
-## 4. P0 / P1
+## 6. P0 / P1 (revised)
 
 ### P0
 
-1. **Hero Start does not start.**  
-   URL: https://deploy-preview-3--howtofixhiccups.netlify.app/  
-   Evidence: hero `Start` = `#method` jump. Walk: idle card still showing Start. Sequence starts only from `#start-btn`.
+1. **Hero Start does not start.** Finding only. Jump + focus. Not implement-now from this file.  
+   URL: https://deploy-preview-3--howtofixhiccups.netlify.app/
 
-2. **Hero loops exhale under the first Start.**  
-   Same URL, `#hero-video`.  
-   Evidence: `slow-exhale.mp4` 10.04s loop from host-exhale. Walk: blow face behind Start. End-state on the entry.
+2. **Hero loops exhale under the first Start.** Do-not-ship-this-loop only. CUT ship-a-new-loop / AI-morph hero-loop.  
+   Same URL, `#hero-video` / `slow-exhale.mp4`.
 
-3. **Hold clip loops under the 30s count.**  
-   Same URL, Step 3.  
-   Evidence: `hold.mp4` 10.04s + `loop`. UI 30s. Filed felt match NO.
+### CUT (stale / activity)
+
+- Hold clip loops under the 30s count as a live P0.
+- Idle `start.mp4` loops beside the real Start as a current P1.
+- Breath ~5s loop as a current P1 sprint.
+- Any ship of glitchy AI-morph `hero-loop/*` or KEEP of current looping exhale as product.
 
 ### P1
 
-1. **Two Starts.** Hero jump + card start on one first screen.
-2. **Idle `start.mp4` loops beside the real Start** (filed Start-here captions; crop hid them on this walk).
-3. **Breath clips ~5s loop vs visitor-paced swallow** (filed; not re-mapped).
+1. **Two Starts on first paint.** Finding only. Same as P0.1. Not implement-now.
 
-Out of scope / stand-down: Share-on-hold implement, host-face demotion, skip/back chrome, swallow-tap rewrite, rates, spend.
+Out of scope / stand-down: Share-on-hold implement, host-face demotion, skip/back chrome, swallow-tap rewrite, rates, spend, PR3/PR27 merge-as-ship.
 
-## 5. Metrics
+## 7. Metrics
 
 Not in the current record.
