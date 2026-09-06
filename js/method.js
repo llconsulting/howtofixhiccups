@@ -1,13 +1,13 @@
 (() => {
   const CIRCUMFERENCE = 339.292;
-  const UGC_LIVE = "/media/video/ugc-live";
+  const UGC_MOTION = "/media/video/ugc-motion-2026-09-06";
   const CLIPS = {
-    idle: `${UGC_LIVE}/host-idle.mp4`,
-    inhale1: `${UGC_LIVE}/host-breath-1.mp4`,
-    inhale2: `${UGC_LIVE}/host-breath-2.mp4`,
-    hold: `${UGC_LIVE}/host-hold.mp4`,
-    exhale: `${UGC_LIVE}/host-exhale.mp4`,
-    extra: `${UGC_LIVE}/host-exhale.mp4`
+    idle: `${UGC_MOTION}/start.mp4`,
+    inhale1: `${UGC_MOTION}/breath-swallow-1.mp4`,
+    inhale2: `${UGC_MOTION}/breath-swallow-2.mp4`,
+    hold: `${UGC_MOTION}/hold.mp4`,
+    exhale: `${UGC_MOTION}/thin-straw-exhale.mp4`,
+    extra: `${UGC_MOTION}/thin-straw-exhale.mp4`
   };
   const POSTERS = {
     idle: "/media/stills/host-idle.jpg",

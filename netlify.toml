@@ -109,6 +109,24 @@
   status = 404
   force = true
 
+[[redirects]]
+  from = "/media/video/ugc-live/MANIFEST.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/media/video/ugc-motion-2026-09-06/README.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/media/video/ugc-motion-2026-09-06/MANIFEST.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
 # Soft traps: never leave /index.html or leftover *.html as live URLs.
 [[redirects]]
   from = "/index.html"
