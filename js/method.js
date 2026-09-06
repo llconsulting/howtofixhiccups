@@ -48,9 +48,6 @@
       label: "Deep breath all the way in",
       copy: "Swallow it.",
       kind: "guided",
-      inhaleMs: 5000,
-      swallowMs: 2800,
-      swallowCopy: "Swallow it.",
       nextLabel: "I swallowed"
     },
     {
@@ -59,9 +56,6 @@
       label: "Another breath on top",
       copy: "Swallow completely.",
       kind: "guided",
-      inhaleMs: 5000,
-      swallowMs: 2800,
-      swallowCopy: "Swallow completely.",
       nextLabel: "I swallowed"
     },
     {
@@ -108,6 +102,7 @@
     reset: document.getElementById("reset-btn"),
     extraNote: document.getElementById("extra-note"),
     card: document.getElementById("method"),
+    timerWrap: document.getElementById("timer-wrap"),
     live: document.getElementById("live"),
     video: document.getElementById("host-video"),
     still: document.getElementById("host-still"),
@@ -243,8 +238,9 @@
     if (els.phase) els.phase.classList.remove("is-changing");
     if (els.card) {
       els.card.classList.add("is-idle");
-      els.card.classList.remove("is-running");
+      els.card.classList.remove("is-running", "is-timing");
     }
+    if (els.timerWrap) els.timerWrap.hidden = true;
     els.count.textContent = "";
     els.unit.textContent = "";
     setProgress(0);
@@ -265,9 +261,10 @@
       "If they are still going after one pass, you can try once more. If they last, keep coming back, or come with other symptoms, stop."
     );
     if (els.card) {
-      els.card.classList.remove("is-idle");
+      els.card.classList.remove("is-idle", "is-timing");
       els.card.classList.add("is-running");
     }
+    if (els.timerWrap) els.timerWrap.hidden = true;
     els.count.textContent = "✓";
     els.unit.textContent = "done";
     setProgress(1);
@@ -300,8 +297,10 @@
     els.reset.textContent = "Stop";
     if (els.card) {
       els.card.classList.remove("is-idle");
+      els.card.classList.toggle("is-timing", step.kind === "count");
       els.card.classList.add("is-running");
     }
+    if (els.timerWrap) els.timerWrap.hidden = step.kind !== "count";
     if (els.extraNote) els.extraNote.hidden = !(step.id === "exhale" || step.optional);
     showStill(step.id);
     syncHost(step.id);

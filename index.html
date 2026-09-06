@@ -125,27 +125,6 @@
       </p>
 
       <section class="studio" aria-labelledby="method-heading">
-        <figure class="host-card">
-          <div class="host-frame">
-            <img
-              id="host-still"
-              class="host-still"
-              src="/assets/ugc/ugc-host-01-start.png"
-              alt="Young woman with brown hair and green eyes smiling at the camera in a cream sweater"
-              width="1080"
-              height="1920">
-            <video id="host-video" class="host-video" playsinline muted preload="metadata" hidden></video>
-            <div class="host-placeholder" id="host-placeholder" hidden>
-              <div>
-                <strong>Host video</strong>
-                <p>On-camera walkthrough, synced to Start and the countdown.</p>
-                <span class="host-slot">/media/video/method-full.mp4</span>
-              </div>
-            </div>
-          </div>
-          <figcaption class="host-caption">Walkthrough stills, synced to Start. Video drops in /media/video/ when it lands.</figcaption>
-        </figure>
-
         <div class="method-card is-idle" id="method">
           <div class="phase" id="phase">
             <p class="phase-kicker" id="phase-kicker">The method</p>
@@ -158,7 +137,7 @@
             <button class="btn btn-secondary" id="reset-btn" type="button" hidden>Stop</button>
           </div>
           <p class="start-helper" id="start-helper">30 second hold ahead</p>
-          <div class="timer-wrap">
+          <div class="timer-wrap" id="timer-wrap" hidden>
             <div class="timer" id="timer">
               <svg viewBox="0 0 120 120" aria-hidden="true">
                 <circle class="track" cx="60" cy="60" r="54"></circle>
@@ -176,6 +155,21 @@
           <p class="lightheaded">Stop if you feel lightheaded.</p>
           <p class="live" id="live" aria-live="polite"></p>
         </div>
+
+        <figure class="host-card">
+          <div class="host-frame">
+            <img
+              id="host-still"
+              class="host-still"
+              src="/assets/ugc/ugc-host-01-start.png"
+              alt="Young woman with brown hair and green eyes smiling at the camera in a cream sweater"
+              width="1080"
+              height="1920">
+            <video id="host-video" class="host-video" playsinline muted preload="metadata" hidden></video>
+            <div class="host-placeholder" id="host-placeholder" hidden></div>
+          </div>
+          <figcaption class="host-caption">A parallel demo. The written steps below work if the pictures do not load.</figcaption>
+        </figure>
       </section>
 
       <article class="steps" id="method-heading">
