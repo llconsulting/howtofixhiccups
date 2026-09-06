@@ -2,7 +2,7 @@
   const CIRCUMFERENCE = 339.292;
   // Full v2 pack. Idle/done stay on stills (do not play old start.mp4).
   // Exhale is clean 04. Skip hero-loop/thin-straw-loop-4s.
-  // Hero muted: hero-loop/thin-straw-loop-3s.mp4 only.
+  // Hero muted: hero-loop/straw-blow-loop-3s.mp4 only.
   const UGC_MOTION_V2 = "/media/video/ugc-motion-v2-2026-09-06";
   const CLIPS = {
     idle: [],
