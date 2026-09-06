@@ -10,6 +10,32 @@
   };
   const INTRO_CLIP = "/media/video/start.mp4";
   const CUES_SRC = "/media/video/cues.json";
+  const STILLS = {
+    idle: {
+      src: "/assets/ugc/ugc-host-01-start.png",
+      alt: "Person on camera running the four-step hiccup method."
+    },
+    inhale1: {
+      src: "/assets/ugc/ugc-host-02-breath-swallow-1.png",
+      alt: "Person on camera taking a deep breath, then swallowing."
+    },
+    inhale2: {
+      src: "/assets/ugc/ugc-host-03-breath-swallow-2.png",
+      alt: "Person on camera adding a second breath, then swallowing."
+    },
+    hold: {
+      src: "/assets/ugc/ugc-host-04-hold-30.png",
+      alt: "Person on camera holding their breath."
+    },
+    exhale: {
+      src: "/assets/ugc/ugc-host-05-thin-straw-exhale.png",
+      alt: "Person on camera blowing out slowly through pursed lips."
+    },
+    extra: {
+      src: "/assets/ugc/ugc-host-05-thin-straw-exhale.png",
+      alt: "Person on camera blowing out slowly through pursed lips."
+    }
+  };
 
   const STEPS = [
     {
@@ -79,6 +105,7 @@
     extraNote: document.getElementById("extra-note"),
     live: document.getElementById("live"),
     video: document.getElementById("host-video"),
+    still: document.getElementById("host-still"),
     placeholder: document.getElementById("host-placeholder")
   };
 
@@ -139,6 +166,18 @@
       els.copy.textContent = copy;
       if (els.phase) els.phase.classList.remove("is-changing");
     }, 90);
+  }
+
+  function showStill(id) {
+    if (!els.still) return;
+    const still = STILLS[id] || STILLS.idle;
+    if (els.still.getAttribute("src") === still.src) return;
+    els.still.classList.add("is-changing");
+    window.setTimeout(() => {
+      els.still.src = still.src;
+      els.still.alt = still.alt;
+      els.still.classList.remove("is-changing");
+    }, 80);
   }
 
   function cueFor(id) {
@@ -204,6 +243,7 @@
     els.next.hidden = true;
     els.reset.hidden = true;
     if (els.extraNote) els.extraNote.hidden = true;
+    showStill("idle");
     pauseHost(true);
   }
 
@@ -213,7 +253,7 @@
     paintPhase(
       "The method",
       "That is the sequence.",
-      "If they are still going after one pass, you can try once more. If they last, keep coming back, or show up with other symptoms, stop."
+      "If they are still going after one pass, you can try once more. If they last, keep coming back, or come with other symptoms, stop."
     );
     els.count.textContent = "✓";
     els.unit.textContent = "done";
@@ -224,6 +264,7 @@
     els.reset.textContent = "Stop";
     if (els.extraNote) els.extraNote.hidden = true;
     announce("That is the sequence.");
+    showStill("idle");
     pauseHost(false);
   }
 
@@ -245,6 +286,7 @@
     els.reset.hidden = false;
     els.reset.textContent = "Stop";
     if (els.extraNote) els.extraNote.hidden = !(step.id === "exhale" || step.optional);
+    showStill(step.id);
     syncHost(step.id);
 
     if (step.kind === "guided") {
@@ -335,6 +377,7 @@
   function revealHost() {
     hostReady = true;
     if (els.video) els.video.hidden = false;
+    if (els.still) els.still.hidden = true;
     if (els.placeholder) els.placeholder.hidden = true;
   }
 
@@ -345,7 +388,8 @@
       els.video.removeAttribute("src");
       els.video.querySelectorAll("source").forEach((node) => node.remove());
     }
-    if (els.placeholder) els.placeholder.hidden = false;
+    if (els.still) els.still.hidden = false;
+    if (els.placeholder) els.placeholder.hidden = true;
   }
 
   function attachVideo(src) {
@@ -393,9 +437,17 @@
     });
   }
 
+  function preloadStills() {
+    Object.values(STILLS).forEach((still) => {
+      const img = new Image();
+      img.src = still.src;
+    });
+  }
+
   els.start.addEventListener("click", start);
   els.next.addEventListener("click", next);
   els.reset.addEventListener("click", reset);
   renderIdle();
+  preloadStills();
   loadHost();
 })();

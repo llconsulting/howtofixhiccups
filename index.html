@@ -19,6 +19,7 @@
   <meta name="twitter:description" content="Four steps you can do in place. Not medical advice. Ordinary hiccups only.">
   <meta name="twitter:image" content="https://howtofixhiccups.com/og.png">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preload" as="image" href="/assets/ugc/ugc-host-01-start.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -126,20 +127,23 @@
       <section class="studio" aria-labelledby="method-heading">
         <figure class="host-card">
           <div class="host-frame">
+            <img
+              id="host-still"
+              class="host-still"
+              src="/assets/ugc/ugc-host-01-start.png"
+              alt="Person on camera running the four-step hiccup method."
+              width="1080"
+              height="1920">
             <video id="host-video" class="host-video" playsinline muted preload="metadata" hidden></video>
-            <div class="host-placeholder" id="host-placeholder">
+            <div class="host-placeholder" id="host-placeholder" hidden>
               <div>
-                <svg class="host-glyph" viewBox="0 0 48 48" aria-hidden="true">
-                  <rect x="6" y="10" width="36" height="28" rx="6" fill="none" stroke="currentColor" stroke-width="1.6"/>
-                  <path d="M20 20v8l8-4z" fill="currentColor"/>
-                </svg>
                 <strong>Host video</strong>
                 <p>On-camera walkthrough, synced to Start and the countdown.</p>
                 <span class="host-slot">/media/video/method-full.mp4</span>
               </div>
             </div>
           </div>
-          <figcaption class="host-caption">UGC walkthrough. Slot for Stills and Clips Desk. No stand-in face.</figcaption>
+          <figcaption class="host-caption">Walkthrough stills, synced to Start. Video drops in /media/video/ when it lands.</figcaption>
         </figure>
 
         <div class="method-card" id="method">
@@ -214,7 +218,7 @@
         <p>If you still have air and it stays gentle, keep that same thin stream going to 12 or 15 seconds.</p>
         <p>If you feel lightheaded, stop and breathe normally.</p>
         <p>If they are still going after one pass, you can try once more.</p>
-        <p>If they last, keep coming back, or show up with other symptoms, stop.</p>
+        <p>If they last, keep coming back, or come with other symptoms, stop.</p>
         <p>Read <a href="/when-to-stop/">When to stop</a>.</p>
         <p class="cta-row"><a class="btn" href="#method">Start the method</a></p>
       </section>
