@@ -1,11 +1,12 @@
 # howtofixhiccups excellence elite recheck
 
-Date: 2026-09-06 23:44 UTC (updated after `2bccb91` restored header Privacy a sixteenth time)  
+Date: 2026-09-07 00:24 UTC (updated after `b8f7a2f` locked a three-link header and dropped Privacy a seventeenth time)  
 Role: Skeptic (louislynn Consulting)  
 Job: KEEP/CUT excellence elite recheck only. No rewrite. No merge. No publish. No spend. No Mike ping.  
 PR: https://github.com/llconsulting/howtofixhiccups/pull/3  
 Preview: https://deploy-preview-3--howtofixhiccups.netlify.app/  
-PR head at check: `2bccb91c78b852116108283f4a54acd3dd3ef128` (draft)  
+PR head at check: `b8f7a2f1ce96bc5ee716e37e7ee41d5f121f85e3` (draft)  
+Seventeenth drop + nav CI lock: `b8f7a2f1ce96bc5ee716e37e7ee41d5f121f85e3`  
 Sixteenth restore: `2bccb91c78b852116108283f4a54acd3dd3ef128`  
 Sixteenth drop: `9250a6b44862634e7a23d817663ee3c26cdfe931`  
 Fifteenth restore: `34a508f8daa61eb42e4404f37fec00f60d845f22`  
@@ -57,7 +58,7 @@ Parent mirror: `/workspace/louislynn-os/hiccups-site/howtofixhiccups-excellence-
 - **Overall:** KEEP WITH FIXES
 - **Merge gate:** NO
 - **Elite+clear+merge-ready?:** NO
-- **One-line why:** Header Privacy is back a sixteenth time; FORCE remint is still a plastic-straw blow, not 04. Do not call YES.
+- **One-line why:** They rewrote the HUMAN spec and added a Netlify gate that fails the build if Privacy returns to the header. That is not the excellence lock. Hero is still the FORCE plastic-straw remint.
 
 Do not merge PR3.  
 Do not ping Mike.  
@@ -70,7 +71,7 @@ CoS owns the Mike ping on YES.
 | Bar | YES/NO | Evidence |
 | --- | --- | --- |
 | Hero | NO | Live `straw-blow-loop-3s.mp4` is now 1687462 bytes, 2.500s, 60 frames, sha256 `5e2ab92ecb45909760a9923261476163dfe7e154c674221d1a986ec6673c2f20`. Frames show a literal plastic straw in the hand and mouth, cheeks puffed. That is not step 4 (pursed lips, no prop). MATCH `thin-straw-loop-3s.mp4` is still 200 / 1614688 / sha256 `072b1df9…` and unwired. `playbackRate` still 0.45. Plate still H1+Start. |
-| Copy | NO | Header chrome matches again after `2bccb91`. Hero plate is still H1+Start only. Header YES is not a Copy YES. |
+| Copy | NO | Seventeenth Privacy drop. `b8f7a2f` rewrites HUMAN.md to three header links and adds `scripts/check-primary-nav.sh` as the Netlify build command so restoring Privacy fails the deploy. A script is not a CoS lock. Excellence chrome is still four items. Plate is still H1+Start only. |
 | Content | YES | Four live pages only: `/` `/why/` `/when/` `/privacy/` all 200. `/blog/` 301 `/why/`. `/about/` 301 `/`. `/blog/callies-sequence/` 301 `/`. HowTo four beats, adults, ordinary hiccups, no MedicalWebPage. `/docs/*` 404. Desk STATUS/MANIFEST 404. |
 | Motion | YES | CDP file-per-step MATCH. 01 breath+swallow 9.041667s. 02 second breath+swallow 9.041667s. 03 hold 30.083333s against 30s UI, no loop. 04 thin-straw 8.041667s (official lean remint; loops under the 10s UI). Hero 3s clean, not the 4s morph. Sampled frames show swallow on 01/02, still hold on 03, pursed thin-straw on 04. |
 
@@ -82,7 +83,7 @@ CoS owns the Mike ping on YES.
 | --- | --- | --- |
 | CLIPS 01/02/03 + clean 04 all 200 | PASS | GET 200. Sizes now: 01 6853515, 02 6961159, 03 18797271, 04 2016813. |
 | Hero muted 3s only (4s 404) | FAIL | Wired file is 2.500s, not 3s. 4s still 404. Filename still says 3s. |
-| HUMAN excellence copy | FAIL | Body paste still on the page. Four-item header is back. Hero plate is still H1+Start only. |
+| HUMAN excellence copy | FAIL | Body paste still on the page. Locked four-item header is gone a seventeenth time. HUMAN.md was rewritten to match the drop. That rewrite does not change the excellence deck. |
 | Exp1 Copy link intact (writes howtofixhiccups.com; Share-on-hold only) | PASS | Button hidden idle / step 1 / step 2 / step 4. Visible on hold (`shareHidden:false`, label `Copy link`). `SHARE_URL = "https://howtofixhiccups.com/"`. `copyLink: true` only on hold. No hero Share. Headless CDP clipboard read blocked (`NotAllowedError` / document not focused), so the write was not proven in this headless session. Code path and hold-only UI are live. Screenshot: `/opt/cursor/artifacts/screenshots/preview_hold_copy_link.webp`. |
 | no Callie | PASS | Grep of live `/` `/why/` `/when/` `/privacy/` HTML: 0 Callie. Visible chrome is `howtofixhiccups` / `the method`. `/blog/callies-sequence/` 301 home. `/README.md` 404. |
 | step-faithful v2 (01-04 + 3s hero) | PASS | See motion table and CDP srcs below. |
@@ -180,7 +181,8 @@ Live 04 at 22:10 UTC is still the 8s remint (2016813). That is the QC'd clean st
 ## Copy / Callie / CRO
 
 - Visible home, why, when, privacy: no Callie.
-- Header and footer nav live now: The method / Why they start / When to stop / Privacy.
+- Header nav now: The method / Why they start / When to stop. Privacy gone a seventeenth time. HTML comment now says three primary links. Footer still has Privacy.
+- `/scripts/check-primary-nav.sh` GET 200 on the preview. New public leak. HUMAN deck md still 404.
 - Home hero plate is still H1 + Start only. HUMAN lead / lede / notice / helper / links still sit in `band-intro` below.
 - When-page `about` hits are `about 48 hours` / `about two days`, not an About page.
 - No fight-the-prove CRO on the hero or inner pages.
@@ -801,9 +803,25 @@ Head is `2bccb91` (`Restore Privacy in header after the sixteenth drop.`). Leave
 
 Copy bar stays NO. Hero bar still NO. Merge gate NO. Do not call YES. Flip log now 32. Kill the drop job.
 
+## 00:24 UTC recheck after three-link CI lock (seventeenth drop)
+
+Head is `b8f7a2f` (`fix(nav): drop Privacy from header; lock three-link primary nav`). This is not another 10-line HTML toggle. Live GET matches.
+
+What landed:
+
+- Privacy cut from header on `/` `/why/` `/when/` `/privacy/` and 404
+- New comment: `LOCKED: exactly three primary links. Legal page is footer-only.`
+- `docs/howtofixhiccups-excellence-HUMAN-2026-09-06.md` rewritten: nav is exactly three; Privacy footer-only; claims this supersedes any older four-link note. That file still 404 on preview.
+- `scripts/check-primary-nav.sh` added and set as `netlify.toml` `[build].command`. Build fails if Privacy returns to `aria-label="Primary"`. Script is live 200 at `/scripts/check-primary-nav.sh`.
+- HOLD line says no hero, clip, playbackRate, or copy changes. Hero still FORCE remint 1687462. `thin-straw-loop-3s.mp4` still 200 / 1614688. Plate still H1+Start.
+
+A Netlify script that fails the build if the excellence header comes back is an anti-lock. Rewriting HUMAN.md does not change the excellence deck. The script comment that says this is the lock Mike keeps asking for is false. Do not treat this as settled chrome.
+
+Copy bar NO. Hero bar still NO. Elite+clear+merge-ready NO. Merge gate NO. Flip log now 33. Kill the drop job and delete the CI gate. Hold the four-item header.
+
 ## Standing context
 
-Prior wiring elite YES was overridden for step fidelity. The 22:10 pass called YES on live files. Header chrome then flipped thirty-two times. Hero is a 2.5s plastic-straw FORCE remint at 0.45x with H1+Start only. Step clips 01-04 still MATCH. Wired hero and plate do not.
+Prior wiring elite YES was overridden for step fidelity. The 22:10 pass called YES on live files. Header chrome then flipped thirty-three times and a build script now fails if Privacy returns. Hero is a 2.5s plastic-straw FORCE remint at 0.45x with H1+Start only. Step clips 01-04 still MATCH. Wired hero, plate, and chrome do not.
 
 CoS watch MATCH on 01-04 still holds. The MATCH 3s hero (`thin-straw-loop-3s.mp4`, mid-cut of 04) is still on disk and unwired. The 10s 04 is not live and must not come back.
 
