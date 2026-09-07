@@ -1,4 +1,5 @@
 [build]
+  command = "bash scripts/check-primary-nav.sh"
   publish = "."
 
 # Production and preview. Host check lives in the function: *.netlify.app

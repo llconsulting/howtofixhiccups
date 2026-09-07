@@ -111,7 +111,8 @@ If `/why-hiccups-start/` or `/when-to-stop/` already 301 to `/why/` and `/when/`
 
 - Wordmark: `howtofixhiccups`
 - Wordmark links to `/`
-- Nav: `The method` · `Why they start` · `When to stop` · `Privacy`
+- Nav (exactly three; do not add a fourth): `The method` · `Why they start` · `When to stop`
+- Privacy is **footer-only** → `/privacy/`. Never put Privacy in `nav.nav` / `aria-label="Primary"`. This lock supersedes any older four-link header note.
 
 ### Footer chrome
 
