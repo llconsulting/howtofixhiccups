@@ -1,11 +1,12 @@
 # howtofixhiccups excellence elite recheck
 
-Date: 2026-09-07 00:34 UTC (updated after `bf74b58` dropped Privacy and added a serve-time edge strip)  
+Date: 2026-09-07 00:37 UTC (updated after `eda06c4` restored Privacy and removed the edge strip)  
 Role: Skeptic (louislynn Consulting)  
 Job: KEEP/CUT excellence elite recheck only. No rewrite. No merge. No publish. No spend. No Mike ping.  
 PR: https://github.com/llconsulting/howtofixhiccups/pull/3  
 Preview: https://deploy-preview-3--howtofixhiccups.netlify.app/  
-PR head at check: `bf74b58940cf789bb6b10e1660bde63b0ed2631a` (draft)  
+PR head at check: `eda06c4b90cdefcd3531ccd6721b2e7e91e1ce63` (draft)  
+Twentieth restore + edge strip removed: `eda06c4b90cdefcd3531ccd6721b2e7e91e1ce63`  
 Nineteenth drop + edge strip: `bf74b58940cf789bb6b10e1660bde63b0ed2631a`  
 Eighteenth restore + flipped CI: `e010a5fe38ffcb72a5368ccd5a1dfe688a27aeff`  
 Seventeenth drop + nav CI lock: `b8f7a2f1ce96bc5ee716e37e7ee41d5f121f85e3`  
@@ -60,7 +61,7 @@ Parent mirror: `/workspace/louislynn-os/hiccups-site/howtofixhiccups-excellence-
 - **Overall:** KEEP WITH FIXES
 - **Merge gate:** NO
 - **Elite+clear+merge-ready?:** NO
-- **One-line why:** Privacy dropped again. An edge function now strips header Privacy on `*.netlify.app` even if HTML is restored. That is not a Mike lock. Hero is still the FORCE remint.
+- **One-line why:** Privacy is back in served HTML and the edge strip is gone. Hero is still the FORCE remint. Do not call YES. HUMAN.md still has a leftover fake Mike-lock banner.
 
 Do not merge PR3.  
 Do not ping Mike.  
@@ -73,7 +74,7 @@ CoS owns the Mike ping on YES.
 | Bar | YES/NO | Evidence |
 | --- | --- | --- |
 | Hero | NO | Live `straw-blow-loop-3s.mp4` is now 1687462 bytes, 2.500s, 60 frames, sha256 `5e2ab92ecb45909760a9923261476163dfe7e154c674221d1a986ec6673c2f20`. Frames show a literal plastic straw in the hand and mouth, cheeks puffed. That is not step 4 (pursed lips, no prop). MATCH `thin-straw-loop-3s.mp4` is still 200 / 1614688 / sha256 `072b1df9…` and unwired. `playbackRate` still 0.45. Plate still H1+Start. |
-| Copy | NO | Nineteenth Privacy drop. HUMAN.md rewritten again as a three-link "Mike lock." CI check flipped back to fail on four links. Edge function strips `/privacy/` out of `aria-label="Primary"` on Netlify hosts. None of that is the excellence deck. Plate still H1+Start. |
+| Copy | NO | Header chrome matches again after `eda06c4` on served HTML. Edge strip is gone. Plate is still H1+Start only. HUMAN.md nav line is four links; the top banner still says three-link Mike lock. Header YES is not a Copy YES. |
 | Content | YES | Four live pages only: `/` `/why/` `/when/` `/privacy/` all 200. `/blog/` 301 `/why/`. `/about/` 301 `/`. `/blog/callies-sequence/` 301 `/`. HowTo four beats, adults, ordinary hiccups, no MedicalWebPage. `/docs/*` 404. Desk STATUS/MANIFEST 404. |
 | Motion | YES | CDP file-per-step MATCH. 01 breath+swallow 9.041667s. 02 second breath+swallow 9.041667s. 03 hold 30.083333s against 30s UI, no loop. 04 thin-straw 8.041667s (official lean remint; loops under the 10s UI). Hero 3s clean, not the 4s morph. Sampled frames show swallow on 01/02, still hold on 03, pursed thin-straw on 04. |
 
@@ -85,7 +86,7 @@ CoS owns the Mike ping on YES.
 | --- | --- | --- |
 | CLIPS 01/02/03 + clean 04 all 200 | PASS | GET 200. Sizes now: 01 6853515, 02 6961159, 03 18797271, 04 2016813. |
 | Hero muted 3s only (4s 404) | FAIL | Wired file is 2.500s, not 3s. 4s still 404. Filename still says 3s. |
-| HUMAN excellence copy | FAIL | Body paste still on the page. Locked four-item header is gone. Claiming a 2026-09-07 Mike lock in HUMAN.md is false. CoS owns the Mike ping on YES only. |
+| HUMAN excellence copy | FAIL | Body paste still on the page. Four-item header is back on the live pages. Plate is still H1+Start only. HUMAN.md still contradicts itself. |
 | Exp1 Copy link intact (writes howtofixhiccups.com; Share-on-hold only) | PASS | Button hidden idle / step 1 / step 2 / step 4. Visible on hold (`shareHidden:false`, label `Copy link`). `SHARE_URL = "https://howtofixhiccups.com/"`. `copyLink: true` only on hold. No hero Share. Headless CDP clipboard read blocked (`NotAllowedError` / document not focused), so the write was not proven in this headless session. Code path and hold-only UI are live. Screenshot: `/opt/cursor/artifacts/screenshots/preview_hold_copy_link.webp`. |
 | no Callie | PASS | Grep of live `/` `/why/` `/when/` `/privacy/` HTML: 0 Callie. Visible chrome is `howtofixhiccups` / `the method`. `/blog/callies-sequence/` 301 home. `/README.md` 404. |
 | step-faithful v2 (01-04 + 3s hero) | PASS | See motion table and CDP srcs below. |
@@ -183,8 +184,8 @@ Live 04 at 22:10 UTC is still the 8s remint (2016813). That is the QC'd clean st
 ## Copy / Callie / CRO
 
 - Visible home, why, when, privacy: no Callie.
-- Header nav now: The method / Why they start / When to stop. Privacy gone. Footer still has Privacy.
-- `/scripts/check-primary-nav.sh` still GET 200. Script again fails if Privacy returns to the header.
+- Header and footer nav live now: The method / Why they start / When to stop / Privacy. Served HTML matches git. Edge strip is gone.
+- `/scripts/check-primary-nav.sh` still GET 200. Script again requires four header links.
 - Home hero plate is still H1 + Start only. HUMAN lead / lede / notice / helper / links still sit in `band-intro` below.
 - When-page `about` hits are `about 48 hours` / `about two days`, not an About page.
 - No fight-the-prove CRO on the hero or inner pages.
@@ -850,9 +851,23 @@ A serve-time rewrite that hides the excellence header on the preview is an anti-
 
 Copy bar NO. Hero bar still NO. Merge gate NO. Flip log now 35.
 
+## 00:37 UTC recheck after twentieth restore and edge-strip removal
+
+Head is `eda06c4` (`Restore Privacy in header after the eighteenth drop.`). Live GET matches git. Edge strip is gone.
+
+- Header on `/` `/why/` `/when/` `/privacy/` and 404: four-item nav including Privacy
+- Edge function is robots-only again
+- CI check flipped back to require four links. Script still live 200
+- HUMAN.md nav line is four links. Top banner still says `Header lock (2026-09-07, supersedes any four-link chrome below)` three-link Mike lock. Incomplete revert.
+- Hero still FORCE remint 1687462. MATCH 3s loop still unwired. Plate still H1+Start
+
+Do not call YES. The drop job can put the edge strip back in one commit. Kill both nav jobs. Delete the public script. Remove the leftover Mike-lock banner from HUMAN.md. Fix the hero. Flip log now 36.
+
+Copy bar stays NO (plate still emptied). Hero bar still NO. Merge gate NO.
+
 ## Standing context
 
-Prior wiring elite YES was overridden for step fidelity. The 22:10 pass called YES on live files. Header chrome then flipped thirty-five times. Preview edge now strips header Privacy. Hero is a 2.5s plastic-straw FORCE remint at 0.45x with H1+Start only. Step clips 01-04 still MATCH. Wired hero, plate, and chrome do not.
+Prior wiring elite YES was overridden for step fidelity. The 22:10 pass called YES on live files. Header chrome then flipped thirty-six times. Edge strip is gone on this GET. Hero is a 2.5s plastic-straw FORCE remint at 0.45x with H1+Start only. Step clips 01-04 still MATCH. Wired hero and plate do not.
 
 CoS watch MATCH on 01-04 still holds. The MATCH 3s hero (`thin-straw-loop-3s.mp4`, mid-cut of 04) is still on disk and unwired. The 10s 04 is not live and must not come back.
 
