@@ -5440,7 +5440,7 @@ Copy bar NO. Hero bar still NO. Elite+clear+merge-ready NO. Merge gate NO. Flip 
 
 ## 09:21 UTC recheck after three-hundred-thirty-fourth restore through three-hundred-thirty-fifth drop
 
-Two extra SHAs after the prior written head `c4a6903`. Written head is `1154a2c`. Head held on the last GET.
+Two extra SHAs after the prior written head `c4a6903`. Written head is `1154a2c`. Stopped chasing after these two. Later unwritten head at this write: `776a684` restore.
 
 `8bb5f1f` (`Restore Privacy in header after the three-hundred-thirtieth drop.`) restored both at 09:20:42. Seventy-six seconds after `c4a6903`. Git four-item header, title/H1 `How to fix hiccups`, `preview-html.js` ABSENT, script 2766, JS `6664fb18…`. Skeptic count is three-hundred-thirty-fourth restore.
 
