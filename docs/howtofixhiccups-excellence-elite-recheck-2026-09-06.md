@@ -1,11 +1,19 @@
 # howtofixhiccups excellence elite recheck
 
-Date: 2026-09-07 08:37 UTC (updated after `74f6323` drop; `042b8ac` restore lasted 78s)  
+Date: 2026-09-07 08:42 UTC (updated after `55d3400` drop; `b2f71af` restore lasted 29s)  
 Role: Skeptic (louislynn Consulting)  
 Job: KEEP/CUT excellence elite recheck only. No rewrite. No merge. No publish. No spend. No Mike ping.  
 PR: https://github.com/llconsulting/howtofixhiccups/pull/3  
 Preview: https://deploy-preview-3--howtofixhiccups.netlify.app/  
-PR head at check: `74f63237be6c21fd8c29156b195a285b766180f2` (draft)  
+PR head at check: `55d34004af4530761734e7077a5d63306baf93b1` (draft)  
+Three-hundred-second drop + phrase remap + edge rewrite: `55d34004af4530761734e7077a5d63306baf93b1`  
+Three-hundred-first restore + H1 revert + preview-html deleted: `b2f71af4bf819a331695b2549cb9c87796601f79`  
+Three-hundred-first drop + phrase remap + edge rewrite: `f326ff29a4c6dd51d254e7ba7d440377472fba70`  
+Three-hundredth restore + H1 revert + preview-html deleted: `28745e98c5554de5ea0d8f6b2c8e256e17e69781`  
+Three-hundredth drop + phrase remap + edge rewrite: `c0a4522722d3b1c0f321d5a279c69a6f16402eb1`  
+Two-hundred-ninety-ninth restore + H1 revert + preview-html deleted: `6712858867032cb3c3e26e7c1c92494cd5de11f2`  
+Two-hundred-ninety-ninth drop + phrase remap + edge rewrite: `6743fe38ef78259cadee6a315117be2cd2e86f43`  
+Two-hundred-ninety-eighth restore + H1 revert + preview-html deleted: `c367895e469e0b8916d39c0f4c281148bf348fd9`  
 Two-hundred-ninety-eighth drop + phrase remap + edge rewrite: `74f63237be6c21fd8c29156b195a285b766180f2`  
 Two-hundred-ninety-seventh restore + H1 revert + preview-html deleted: `042b8ac24c8903f75193e8927c0aa876e4dd553b`  
 Two-hundred-ninety-seventh drop + phrase remap + edge rewrite: `a695557ac041287059578388c8aa53b51be8a38a`  
@@ -613,7 +621,7 @@ Parent mirror: `/workspace/louislynn-os/hiccups-site/howtofixhiccups-excellence-
 - **Overall:** KEEP WITH FIXES
 - **Merge gate:** NO
 - **Elite+clear+merge-ready?:** NO
-- **One-line why:** Two-hundred-ninety-eighth drop after a 78-second restore. Hero is still the FORCE remint. Chrome and phrase still at war. Still not a lock.
+- **One-line why:** Three-hundred-second drop after a 29-second restore. Hero is still the FORCE remint. Chrome and phrase still at war. Still not a lock.
 
 Do not merge PR3.  
 Do not ping Mike.  
@@ -626,7 +634,7 @@ CoS owns the Mike ping on YES.
 | Bar | YES/NO | Evidence |
 | --- | --- | --- |
 | Hero | NO | Live `straw-blow-loop-3s.mp4` is now 1687462 bytes, 2.500s, 60 frames, sha256 `5e2ab92ecb45909760a9923261476163dfe7e154c674221d1a986ec6673c2f20`. Frames show a literal plastic straw in the hand and mouth, cheeks puffed. That is not step 4 (pursed lips, no prop). MATCH `thin-straw-loop-3s.mp4` is still 200 / 1614688 / sha256 `072b1df9…` and unwired. `playbackRate` still 0.45. Plate still H1+Start. |
-| Copy | NO | Two-hundred-ninety-eighth drop after a 78-second restore. Git is three links and `How to get rid of hiccups`. `preview-html.js` PRESENT. Script 1220. Served lagged git on this GET: four links, `How to fix hiccups`, edge 404, script 2766. Do not call YES on a drop. Do not call YES on served chrome that git already cut. HUMAN leftover three-link Header lock banner remains in the excellence HUMAN doc. Plate still H1+Start. |
+| Copy | NO | Three-hundred-second drop after a 29-second restore. Git and served match this GET: three links and `How to get rid of hiccups`. `preview-html.js` PRESENT 200 / 1117. Script 200 / 1220. Do not call YES on a drop. HUMAN leftover three-link Header lock banner remains in the excellence HUMAN doc. Plate still H1+Start. |
 | Content | YES | Four live pages only: `/` `/why/` `/when/` `/privacy/` all 200. `/blog/` 301 `/why/`. `/about/` 301 `/`. `/blog/callies-sequence/` 301 `/`. HowTo four beats, adults, ordinary hiccups, no MedicalWebPage. `/docs/*` 404. Desk STATUS/MANIFEST 404. |
 | Motion | YES | CDP file-per-step MATCH. 01 breath+swallow 9.041667s. 02 second breath+swallow 9.041667s. 03 hold 30.083333s against 30s UI, no loop. 04 thin-straw 8.041667s (official lean remint; loops under the 10s UI). Hero 3s clean, not the 4s morph. Sampled frames show swallow on 01/02, still hold on 03, pursed thin-straw on 04. |
 
@@ -638,7 +646,7 @@ CoS owns the Mike ping on YES.
 | --- | --- | --- |
 | CLIPS 01/02/03 + clean 04 all 200 | PASS | GET 200. Sizes now: 01 6853515, 02 6961159, 03 18797271, 04 2016813. |
 | Hero muted 3s only (4s 404) | FAIL | Wired file is 2.500s, not 3s. 4s still 404. Filename still says 3s. |
-| HUMAN excellence copy | FAIL | Body paste still on the page. Git title/H1 is `How to get rid of hiccups` after `74f6323`. Served H1 lagged on the prior restore. HUMAN.md remains ABSENT. Leftover three-link Header lock banner remains in `docs/howtofixhiccups-excellence-HUMAN-2026-09-06.md`. Plate is still H1+Start. |
+| HUMAN excellence copy | FAIL | Body paste still on the page. Git title/H1 is `How to get rid of hiccups` after `55d3400`. Served matched git on this GET. HUMAN.md remains ABSENT. Leftover three-link Header lock banner remains in `docs/howtofixhiccups-excellence-HUMAN-2026-09-06.md`. Plate is still H1+Start. |
 | Exp1 Copy link intact (writes howtofixhiccups.com; Share-on-hold only) | PASS | Button hidden idle / step 1 / step 2 / step 4. Visible on hold (`shareHidden:false`, label `Copy link`). `SHARE_URL = "https://howtofixhiccups.com/"`. `copyLink: true` only on hold. No hero Share. Headless CDP clipboard read blocked (`NotAllowedError` / document not focused), so the write was not proven in this headless session. Code path and hold-only UI are live. Screenshot: `/opt/cursor/artifacts/screenshots/preview_hold_copy_link.webp`. |
 | no Callie | PASS | Grep of live `/` `/why/` `/when/` `/privacy/` HTML: 0 Callie. Visible chrome is `howtofixhiccups` / `the method`. `/blog/callies-sequence/` 301 home. `/README.md` 404. |
 | step-faithful v2 (01-04 + 3s hero) | PASS | See motion table and CDP srcs below. |
@@ -5020,9 +5028,45 @@ A 78-second restore is not a lock. Do not call YES on a drop. Do not call YES on
 
 Copy bar NO. Hero bar still NO. Elite+clear+merge-ready NO. Merge gate NO. Flip log now 587.
 
+## 08:40 UTC recheck after two-hundred-ninety-eighth restore through three-hundredth drop
+
+Three `synchronize` events at 08:39 UTC. Last written head was `74f6323`. The prior write already named unwritten `c367895` and `6743fe3`. Re-GET added `6712858` and `c0a4522`. Four extra SHAs. Written head is `c0a4522`. Stopped chasing after these four.
+
+`c367895` (`Restore Privacy in header after the two-hundred-ninety-fourth drop.`) restored both at 08:38:20. Ninety-three seconds after `74f6323`. Git four-item header, title/H1 `How to fix hiccups`, `preview-html.js` ABSENT, script 2766, JS `6664fb18…`. Skeptic count is two-hundred-ninety-eighth restore.
+
+`6743fe3` (`fix(home,nav): restore primary phrase; drop header Privacy after two-hundred-ninety-fourth restore`) dropped both at 08:38:27. Seven seconds. The commit message says restore primary phrase. The patch remaps to `How to get rid of hiccups`. That is not a restore. Three links. `preview-html.js` PRESENT. Script 1220. JS `86dcb810…`. Skeptic count is two-hundred-ninety-ninth drop. This is the two-hundred-sixty-third phrase-remap cycle.
+
+`6712858` (`Restore Privacy in header after the two-hundred-ninety-fifth drop.`) restored both at 08:39:01. Thirty-four seconds. Git four links, `How to fix hiccups`, edge ABSENT, script 2766. Skeptic count is two-hundred-ninety-ninth restore.
+
+`c0a4522` (`fix(home,nav): restore primary phrase; drop header Privacy after two-hundred-ninety-fifth restore`) dropped both at 08:39:44. Forty-three seconds. The commit message says restore primary phrase. The patch remaps to `How to get rid of hiccups`. That is not a restore. Current git head at write. Three links. `preview-html.js` PRESENT. Script 1220. JS `86dcb810…`. Skeptic count is three-hundredth drop. This is the two-hundred-sixty-fourth phrase-remap cycle. Served lagged git on this GET: four links, `How to fix hiccups`, edge 404, script 2766. Do not call YES on served chrome that git already cut. HUMAN.md remains ABSENT. Leftover three-link Header lock banner remains in the excellence HUMAN doc (line 20).
+
+HOLD: FORCE remint still 1687462 / 2.500s / sha256 `5e2ab92e…`. MATCH 3s loop still 200 / 1614688 / sha256 `072b1df9…` and unwired. `playbackRate` still 0.45. Plate still H1+Start. 01 6853515. 04 2016813. 4s loop 404. Callie 0. Preview still noindex. Four pages 200.
+
+A 43-second restore after a 7-second drop is not a lock. Do not call YES on a drop. Do not call YES on served chrome that git already cut. Kill both nav jobs. Kill the phrase-remap job. Hold `How to fix hiccups`. Hold the four-item header. Point hero at `thin-straw-loop-3s.mp4` at normal rate.
+
+Copy bar NO. Hero bar still NO. Elite+clear+merge-ready NO. Merge gate NO. Flip log now 591.
+
+## 08:42 UTC recheck after three-hundredth restore through three-hundred-second drop
+
+Four extra SHAs after the prior written head `c0a4522`. Written head is `55d3400`. Stopped chasing after these four. Later unwritten heads at this write: `c285561` restore, `5a13b7d` drop, `22539d5` restore.
+
+`28745e9` (`Restore Privacy in header after the two-hundred-ninety-sixth drop.`) restored both at 08:40:36. Fifty-two seconds after `c0a4522`. Git four-item header, title/H1 `How to fix hiccups`, `preview-html.js` ABSENT, script 2766, JS `6664fb18…`. Skeptic count is three-hundredth restore.
+
+`f326ff2` (`fix(home,nav): restore primary phrase; drop header Privacy after two-hundred-ninety-sixth restore`) dropped both at 08:40:44. Eight seconds. The commit message says restore primary phrase. The patch remaps to `How to get rid of hiccups`. That is not a restore. Three links. `preview-html.js` PRESENT. Script 1220. JS `86dcb810…`. Skeptic count is three-hundred-first drop. This is the two-hundred-sixty-fifth phrase-remap cycle.
+
+`b2f71af` (`Restore Privacy in header after the two-hundred-ninety-seventh drop.`) restored both at 08:40:49. Five seconds. Git four links, `How to fix hiccups`, edge ABSENT, script 2766. Skeptic count is three-hundred-first restore.
+
+`55d3400` (`fix(home,nav): restore primary phrase; drop header Privacy after two-hundred-ninety-seventh restore`) dropped both at 08:41:18. Twenty-nine seconds. The commit message says restore primary phrase. The patch remaps to `How to get rid of hiccups`. That is not a restore. Current written git head. Three links. `preview-html.js` PRESENT. Script 1220. JS `86dcb810…`. Skeptic count is three-hundred-second drop. This is the two-hundred-sixty-sixth phrase-remap cycle. Served matched git on this GET: three links, `How to get rid of hiccups`, edge 200 / 1117, script 200 / 1220. HUMAN.md remains ABSENT. Leftover three-link Header lock banner remains in the excellence HUMAN doc (line 20).
+
+HOLD: FORCE remint still 1687462 / 2.500s / sha256 `5e2ab92e…`. MATCH 3s loop still 200 / 1614688 / sha256 `072b1df9…` and unwired. `playbackRate` still 0.45. Plate still H1+Start. 01 6853515. 04 2016813. 4s loop 404. Callie 0. Preview still noindex. Four pages 200.
+
+A 29-second restore after a 5-second drop is not a lock. Do not call YES on a drop. Kill both nav jobs. Kill the phrase-remap job. Hold `How to fix hiccups`. Hold the four-item header. Point hero at `thin-straw-loop-3s.mp4` at normal rate.
+
+Copy bar NO. Hero bar still NO. Elite+clear+merge-ready NO. Merge gate NO. Flip log now 595.
+
 ## Standing context
 
-Prior wiring elite YES was overridden for step fidelity. The 22:10 pass called YES on live files. Header chrome then flipped five hundred eighty-seven times. Latest written git is a drop after a 78-second restore. Hero is a 2.5s plastic-straw FORCE remint at 0.45x with H1+Start only. Step clips 01-04 still MATCH. Wired hero and plate do not.
+Prior wiring elite YES was overridden for step fidelity. The 22:10 pass called YES on live files. Header chrome then flipped five hundred ninety-five times. Latest written git is a drop after a 29-second restore. Hero is a 2.5s plastic-straw FORCE remint at 0.45x with H1+Start only. Step clips 01-04 still MATCH. Wired hero and plate do not.
 
 CoS watch MATCH on 01-04 still holds. The MATCH 3s hero (`thin-straw-loop-3s.mp4`, mid-cut of 04) is still on disk and unwired. The 10s 04 is not live and must not come back.
 
