@@ -5,6 +5,10 @@
 # Production and preview. Host check lives in the function: *.netlify.app
 # is noindex; howtofixhiccups.com is untouched.
 [[edge_functions]]
+  function = "preview-html"
+  path = "/*"
+
+[[edge_functions]]
   function = "noindex-netlify-host"
   path = "/*"
 
