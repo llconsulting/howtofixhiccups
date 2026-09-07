@@ -1,6 +1,20 @@
 [build]
+  command = "bash scripts/check-primary-nav.sh"
   publish = "."
 
+# Production and preview. Host check lives in the function: *.netlify.app
+# is noindex; howtofixhiccups.com is untouched.
+[[edge_functions]]
+  function = "preview-html"
+  path = "/*"
+
+[[edge_functions]]
+  function = "noindex-netlify-host"
+  path = "/*"
+
+# Production (.com) stays indexable. Do not set X-Robots-Tag here.
+# Main used to send X-Robots-Tag: index, follow on howtofixhiccups.netlify.app.
+# The edge function is what noindexes that host after merge.
 [[headers]]
   for = "/*"
   [headers.values]
@@ -8,4 +22,394 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     X-Frame-Options = "DENY"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
-    X-Robots-Tag = "index, follow"
+
+# Netlify hosts only. Canonicals stay on https://howtofixhiccups.com/.
+[[context.deploy-preview.headers]]
+  for = "/*"
+  [context.deploy-preview.headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[context.branch-deploy.headers]]
+  for = "/*"
+  [context.branch-deploy.headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+# Unused Ken Burns clips are not a product. Do not serve them.
+[[redirects]]
+  from = "/assets/video/breath-swallow-1.mp4"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/assets/video/breath-swallow-2.mp4"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/assets/video/hold-30.mp4"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/assets/video/thin-straw-exhale.mp4"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/assets/video/start.mp4"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/assets/video/method-full.mp4"
+  to = "/404.html"
+  status = 404
+  force = true
+
+# Do not publish desk notes, copy decks, or the repo README as live pages.
+[[redirects]]
+  from = "/docs/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/docs"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/README.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/README"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/assets/ugc/README.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/assets/video/README.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/media/stills/README.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/media/video/README.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/media/video/ugc-live/README.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/media/video/ugc-live/MANIFEST.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/media/video/ugc-motion-2026-09-06/README.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/media/video/ugc-motion-2026-09-06/MANIFEST.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/media/video/ugc-motion-2026-09-06/STATUS.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+# v2 desk notes and unused fat / raw must not publish.
+[[redirects]]
+  from = "/media/video/ugc-motion-v2-2026-09-06/STATUS.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/media/video/ugc-motion-v2-2026-09-06/README.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/media/video/ugc-motion-v2-2026-09-06/MANIFEST.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/media/video/ugc-motion-v2-2026-09-06/method-walkthrough.mp4"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/media/video/ugc-motion-v2-2026-09-06/method-full.mp4"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/media/video/ugc-motion-v2-2026-09-06/raw/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/media/video/ugc-motion-v2-2026-09-06/03-hold-a.mp4"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/media/video/ugc-motion-v2-2026-09-06/03-hold-b.mp4"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/media/video/ugc-motion-v2-2026-09-06/hero-loop/thin-straw-loop-4s.mp4"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/media/video/hero/README.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/media/video/hero/STATUS.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+# Soft traps: never leave /index.html or leftover *.html as live URLs.
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/about.html"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/about/index.html"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/notes.html"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/notes/index.html"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog.html"
+  to = "/why/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/index.html"
+  to = "/why/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/why.html"
+  to = "/why/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/why/index.html"
+  to = "/why/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/when.html"
+  to = "/when/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/when/index.html"
+  to = "/when/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/privacy.html"
+  to = "/privacy/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/privacy/index.html"
+  to = "/privacy/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/why-hiccups-start/index.html"
+  to = "/why/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/when-to-stop/index.html"
+  to = "/when/"
+  status = 301
+  force = true
+
+# Dropped about / notes. Home is the live replacement.
+[[redirects]]
+  from = "/about"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/about/"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/notes"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/notes/"
+  to = "/"
+  status = 301
+  force = true
+
+# Specific blog posts before the blog splat.
+[[redirects]]
+  from = "/blog/ordinary-hiccups"
+  to = "/why/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/ordinary-hiccups/"
+  to = "/why/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/when-hiccups-linger"
+  to = "/when/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/when-hiccups-linger/"
+  to = "/when/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/callies-sequence"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/callies-sequence/"
+  to = "/"
+  status = 301
+  force = true
+
+# Remaining blog URLs land on the short why page.
+[[redirects]]
+  from = "/blog"
+  to = "/why/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/"
+  to = "/why/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/*"
+  to = "/why/"
+  status = 301
+  force = true
+
+# Long copy-deck slugs are not live routes.
+[[redirects]]
+  from = "/why-hiccups-start"
+  to = "/why/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/why-hiccups-start/"
+  to = "/why/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/when-to-stop"
+  to = "/when/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/when-to-stop/"
+  to = "/when/"
+  status = 301
+  force = true
