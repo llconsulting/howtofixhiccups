@@ -344,7 +344,7 @@
     if (!navigator.share) return;
     try {
       await navigator.share({
-        title: "How to fix hiccups",
+        title: "How to get rid of hiccups",
         url: SHARE_URL
       });
       if (inHoldWindow()) logHoldCompleted();
