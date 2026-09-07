@@ -17,6 +17,8 @@ blog: kill
 
 # howtofixhiccups excellence copy
 
+**Header lock (2026-09-07, supersedes any four-link chrome below):** primary nav is exactly `The method` · `Why they start` · `When to stop`. The legal page is footer-only. Do not restore a fourth primary header link.
+
 Paste-ready strings for Web Builder. One site. Four pages. No blog.
 
 ## Web notes (read first)
@@ -111,7 +113,8 @@ If `/why-hiccups-start/` or `/when-to-stop/` already 301 to `/why/` and `/when/`
 
 - Wordmark: `howtofixhiccups`
 - Wordmark links to `/`
-- Nav: `The method` · `Why they start` · `When to stop` · `Privacy`
+- Nav (exactly three; 2026-09-07 Mike lock, supersedes the older four-link line): `The method` · `Why they start` · `When to stop`
+- The legal page is footer-only → `/privacy/`. Never add a fourth primary header link.
 
 ### Footer chrome
 

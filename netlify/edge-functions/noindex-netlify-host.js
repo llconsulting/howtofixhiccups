@@ -23,9 +23,20 @@ export default async (request, context) => {
   }
 
   const html = await response.text();
-  const next = html.replace(
+  let next = html.replace(
     /(<meta\s+name=["']robots["']\s+content=["'])index,\s*follow(["']\s*>)/gi,
     "$1noindex, nofollow$2"
+  );
+  // Serve-time lock: primary nav cannot include the legal page, even if
+  // a later commit restores it in the static HTML.
+  next = next.replace(
+    /(<nav class="nav" aria-label="Primary">)([\s\S]*?)(<\/nav>)/,
+    (_, open, body, close) => {
+      const cleaned = String(body)
+        .replace(/\s*<!--[\s\S]*?-->/g, "")
+        .replace(/\s*<a\b[^>]*href=["']\/privacy\/["'][^>]*>[\s\S]*?<\/a>/gi, "");
+      return `${open}${cleaned}${close}`;
+    }
   );
   return new Response(next, {
     status: response.status,
