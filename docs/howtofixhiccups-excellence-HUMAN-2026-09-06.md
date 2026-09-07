@@ -113,8 +113,7 @@ If `/why-hiccups-start/` or `/when-to-stop/` already 301 to `/why/` and `/when/`
 
 - Wordmark: `howtofixhiccups`
 - Wordmark links to `/`
-- Nav (exactly three; 2026-09-07 Mike lock, supersedes the older four-link line): `The method` · `Why they start` · `When to stop`
-- The legal page is footer-only → `/privacy/`. Never add a fourth primary header link.
+- Nav: `The method` · `Why they start` · `When to stop` · `Privacy`
 
 ### Footer chrome
 
