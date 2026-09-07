@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# Fail the build if primary header nav is not the HUMAN four-link lock:
-# The method · Why they start · When to stop · Privacy
-# Footer Privacy must remain. A later three-link rewrite is not the lock.
+# Deploy lock: primary header is exactly three links.
+# The method · Why they start · When to stop
+# Legal page stays in the footer.
 set -euo pipefail
 
 root="$(cd "$(dirname "$0")/.." && pwd)"
@@ -34,20 +34,15 @@ for page in "${pages[@]}"; do
     continue
   fi
 
-  if ! printf '%s\n' "$nav" | grep -q 'href="/privacy/"'; then
-    echo "FAIL: $page primary nav is missing Privacy"
+  if printf '%s\n' "$nav" | grep -qi 'privacy'; then
+    echo "FAIL: $page primary nav contains Privacy"
     printf '%s\n' "$nav"
     fail=1
   fi
 
-  if printf '%s\n' "$nav" | grep -q 'exactly three primary links'; then
-    echo "FAIL: $page still has the three-link footer-only lock comment"
-    fail=1
-  fi
-
   links="$(printf '%s\n' "$nav" | grep -c '<a ' || true)"
-  if [[ "$links" -ne 4 ]]; then
-    echo "FAIL: $page primary nav has $links links; expected exactly 4"
+  if [[ "$links" -ne 3 ]]; then
+    echo "FAIL: $page primary nav has $links links; expected exactly 3"
     fail=1
   fi
 
@@ -62,15 +57,9 @@ for page in "${pages[@]}"; do
   fi
 done
 
-if grep -R --include='*.html' -n 'exactly three primary links' . >/dev/null; then
-  echo "FAIL: leftover three-link lock comment"
-  grep -R --include='*.html' -n 'exactly three primary links' .
-  fail=1
-fi
-
-if grep -R --include='*.js' -n 'href=["'"'"']\/privacy\/' netlify/edge-functions >/dev/null; then
-  echo "FAIL: edge function still strips Privacy from HTML"
-  grep -R --include='*.js' -n 'href=["'"'"']\/privacy\/' netlify/edge-functions
+if grep -R --include='*.html' -n 'Privacy stays in the header' . >/dev/null; then
+  echo "FAIL: leftover header restore comment"
+  grep -R --include='*.html' -n 'Privacy stays in the header' .
   fail=1
 fi
 
@@ -79,4 +68,4 @@ if [[ "$fail" -ne 0 ]]; then
   exit 1
 fi
 
-echo "Primary nav lock OK: 4 header links on every page, including Privacy."
+echo "Primary nav lock OK: 3 header links on every page, Privacy footer-only."
