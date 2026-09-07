@@ -1,11 +1,15 @@
 # howtofixhiccups excellence elite recheck
 
-Date: 2026-09-07 01:09 UTC (updated after `83dbe6a` restored Privacy for 35s and `11790d2` dropped it again)  
+Date: 2026-09-07 01:14 UTC (updated after `d719544` restored Privacy for 70s and `07f40ee` dropped it again)  
 Role: Skeptic (louislynn Consulting)  
 Job: KEEP/CUT excellence elite recheck only. No rewrite. No merge. No publish. No spend. No Mike ping.  
 PR: https://github.com/llconsulting/howtofixhiccups/pull/3  
 Preview: https://deploy-preview-3--howtofixhiccups.netlify.app/  
-PR head at check: `11790d2de1490e84b740ea5611a0be3ec115ac32` (draft)  
+PR head at check: `07f40ee886990de5551fec791be695ee19e99932` (draft)  
+Thirty-third drop + edge strip: `07f40ee886990de5551fec791be695ee19e99932`  
+Thirty-third restore + preview-html deleted: `d71954432bff61658d59ba6474550fbfa86ad0f9`  
+Thirty-second drop + edge strip: `bb2630dddd1b4cefadac482f4863e7be5bb1f138`  
+Thirty-second restore + preview-html deleted: `6b0634723701ac65575d0d7c237c73127321bc2e`  
 Thirty-first drop + edge strip: `11790d2de1490e84b740ea5611a0be3ec115ac32`  
 Thirty-first restore + preview-html deleted: `83dbe6a8a8a24617e4cd6b06c0c1fca4ea54053e`  
 Thirtieth drop + edge strip: `c1c92268e152ff8716aa93e4dcb2575af0d61c91`  
@@ -83,7 +87,7 @@ Parent mirror: `/workspace/louislynn-os/hiccups-site/howtofixhiccups-excellence-
 - **Overall:** KEEP WITH FIXES
 - **Merge gate:** NO
 - **Elite+clear+merge-ready?:** NO
-- **One-line why:** Privacy dropped again 35 seconds after the last restore. Edge strip is back and public. Hero is still the FORCE remint.
+- **One-line why:** Privacy dropped again 70 seconds after the last restore. Edge strip is back and public. Hero is still the FORCE remint.
 
 Do not merge PR3.  
 Do not ping Mike.  
@@ -96,7 +100,7 @@ CoS owns the Mike ping on YES.
 | Bar | YES/NO | Evidence |
 | --- | --- | --- |
 | Hero | NO | Live `straw-blow-loop-3s.mp4` is now 1687462 bytes, 2.500s, 60 frames, sha256 `5e2ab92ecb45909760a9923261476163dfe7e154c674221d1a986ec6673c2f20`. Frames show a literal plastic straw in the hand and mouth, cheeks puffed. That is not step 4 (pursed lips, no prop). MATCH `thin-straw-loop-3s.mp4` is still 200 / 1614688 / sha256 `072b1df9…` and unwired. `playbackRate` still 0.45. Plate still H1+Start. |
-| Copy | NO | Thirty-first drop. Header Privacy gone on `/` `/why/` `/when/` `/privacy/` and 404. Git matches served (three links). First GETs still showed the 35s restore. Later GET matched the drop. `preview-html.js` is back and GET 200. CI flipped back to three links. HUMAN.md nav line is three links again. Plate still H1+Start. |
+| Copy | NO | Thirty-third drop. Header Privacy gone on `/` `/why/` `/when/` `/privacy/` and 404. Git matches served (three links). `preview-html.js` is back and GET 200 (751 bytes, strips `/privacy/` from Primary). CI flipped back to three links. HUMAN.md banner still claims a 2026-09-07 three-link Header lock. Plate still H1+Start. |
 | Content | YES | Four live pages only: `/` `/why/` `/when/` `/privacy/` all 200. `/blog/` 301 `/why/`. `/about/` 301 `/`. `/blog/callies-sequence/` 301 `/`. HowTo four beats, adults, ordinary hiccups, no MedicalWebPage. `/docs/*` 404. Desk STATUS/MANIFEST 404. |
 | Motion | YES | CDP file-per-step MATCH. 01 breath+swallow 9.041667s. 02 second breath+swallow 9.041667s. 03 hold 30.083333s against 30s UI, no loop. 04 thin-straw 8.041667s (official lean remint; loops under the 10s UI). Hero 3s clean, not the 4s morph. Sampled frames show swallow on 01/02, still hold on 03, pursed thin-straw on 04. |
 
@@ -108,7 +112,7 @@ CoS owns the Mike ping on YES.
 | --- | --- | --- |
 | CLIPS 01/02/03 + clean 04 all 200 | PASS | GET 200. Sizes now: 01 6853515, 02 6961159, 03 18797271, 04 2016813. |
 | Hero muted 3s only (4s 404) | FAIL | Wired file is 2.500s, not 3s. 4s still 404. Filename still says 3s. |
-| HUMAN excellence copy | FAIL | Body paste still on the page. Locked four-item header is gone. HUMAN.md again claims a 2026-09-07 three-link lock. Plate is still H1+Start. |
+| HUMAN excellence copy | FAIL | Body paste still on the page. Locked four-item header is gone. HUMAN.md again claims a 2026-09-07 three-link Header lock. Plate is still H1+Start. |
 | Exp1 Copy link intact (writes howtofixhiccups.com; Share-on-hold only) | PASS | Button hidden idle / step 1 / step 2 / step 4. Visible on hold (`shareHidden:false`, label `Copy link`). `SHARE_URL = "https://howtofixhiccups.com/"`. `copyLink: true` only on hold. No hero Share. Headless CDP clipboard read blocked (`NotAllowedError` / document not focused), so the write was not proven in this headless session. Code path and hold-only UI are live. Screenshot: `/opt/cursor/artifacts/screenshots/preview_hold_copy_link.webp`. |
 | no Callie | PASS | Grep of live `/` `/why/` `/when/` `/privacy/` HTML: 0 Callie. Visible chrome is `howtofixhiccups` / `the method`. `/blog/callies-sequence/` 301 home. `/README.md` 404. |
 | step-faithful v2 (01-04 + 3s hero) | PASS | See motion table and CDP srcs below. |
@@ -1216,9 +1220,54 @@ A 35-second restore is not a lock. Kill both nav jobs. Delete the public script.
 
 Copy bar NO. Hero bar still NO. Elite+clear+merge-ready NO. Merge gate NO. Flip log now 57.
 
+## 01:10 UTC recheck after thirty-second restore
+
+Head was `6b06347` (`Restore Privacy in header after the twenty-ninth drop.`). `11790d2` cut Privacy at 01:08:57. This restore put it back at 01:10:21. Eighty-four seconds. Then `bb2630d` cut it at 01:11:00. Thirty-nine seconds.
+
+Do not call YES on a 39-second restore.
+
+## 01:11 UTC recheck after thirty-second drop
+
+Head is `bb2630d` (`fix(nav): drop Privacy from header after the twenty-ninth restore`). Same drop job. Not a CoS lock.
+
+What landed in one commit:
+
+- Privacy cut from header HTML on `/` `/why/` `/when/` `/privacy/` and 404. Git is three links. First live GETs still showed four (prior deploy). Later GET matched git.
+- `preview-html.js` added and registered on `/*`. File is live GET 200 at `/netlify/edge-functions/preview-html.js` (751 bytes).
+- HUMAN.md nav line is three links again. Top banner still says three-link Mike lock.
+- `check-primary-nav.sh` flipped back to three links. Still live 200 (1101 bytes).
+- HOLD: no hero change. FORCE remint still 1687462 / 2.500s / sha256 `5e2ab92e…`. MATCH 3s loop still unwired. Plate still H1+Start.
+
+A 39-second restore is not a lock. Kill both nav jobs. Delete the public script. Delete the public edge source. Hold the four-item header.
+
+Copy bar NO. Hero bar still NO. Elite+clear+merge-ready NO. Merge gate NO. Flip log now 59.
+
+## 01:11 UTC recheck after thirty-third restore
+
+Head was `d719544` (`Restore Privacy in header after the thirtieth drop.`). `bb2630d` cut Privacy at 01:11:00. This restore put it back at 01:11:47. Forty-seven seconds. Then `07f40ee` cut it at 01:12:57. Seventy seconds.
+
+Do not call YES on a 70-second restore.
+
+## 01:14 UTC recheck after thirty-third drop
+
+Head is `07f40ee` (`fix(nav): drop Privacy from header after the thirtieth restore`). Same drop job. Not a CoS lock. Commit-message count is theirs. Skeptic count is thirty-third.
+
+What landed in one commit:
+
+- Privacy cut from header HTML on `/` `/why/` `/when/` `/privacy/` and 404. Git is three links. Live GET matched git on this pass (age 0).
+- `preview-html.js` added and registered on `/*`. File is live GET 200 at `/netlify/edge-functions/preview-html.js` (751 bytes). It still strips `<a href="/privacy/">` from `aria-label="Primary"`.
+- HUMAN.md nav line is three links again. Top banner still says `Header lock (2026-09-07, supersedes any four-link chrome below)`. That is not a CoS lock. Four-link line is still in the same file.
+- `check-primary-nav.sh` flipped back to three links. Still live 200 (1101 bytes). Build command is still `bash scripts/check-primary-nav.sh`.
+- HOLD: no hero change. FORCE remint still 1687462 / 2.500s / 60 frames @24 / sha256 `5e2ab92ecb45909760a9923261476163dfe7e154c674221d1a986ec6673c2f20`. MATCH `thin-straw-loop-3s.mp4` still 200 / 1614688 / sha256 `072b1df9…` and unwired. `playbackRate` still 0.45. Plate still H1+Start. JS SHA still `6664fb18eeaa8dcd097e3250214c0b7190a0ef523bd5e96c458428c6cb2ede62`.
+- 01-04 sizes and SHAs unchanged. Callie 0. Preview still noindex (`X-Robots-Tag` plus rewritten robots meta). `/blog/` 301 `/why/`. `/about/` 301 `/`.
+
+A 70-second restore is not a lock. Kill both nav jobs. Delete the public script. Delete the public edge source. Hold the four-item header.
+
+Copy bar NO. Hero bar still NO. Elite+clear+merge-ready NO. Merge gate NO. Flip log now 61.
+
 ## Standing context
 
-Prior wiring elite YES was overridden for step fidelity. The 22:10 pass called YES on live files. Header chrome then flipped fifty-seven times. Edge strip is back on this GET. Hero is a 2.5s plastic-straw FORCE remint at 0.45x with H1+Start only. Step clips 01-04 still MATCH. Wired hero and plate do not.
+Prior wiring elite YES was overridden for step fidelity. The 22:10 pass called YES on live files. Header chrome then flipped sixty-one times. Edge strip is back on this GET. Hero is a 2.5s plastic-straw FORCE remint at 0.45x with H1+Start only. Step clips 01-04 still MATCH. Wired hero and plate do not.
 
 CoS watch MATCH on 01-04 still holds. The MATCH 3s hero (`thin-straw-loop-3s.mp4`, mid-cut of 04) is still on disk and unwired. The 10s 04 is not live and must not come back.
 
