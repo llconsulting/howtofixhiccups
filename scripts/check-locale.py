@@ -17,7 +17,10 @@ PAIRS = [
     ("privacy/index.html", "es/privacy/index.html", "/privacy/", "/es/privacy/"),
 ]
 EM_DASH = "\u2014"
-HOUR_FOR_CARE = re.compile(r"\d+\s*(?:hours?|horas?)\b", re.I)
+HOUR_FOR_CARE = re.compile(
+    r"\b(?:hours?|horas?)\b|\d+\s*-\s*hours?\b|\d+\s*h\b",
+    re.I,
+)
 
 
 def host_from_file():
@@ -31,7 +34,7 @@ def host_from_file():
 def strip_comments(text, suffix):
     if suffix == ".js":
         text = re.sub(r"/\*.*?\*/", "", text, flags=re.S)
-        text = re.sub(r"//.*?$", "", text, flags=re.M)
+        text = re.sub(r"(?m)(?<!:)//.*?$", "", text)
         return text
     text = re.sub(r"<!--.*?-->", "", text, flags=re.S)
     if suffix == ".txt":

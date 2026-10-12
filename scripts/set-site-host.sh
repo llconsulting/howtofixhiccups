@@ -38,7 +38,7 @@ def protect(text, suffix):
 
     if suffix == ".js":
         text = re.sub(r"/\*.*?\*/", park, text, flags=re.S)
-        text = re.sub(r"(?m)//.*?$", park, text)
+        text = re.sub(r"(?m)(?<!:)//.*?$", park, text)
     elif suffix in {".html", ".xml"}:
         text = re.sub(r"<!--.*?-->", park, text, flags=re.S)
     elif suffix == ".txt":
