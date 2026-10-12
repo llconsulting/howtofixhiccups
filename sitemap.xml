@@ -1,27 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- 2026-10-12, Mike. The locs temporarily use the netlify.app host until howtofixhiccups.com is connected. Restoring means switching each loc back to the .com URL. -->
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<!-- 2026-10-12, Mike. The locs temporarily use the netlify.app host until howtofixhiccups.com is connected. Restoring means switching each loc and xhtml:link href back to the .com URL. x-default stays the English URL. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://howtofixhiccups.netlify.app/</loc>
-    <lastmod>2026-09-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://howtofixhiccups.netlify.app/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://howtofixhiccups.netlify.app/es/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://howtofixhiccups.netlify.app/"/>
+    <lastmod>2026-10-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://howtofixhiccups.netlify.app/es/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://howtofixhiccups.netlify.app/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://howtofixhiccups.netlify.app/es/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://howtofixhiccups.netlify.app/"/>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://howtofixhiccups.netlify.app/why/</loc>
-    <lastmod>2026-09-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://howtofixhiccups.netlify.app/why/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://howtofixhiccups.netlify.app/es/why/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://howtofixhiccups.netlify.app/why/"/>
+    <lastmod>2026-10-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://howtofixhiccups.netlify.app/es/why/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://howtofixhiccups.netlify.app/why/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://howtofixhiccups.netlify.app/es/why/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://howtofixhiccups.netlify.app/why/"/>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://howtofixhiccups.netlify.app/when/</loc>
-    <lastmod>2026-09-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://howtofixhiccups.netlify.app/when/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://howtofixhiccups.netlify.app/es/when/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://howtofixhiccups.netlify.app/when/"/>
+    <lastmod>2026-10-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://howtofixhiccups.netlify.app/es/when/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://howtofixhiccups.netlify.app/when/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://howtofixhiccups.netlify.app/es/when/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://howtofixhiccups.netlify.app/when/"/>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://howtofixhiccups.netlify.app/privacy/</loc>
-    <lastmod>2026-09-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://howtofixhiccups.netlify.app/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://howtofixhiccups.netlify.app/es/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://howtofixhiccups.netlify.app/privacy/"/>
+    <lastmod>2026-10-12</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://howtofixhiccups.netlify.app/es/privacy/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://howtofixhiccups.netlify.app/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://howtofixhiccups.netlify.app/es/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://howtofixhiccups.netlify.app/privacy/"/>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>

@@ -136,6 +136,40 @@ a.btn-secondary:hover {
   color: var(--ink);
 }
 
+.header-end {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 0.35rem 1rem;
+  margin-left: auto;
+}
+
+.lang {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.lang a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 0.2rem 0.45rem;
+}
+
+.lang a[aria-current="page"] {
+  color: var(--ink);
+  border-color: var(--line-strong);
+}
+
+.lang a:hover {
+  color: var(--ink);
+}
+
 .hero,
 .page:not(:has(.band)) {
   padding: 2.25rem 0 4.5rem;
@@ -782,6 +816,7 @@ h1,
 .btn:focus-visible,
 .share-btn:focus-visible,
 .nav a:focus-visible,
+.lang a:focus-visible,
 .wordmark:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
@@ -1131,6 +1166,12 @@ h1,
     align-items: flex-start;
     gap: 0.4rem;
     padding: 0.75rem 0;
+  }
+
+  .header-end {
+    width: 100%;
+    margin-left: 0;
+    justify-content: space-between;
   }
 
   .nav {

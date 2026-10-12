@@ -1,0 +1,7 @@
+ts	phase	decision	why	evidence	result
+2026-10-12T23:53:24Z	frame	Spanish pilot is four static pages with reciprocal hreflang	The site is hand-built HTML and the only build step is the nav check	host.txt netlify.toml	predicate is 8 pages, valid sitemap, checker green
+2026-10-12T23:53:24Z	design	One writer, hand HTML, checker as the rerunnable proof	The pages share the header, CSS, and method.js, so a second writer would race	scripts/check-locale.py	architect skipped, layout was specified
+2026-10-12T23:53:24Z	when	Removed 48 hours from the English When page and kept two days	The page must not name a number of hours for seeing a doctor in either language	when/index.html	two-day claim kept
+2026-10-12T23:53:24Z	host	Host switch rewrites live https URLs and share labels, and leaves comments and twitter:image	A blind hostname replace rewrote the 404 sentence and made the checker fail on .com	scripts/set-site-host.sh	round trip restored the files, checker green on both hosts
+2026-10-12T23:53:24Z	copy	Fixed range, straw-count, heart-attack wording, and a few calques after back-translation	12 o 15 meant or, and infarto was a more clinical word than heart attack	es/index.html es/when/index.html	warning lines rechecked
+2026-10-12T23:53:24Z	verify	Loaded all 8 pages in Chrome and clicked the language switcher	File checks do not prove the pages render or that assets load	/opt/cursor/artifacts/es-home.png /opt/cursor/artifacts/es-when.png	200s, no failed assets, switcher landed
