@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://howtofixhiccups.com/sitemap.xml
+# 2026-10-12, Mike. This Sitemap line uses the netlify.app host until howtofixhiccups.com is connected. To restore, point it back at https://howtofixhiccups.com/sitemap.xml.
+Sitemap: https://howtofixhiccups.netlify.app/sitemap.xml

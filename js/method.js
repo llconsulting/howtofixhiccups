@@ -248,7 +248,8 @@
     }, 80);
   }
 
-  const SHARE_URL = "https://howtofixhiccups.com/";
+  // 2026-10-12, Mike. SHARE_URL uses the netlify.app host until howtofixhiccups.com is connected. To restore, set it and the share button label in index.html back to https://howtofixhiccups.com/.
+  const SHARE_URL = "https://howtofixhiccups.netlify.app/";
 
   function markBeat(beat) {
     const dots = els.rail ? [...els.rail.children] : [];
