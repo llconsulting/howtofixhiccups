@@ -2,8 +2,8 @@
   command = "bash scripts/check-primary-nav.sh"
   publish = "."
 
-# Production and preview. Host check lives in the function: *.netlify.app
-# is noindex; howtofixhiccups.com is untouched.
+# preview-html runs on every host. noindex-netlify-host is disabled until
+# howtofixhiccups.com is connected. The restore steps are in the comment below.
 [[edge_functions]]
   function = "preview-html"
   path = "/*"
@@ -16,9 +16,8 @@
 #   function = "noindex-netlify-host"
 #   path = "/*"
 
-# Production (.com) stays indexable. Do not set X-Robots-Tag here.
-# Main used to send X-Robots-Tag: index, follow on howtofixhiccups.netlify.app.
-# The edge function is what noindexes that host after merge.
+# Do not set X-Robots-Tag on production. howtofixhiccups.netlify.app is indexable
+# until howtofixhiccups.com is connected. The noindex function is disabled above.
 [[headers]]
   for = "/*"
   [headers.values]
@@ -27,7 +26,7 @@
     X-Frame-Options = "DENY"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
 
-# Netlify hosts only. Canonicals stay on https://howtofixhiccups.com/.
+# Deploy previews and branch deploys stay noindex. Production does not set X-Robots-Tag.
 [[context.deploy-preview.headers]]
   for = "/*"
   [context.deploy-preview.headers.values]
