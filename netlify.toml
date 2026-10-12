@@ -8,9 +8,13 @@
   function = "preview-html"
   path = "/*"
 
-[[edge_functions]]
-  function = "noindex-netlify-host"
-  path = "/*"
+# DISABLED 2026-10-12 (Mike): let howtofixhiccups.netlify.app be indexed until
+# howtofixhiccups.com is connected. To restore when the .com goes live:
+#   git mv netlify/edge-functions-disabled/noindex-netlify-host.js netlify/edge-functions/
+#   and uncomment the block below. (The file's inline config also registers it.)
+# [[edge_functions]]
+#   function = "noindex-netlify-host"
+#   path = "/*"
 
 # Production (.com) stays indexable. Do not set X-Robots-Tag here.
 # Main used to send X-Robots-Tag: index, follow on howtofixhiccups.netlify.app.
