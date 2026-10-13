@@ -8,7 +8,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 SITEMAP_NS = "http://www.sitemaps.org/schemas/sitemap/0.9"
 XHTML_NS = "http://www.w3.org/1999/xhtml"
-TWITTER_IMAGE = "https://howtofixhiccups.com/og.png"
+TWITTER_IMAGE_PATH = "/og.png"
 NOTE = "Esta página se tradujo de forma automática."
 PAIRS = [
     ("index.html", "es/index.html", "/", "/es/"),
@@ -98,6 +98,8 @@ def check_page(errors, host, path, lang, self_path, en_path, es_path):
             fail(errors, f"{path} language switcher current link is {current}")
     if "when" in path and HOUR_FOR_CARE.search(strip_comments(html, ".html")):
         fail(errors, f"{path} names a number of hours")
+    if 'class="eyebrow"' in html or "phase-kicker" in html:
+        fail(errors, f"{path} still has an eyebrow label")
 
 
 def local_assets(html):
@@ -135,8 +137,6 @@ def check_host_tokens(errors, host):
         text = strip_comments(path.read_text(), path.suffix)
         hostname = host.removeprefix("https://")
         for line in text.splitlines():
-            if 'name="twitter:image"' in line:
-                continue
             for url in re.findall(r"https://[^\s\"'<>]+", line):
                 if "howtofixhiccups.netlify.app" in url or "howtofixhiccups.com" in url:
                     if not url.startswith(host):
@@ -148,8 +148,9 @@ def check_host_tokens(errors, host):
             images = re.findall(r'<meta name="twitter:image" content="([^"]*)"', path.read_text())
             rel = str(path.relative_to(ROOT))
             if rel in {"index.html", "es/index.html"}:
-                if images != [TWITTER_IMAGE]:
-                    fail(errors, f"{rel} twitter:image is {images}")
+                expected = f"{host}{TWITTER_IMAGE_PATH}"
+                if images != [expected]:
+                    fail(errors, f"{rel} twitter:image is {images}, expected [{expected}]")
             elif images:
                 fail(errors, f"{rel} should not add twitter:image")
 

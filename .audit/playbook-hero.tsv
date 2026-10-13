@@ -1,0 +1,6 @@
+ts	phase	decision	why	evidence	result
+2026-10-13T00:48:34Z	pr38	Merged the Spanish pilot after the locale script and the live preview both showed canonicals and hreflang on netlify.app	Mike had approved production, and the checker passed on the PR head	https://github.com/llconsulting/howtofixhiccups/pull/38	merged 75737ab
+2026-10-13T00:55:00Z	hero	Used the 8 second calm breath loop as the hero and left the 67 second demo out	The calm clip loops behind the headline. The demo is a 67 second walkthrough at lower resolution	media/video/ugc-motion-v2-2026-09-06/hero-loop/calm-breath-loop-8s.mp4	kept
+2026-10-13T01:05:00Z	copy	Removed the phase kickers and rewrote fragment lines into sentences in English and Spanish	The house playbook bans eyebrow labels and choppy fragments, and the When pages still name no hour count	scripts/check-locale.py	locale lock OK
+2026-10-13T01:10:00Z	seo	Pointed twitter:image at netlify.app and made the host script rewrite that tag	The old lock forced howtofixhiccups.com/og.png on the home pages	scripts/check-locale.py	locale lock OK
+2026-10-13T01:32:00Z	font	Set the Google font to display optional and added a metric fallback	One mobile Lighthouse run on the local server showed CLS 0.346 from the Inter file, then CLS 0	/tmp/qa-out/lh-mobile-2.json	CLS 0, LCP 1.8s, one run
