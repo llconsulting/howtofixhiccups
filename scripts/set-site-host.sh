@@ -68,9 +68,6 @@ for path in pathlib.Path(root).rglob("*"):
     origin = "https://" + old_host
     new_origin = "https://" + new_host
     for line in body.splitlines(keepends=True):
-        if 'name="twitter:image"' in line:
-            lines.append(line)
-            continue
         if origin in line:
             hits += line.count(origin)
             line = line.replace(origin, new_origin)

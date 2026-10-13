@@ -1,8 +1,5 @@
 (() => {
   const CIRCUMFERENCE = 339.292;
-  // Full v2 pack. Idle/done stay on stills (do not play old start.mp4).
-  // Exhale is clean 04. Skip hero-loop/thin-straw-loop-4s.
-  // Hero muted: hero-loop/straw-blow-loop-3s.mp4 only, playbackRate 0.45.
   const UGC_MOTION_V2 = "/media/video/ugc-motion-v2-2026-09-06";
   const CLIPS = {
     idle: [],
@@ -13,12 +10,12 @@
     extra: [`${UGC_MOTION_V2}/04-thin-straw-exhale.mp4`]
   };
   const POSTERS = {
-    idle: "/media/stills/host-idle.jpg",
-    inhale1: "/media/stills/host-breath-1.jpg",
-    inhale2: "/media/stills/host-breath-2.jpg",
-    hold: "/media/stills/host-hold.jpg",
-    exhale: "/media/stills/host-exhale.jpg",
-    extra: "/media/stills/host-exhale.jpg"
+    idle: "/media/video/hero/calm-breath.jpg",
+    inhale1: "/media/stills/breath-swallow-1.jpg",
+    inhale2: "/media/stills/breath-swallow-2.jpg",
+    hold: "/media/stills/hold-portrait.jpg",
+    exhale: "/media/stills/exhale-portrait.jpg",
+    extra: "/media/stills/exhale-portrait.jpg"
   };
   // 2026-10-12, Mike. shareUrl uses https://howtofixhiccups.netlify.app until howtofixhiccups.com is connected. To restore, set each shareUrl and the share-button label in index.html and es/index.html back to the .com host with the same path.
   const UI = {
@@ -33,33 +30,28 @@
       },
       steps: {
         inhale1: {
-          kicker: "Step 1 of 4",
           label: "Breathe all the way in.",
-          copy: "Wait until the swallow finishes. Then tap.",
+          copy: "Wait until the swallow finishes, then tap.",
           nextLabel: "I swallowed"
         },
         inhale2: {
-          kicker: "Step 2 of 4",
-          label: "Second breath on top.",
-          copy: "Swallow all the way. Then tap.",
+          label: "Take a second breath on top.",
+          copy: "Swallow completely, then tap.",
           nextLabel: "I swallowed"
         },
         hold: {
-          kicker: "Step 3 of 4",
-          label: "Hold.",
-          copy: "Keep the air in. Stay still. Full 30.",
+          label: "Hold that breath.",
+          copy: "Keep the air in and stay still for the full 30 seconds.",
           unit: "seconds"
         },
         exhale: {
-          kicker: "Step 4 of 4",
-          label: "Thin blow.",
-          copy: "Like the tiniest straw. Stay on the count.",
+          label: "Blow out in a thin stream.",
+          copy: "Make it as thin as the smallest straw, and stay with the count.",
           unit: "seconds"
         },
         extra: {
-          kicker: "If you can",
-          label: "Keep it thin.",
-          copy: "Twelve to 15 if you can.",
+          label: "Keep the stream thin.",
+          copy: "Continue to between 12 and 15 seconds if you can.",
           unit: "seconds",
           nextLabel: "Done"
         }
@@ -68,9 +60,7 @@
       copied: "Copied",
       shareTitle: "How to get rid of hiccups",
       shareUrl: "https://howtofixhiccups.netlify.app/",
-      idleKicker: "The method",
       idleLabel: "Start",
-      doneKicker: "The method",
       doneLabel: "Done. Breathe normally.",
       doneCopy: "One more pass the same evening is fine for a short spell.",
       doneUnit: "done",
@@ -91,33 +81,28 @@
       },
       steps: {
         inhale1: {
-          kicker: "Paso 1 de 4",
           label: "Inspira hasta el fondo.",
-          copy: "Espera a que el trago termine. Luego toca.",
+          copy: "Espera a que termine el trago y luego toca.",
           nextLabel: "Ya tragué"
         },
         inhale2: {
-          kicker: "Paso 2 de 4",
-          label: "Segunda respiración encima.",
-          copy: "Traga hasta el final. Luego toca.",
+          label: "Toma una segunda respiración encima.",
+          copy: "Traga por completo y luego toca.",
           nextLabel: "Ya tragué"
         },
         hold: {
-          kicker: "Paso 3 de 4",
-          label: "Aguanta.",
-          copy: "Mantén el aire adentro. No te muevas. Los 30 completos.",
+          label: "Aguanta esa respiración.",
+          copy: "Mantén el aire adentro y quédate quieto durante los 30 segundos completos.",
           unit: "segundos"
         },
         exhale: {
-          kicker: "Paso 4 de 4",
-          label: "Soplido fino.",
-          copy: "Como la pajita más fina. Sigue la cuenta.",
+          label: "Sopla en un chorro fino.",
+          copy: "Hazlo tan fino como la pajita más pequeña y sigue la cuenta.",
           unit: "segundos"
         },
         extra: {
-          kicker: "Si puedes",
-          label: "Mantenlo fino.",
-          copy: "De doce a 15 si puedes.",
+          label: "Mantén el chorro fino.",
+          copy: "Sigue hasta entre 12 y 15 segundos si puedes.",
           unit: "segundos",
           nextLabel: "Listo"
         }
@@ -126,9 +111,7 @@
       copied: "Copiado",
       shareTitle: "Cómo quitar el hipo",
       shareUrl: "https://howtofixhiccups.netlify.app/es/",
-      idleKicker: "El método",
       idleLabel: "Empezar",
-      doneKicker: "El método",
       doneLabel: "Listo. Respira con normalidad.",
       doneCopy: "Una pasada más la misma noche está bien si el episodio es corto.",
       doneUnit: "listo",
@@ -144,27 +127,27 @@
 
   const STILLS = {
     idle: {
-      src: "/assets/ugc/host-idle.webp",
+      src: POSTERS.idle,
       alt: ui.stillAlts.idle
     },
     inhale1: {
-      src: "/assets/ugc/host-breath-1.webp",
+      src: POSTERS.inhale1,
       alt: ui.stillAlts.inhale1
     },
     inhale2: {
-      src: "/assets/ugc/host-breath-2.webp",
+      src: POSTERS.inhale2,
       alt: ui.stillAlts.inhale2
     },
     hold: {
-      src: "/assets/ugc/host-hold.webp",
+      src: POSTERS.hold,
       alt: ui.stillAlts.hold
     },
     exhale: {
-      src: "/assets/ugc/host-exhale.webp",
+      src: POSTERS.exhale,
       alt: ui.stillAlts.exhale
     },
     extra: {
-      src: "/assets/ugc/host-exhale.webp",
+      src: POSTERS.extra,
       alt: ui.stillAlts.extra
     }
   };
@@ -209,7 +192,6 @@
 
   const els = {
     phase: document.getElementById("phase"),
-    kicker: document.getElementById("phase-kicker"),
     label: document.getElementById("phase-label"),
     copy: document.getElementById("phase-copy"),
     timer: document.getElementById("timer"),
@@ -230,13 +212,6 @@
     written: document.getElementById("written-steps")
   };
 
-  const HERO_PLAYBACK_RATE = 0.45;
-
-  function setHeroPlaybackRate(hero) {
-    hero.defaultPlaybackRate = HERO_PLAYBACK_RATE;
-    hero.playbackRate = HERO_PLAYBACK_RATE;
-  }
-
   function playHeroPlate() {
     const hero = document.getElementById("hero-video");
     if (!hero) return;
@@ -245,6 +220,7 @@
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       hero.pause();
       hero.removeAttribute("src");
+      hero.autoplay = false;
       hero.load();
       hero.hidden = true;
       return;
@@ -253,19 +229,13 @@
     hero.defaultMuted = true;
     hero.playsInline = true;
     hero.loop = true;
-    setHeroPlaybackRate(hero);
-    if (hero.dataset.rateBound !== "1") {
-      hero.dataset.rateBound = "1";
-      hero.addEventListener("loadedmetadata", () => setHeroPlaybackRate(hero));
-      hero.addEventListener("playing", () => setHeroPlaybackRate(hero));
-    }
+    hero.autoplay = true;
     if (hero.getAttribute("src") !== src) {
       hero.setAttribute("src", src);
     }
     const play = hero.play();
     if (play && typeof play.then === "function") {
       play.then(() => {
-        setHeroPlaybackRate(hero);
         hero.hidden = false;
       }).catch(() => {
         hero.hidden = true;
@@ -322,10 +292,9 @@
     }
   }
 
-  function paintPhase(kicker, label, copy) {
+  function paintPhase(label, copy) {
     if (els.phase) els.phase.classList.add("is-changing");
     window.setTimeout(() => {
-      els.kicker.textContent = kicker;
       els.label.textContent = label;
       els.copy.textContent = copy;
       if (els.phase) els.phase.classList.remove("is-changing");
@@ -505,7 +474,8 @@
       els.video.defaultMuted = true;
       els.video.playsInline = true;
       els.video.loop = id !== "hold";
-      els.video.preload = "none";
+      els.video.autoplay = true;
+      els.video.preload = "metadata";
       els.video.setAttribute("poster", posterFor(id));
       els.video.classList.remove("is-on");
       if (els.video.getAttribute("src") !== src) {
@@ -541,7 +511,6 @@
     running = false;
     stepIndex = -1;
     lastShownSecond = null;
-    els.kicker.textContent = ui.idleKicker;
     els.label.textContent = ui.idleLabel;
     els.copy.textContent = "";
     if (els.phase) els.phase.classList.remove("is-changing");
@@ -566,11 +535,7 @@
   function finish() {
     invalidate();
     running = false;
-    paintPhase(
-      ui.doneKicker,
-      ui.doneLabel,
-      ui.doneCopy
-    );
+    paintPhase(ui.doneLabel, ui.doneCopy);
     if (els.card) {
       els.card.classList.remove("is-idle", "is-timing");
       els.card.classList.add("is-running");
@@ -604,7 +569,7 @@
     running = true;
     startedAt = performance.now();
     lastShownSecond = null;
-    paintPhase(step.kicker, step.label, step.copy);
+    paintPhase(step.label, step.copy);
     els.start.hidden = true;
     els.reset.hidden = false;
     els.reset.textContent = ui.stop;

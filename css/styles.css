@@ -1,3 +1,12 @@
+@font-face {
+  font-family: "Inter Fallback";
+  src: local("Liberation Sans"), local("Arial");
+  size-adjust: 107%;
+  ascent-override: 90%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+}
+
 :root {
   --bg: #f5f5f7;
   --bg-elevated: #ffffff;
@@ -16,7 +25,7 @@
   --radius: 1.35rem;
   --radius-sm: 0.9rem;
   --max: 40rem;
-  --sans: "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", system-ui, sans-serif;
+  --sans: "Inter", "Inter Fallback", -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", system-ui, sans-serif;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --tap: 3.25rem;
 }
@@ -194,8 +203,8 @@ a.btn-secondary:hover {
   isolation: isolate;
   overflow: hidden;
   display: flex;
-  align-items: center;
-  min-height: 32rem;
+  align-items: flex-end;
+  min-height: max(40rem, calc(100svh - 4.5rem));
   padding: 0;
   background: #1d1d1f;
 }
@@ -206,6 +215,15 @@ a.btn-secondary:hover {
   z-index: 0;
 }
 
+.hero-plate::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(90deg, rgb(0 0 0 / 0.62) 0%, rgb(0 0 0 / 0.28) 46%, rgb(0 0 0 / 0.08) 100%);
+  pointer-events: none;
+}
+
 .hero-poster,
 .hero-video {
   position: absolute;
@@ -214,7 +232,7 @@ a.btn-secondary:hover {
   height: 100%;
   max-width: none;
   object-fit: cover;
-  object-position: 74% 40%;
+  object-position: center 18%;
   opacity: 1;
 }
 
@@ -368,15 +386,6 @@ a.btn-secondary:hover {
   text-decoration: none;
 }
 
-.eyebrow {
-  margin: 0 0 0.7rem;
-  color: var(--accent);
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
 h1,
 .h1 {
   margin: 0 0 0.85rem;
@@ -480,8 +489,10 @@ h1,
 
 .host-frame {
   position: relative;
-  aspect-ratio: 16 / 9;
-  max-height: 18rem;
+  aspect-ratio: 9 / 16;
+  width: min(100%, 22rem);
+  max-height: 36rem;
+  margin-inline: auto;
   background: #ececef;
 }
 
@@ -640,22 +651,9 @@ h1,
   transform: translateY(6px);
 }
 
-.phase-kicker,
 .phase-label {
-  margin: 0;
+  margin: 0 0 0.45rem;
   text-align: center;
-}
-
-.phase-kicker {
-  color: var(--accent);
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.phase-label {
-  margin: 0.4rem 0 0.45rem;
   font-size: clamp(1.55rem, 6vw, 2.05rem);
   font-weight: 600;
   letter-spacing: -0.035em;
@@ -1114,12 +1112,12 @@ h1,
   }
 
   .band-hero.has-plate {
-    min-height: 36rem;
+    min-height: max(40rem, calc(100svh - 4.5rem));
   }
 
   .hero-copy {
-    padding-top: 6.2rem;
-    padding-bottom: 5.8rem;
+    padding-top: 2.5rem;
+    padding-bottom: 3.4rem;
   }
 
   .band-intro {
@@ -1147,11 +1145,12 @@ h1,
   }
 
   .host-frame {
-    flex: 1 1 auto;
-    aspect-ratio: auto;
-    max-height: none;
-    min-height: 16rem;
-    height: auto;
+    flex: 0 0 auto;
+    aspect-ratio: 9 / 16;
+    width: min(100%, 22rem);
+    max-height: 36rem;
+    min-height: 0;
+    margin-inline: auto;
   }
 
   .method-card,
@@ -1185,7 +1184,8 @@ h1,
   }
 
   .band-hero.has-plate {
-    min-height: 24rem;
+    align-items: flex-end;
+    min-height: max(34rem, calc(100svh - 7.5rem));
   }
 
   .hero-copy {
@@ -1195,8 +1195,12 @@ h1,
 
   .hero-poster,
   .hero-video {
-    object-position: 50% 20%;
+    object-position: center 12%;
     opacity: 1;
+  }
+
+  .hero-plate::after {
+    background: linear-gradient(180deg, rgb(0 0 0 / 0.15) 0%, rgb(0 0 0 / 0.2) 40%, rgb(0 0 0 / 0.62) 100%);
   }
 
   .band-hero.has-plate h1 {
