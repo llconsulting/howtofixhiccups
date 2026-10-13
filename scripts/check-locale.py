@@ -18,7 +18,7 @@ PAIRS = [
 ]
 EM_DASH = "\u2014"
 HOUR_FOR_CARE = re.compile(
-    r"\b(?:hours?|horas?)\b|\d+\s*-\s*hours?\b|\d+\s*h\b",
+    r"\b(?:hours?|horas?)\b|\b(?:two days|dos días)\b|\d+\s*-\s*hours?\b|\d+\s*h\b|sources vary|fuentes varían",
     re.I,
 )
 
