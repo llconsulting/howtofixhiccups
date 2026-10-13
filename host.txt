@@ -1,0 +1,2 @@
+# Live origin for canonical, og:url, og:image, hreflang, JSON-LD, sitemap, robots, and share URLs. twitter:image stays https://howtofixhiccups.com/og.png.
+https://howtofixhiccups.netlify.app

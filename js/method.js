@@ -20,86 +20,190 @@
     exhale: "/media/stills/host-exhale.jpg",
     extra: "/media/stills/host-exhale.jpg"
   };
-  const STILLS = {
-    idle: {
-      src: "/assets/ugc/host-idle.webp",
-      alt: "Person on camera, ready to start the four-step hiccup method."
+  // 2026-10-12, Mike. shareUrl uses https://howtofixhiccups.netlify.app until howtofixhiccups.com is connected. To restore, set each shareUrl and the share-button label in index.html and es/index.html back to the .com host with the same path.
+  const UI = {
+    en: {
+      stillAlts: {
+        idle: "Person on camera, ready to start the four-step hiccup method.",
+        inhale1: "Person on camera taking a deep breath, then swallowing.",
+        inhale2: "Person on camera adding a second breath, then swallowing.",
+        hold: "Person on camera holding their breath.",
+        exhale: "Person on camera blowing out slowly through pursed lips.",
+        extra: "Person on camera blowing out slowly through pursed lips."
+      },
+      steps: {
+        inhale1: {
+          kicker: "Step 1 of 4",
+          label: "Breathe all the way in.",
+          copy: "Wait until the swallow finishes. Then tap.",
+          nextLabel: "I swallowed"
+        },
+        inhale2: {
+          kicker: "Step 2 of 4",
+          label: "Second breath on top.",
+          copy: "Swallow all the way. Then tap.",
+          nextLabel: "I swallowed"
+        },
+        hold: {
+          kicker: "Step 3 of 4",
+          label: "Hold.",
+          copy: "Keep the air in. Stay still. Full 30.",
+          unit: "seconds"
+        },
+        exhale: {
+          kicker: "Step 4 of 4",
+          label: "Thin blow.",
+          copy: "Like the tiniest straw. Stay on the count.",
+          unit: "seconds"
+        },
+        extra: {
+          kicker: "If you can",
+          label: "Keep it thin.",
+          copy: "Twelve to 15 if you can.",
+          unit: "seconds",
+          nextLabel: "Done"
+        }
+      },
+      copyLink: "Copy link",
+      copied: "Copied",
+      shareTitle: "How to get rid of hiccups",
+      shareUrl: "https://howtofixhiccups.netlify.app/",
+      idleKicker: "The method",
+      idleLabel: "Start",
+      doneKicker: "The method",
+      doneLabel: "Done. Breathe normally.",
+      doneCopy: "One more pass the same evening is fine for a short spell.",
+      doneUnit: "done",
+      doneButton: "Done",
+      stop: "Stop",
+      doneAnnounce: "That is the method.",
+      stopped: "Stopped.",
+      secondsWord: "seconds"
     },
-    inhale1: {
-      src: "/assets/ugc/host-breath-1.webp",
-      alt: "Person on camera taking a deep breath, then swallowing."
-    },
-    inhale2: {
-      src: "/assets/ugc/host-breath-2.webp",
-      alt: "Person on camera adding a second breath, then swallowing."
-    },
-    hold: {
-      src: "/assets/ugc/host-hold.webp",
-      alt: "Person on camera holding their breath."
-    },
-    exhale: {
-      src: "/assets/ugc/host-exhale.webp",
-      alt: "Person on camera blowing out slowly through pursed lips."
-    },
-    extra: {
-      src: "/assets/ugc/host-exhale.webp",
-      alt: "Person on camera blowing out slowly through pursed lips."
+    es: {
+      stillAlts: {
+        idle: "Persona frente a la cámara, lista para empezar el método de cuatro pasos para el hipo.",
+        inhale1: "Persona frente a la cámara tomando una inspiración honda y luego tragando.",
+        inhale2: "Persona frente a la cámara agregando una segunda respiración y luego tragando.",
+        hold: "Persona frente a la cámara aguantando la respiración.",
+        exhale: "Persona frente a la cámara soplando despacio con los labios fruncidos.",
+        extra: "Persona frente a la cámara soplando despacio con los labios fruncidos."
+      },
+      steps: {
+        inhale1: {
+          kicker: "Paso 1 de 4",
+          label: "Inspira hasta el fondo.",
+          copy: "Espera a que el trago termine. Luego toca.",
+          nextLabel: "Ya tragué"
+        },
+        inhale2: {
+          kicker: "Paso 2 de 4",
+          label: "Segunda respiración encima.",
+          copy: "Traga hasta el final. Luego toca.",
+          nextLabel: "Ya tragué"
+        },
+        hold: {
+          kicker: "Paso 3 de 4",
+          label: "Aguanta.",
+          copy: "Mantén el aire adentro. No te muevas. Los 30 completos.",
+          unit: "segundos"
+        },
+        exhale: {
+          kicker: "Paso 4 de 4",
+          label: "Soplido fino.",
+          copy: "Como la pajita más fina. Sigue la cuenta.",
+          unit: "segundos"
+        },
+        extra: {
+          kicker: "Si puedes",
+          label: "Mantenlo fino.",
+          copy: "De doce a 15 si puedes.",
+          unit: "segundos",
+          nextLabel: "Listo"
+        }
+      },
+      copyLink: "Copiar enlace",
+      copied: "Copiado",
+      shareTitle: "Cómo quitar el hipo",
+      shareUrl: "https://howtofixhiccups.netlify.app/es/",
+      idleKicker: "El método",
+      idleLabel: "Empezar",
+      doneKicker: "El método",
+      doneLabel: "Listo. Respira con normalidad.",
+      doneCopy: "Una pasada más la misma noche está bien si el episodio es corto.",
+      doneUnit: "listo",
+      doneButton: "Listo",
+      stop: "Parar",
+      doneAnnounce: "Ese es el método.",
+      stopped: "Detenido.",
+      secondsWord: "segundos"
     }
   };
 
-  // One screen per step: inhale label + swallow helper, then I swallowed.
-  // Deck also lists a later swallow-confirm line if we ever split the tap.
+  const ui = UI[document.documentElement.lang === "es" ? "es" : "en"];
+
+  const STILLS = {
+    idle: {
+      src: "/assets/ugc/host-idle.webp",
+      alt: ui.stillAlts.idle
+    },
+    inhale1: {
+      src: "/assets/ugc/host-breath-1.webp",
+      alt: ui.stillAlts.inhale1
+    },
+    inhale2: {
+      src: "/assets/ugc/host-breath-2.webp",
+      alt: ui.stillAlts.inhale2
+    },
+    hold: {
+      src: "/assets/ugc/host-hold.webp",
+      alt: ui.stillAlts.hold
+    },
+    exhale: {
+      src: "/assets/ugc/host-exhale.webp",
+      alt: ui.stillAlts.exhale
+    },
+    extra: {
+      src: "/assets/ugc/host-exhale.webp",
+      alt: ui.stillAlts.extra
+    }
+  };
+
   const STEPS = [
     {
       id: "inhale1",
       beat: 0,
-      kicker: "Step 1 of 4",
-      label: "Breathe all the way in.",
-      copy: "Wait until the swallow finishes. Then tap.",
       kind: "guided",
-      nextLabel: "I swallowed"
+      ...ui.steps.inhale1
     },
     {
       id: "inhale2",
       beat: 1,
-      kicker: "Step 2 of 4",
-      label: "Second breath on top.",
-      copy: "Swallow all the way. Then tap.",
       kind: "guided",
-      nextLabel: "I swallowed"
+      ...ui.steps.inhale2
     },
     {
       id: "hold",
       beat: 2,
-      kicker: "Step 3 of 4",
-      label: "Hold.",
-      copy: "Keep the air in. Stay still. Full 30.",
       kind: "count",
       durationMs: 30000,
-      unit: "seconds",
-      copyLink: true
+      copyLink: true,
+      ...ui.steps.hold
     },
     {
       id: "exhale",
       beat: 3,
-      kicker: "Step 4 of 4",
-      label: "Thin blow.",
-      copy: "Like the tiniest straw. Stay on the count.",
       kind: "count",
       durationMs: 10000,
-      unit: "seconds"
+      ...ui.steps.exhale
     },
     {
       id: "extra",
       beat: 3,
-      kicker: "If you can",
-      label: "Keep it thin.",
-      copy: "Twelve to 15 if you can.",
       kind: "count",
       durationMs: 5000,
-      unit: "seconds",
       optional: true,
-      nextLabel: "Done"
+      ...ui.steps.extra
     }
   ];
 
@@ -248,9 +352,6 @@
     }, 80);
   }
 
-  // 2026-10-12, Mike. SHARE_URL uses the netlify.app host until howtofixhiccups.com is connected. To restore, set it and the share button label in index.html back to https://howtofixhiccups.com/.
-  const SHARE_URL = "https://howtofixhiccups.netlify.app/";
-
   function markBeat(beat) {
     const dots = els.rail ? [...els.rail.children] : [];
     dots.forEach((dot, i) => {
@@ -270,7 +371,7 @@
   function showShare(on) {
     if (!els.share) return;
     els.share.hidden = !on;
-    if (!on) els.share.textContent = "Copy link";
+    if (!on) els.share.textContent = ui.copyLink;
   }
 
   function inHoldWindow() {
@@ -332,11 +433,11 @@
   async function shareLink() {
     if (!inHoldWindow()) return;
     try {
-      await navigator.clipboard.writeText(SHARE_URL);
-      if (els.share) els.share.textContent = "Copied";
+      await navigator.clipboard.writeText(ui.shareUrl);
+      if (els.share) els.share.textContent = ui.copied;
       logHoldCompleted();
       window.setTimeout(() => {
-        if (els.share && !els.share.hidden) els.share.textContent = "Copy link";
+        if (els.share && !els.share.hidden) els.share.textContent = ui.copyLink;
       }, 1600);
       return;
     } catch {
@@ -345,8 +446,8 @@
     if (!navigator.share) return;
     try {
       await navigator.share({
-        title: "How to get rid of hiccups",
-        url: SHARE_URL
+        title: ui.shareTitle,
+        url: ui.shareUrl
       });
       if (inHoldWindow()) logHoldCompleted();
     } catch (err) {
@@ -440,8 +541,8 @@
     running = false;
     stepIndex = -1;
     lastShownSecond = null;
-    els.kicker.textContent = "The method";
-    els.label.textContent = "Start";
+    els.kicker.textContent = ui.idleKicker;
+    els.label.textContent = ui.idleLabel;
     els.copy.textContent = "";
     if (els.phase) els.phase.classList.remove("is-changing");
     if (els.card) {
@@ -466,9 +567,9 @@
     invalidate();
     running = false;
     paintPhase(
-      "The method",
-      "Done. Breathe normally.",
-      "One more pass the same evening is fine for a short spell."
+      ui.doneKicker,
+      ui.doneLabel,
+      ui.doneCopy
     );
     if (els.card) {
       els.card.classList.remove("is-idle", "is-timing");
@@ -476,16 +577,16 @@
     }
     if (els.timerWrap) els.timerWrap.hidden = true;
     els.count.textContent = "✓";
-    els.unit.textContent = "done";
+    els.unit.textContent = ui.doneUnit;
     setProgress(1);
     els.start.hidden = true;
     els.next.hidden = true;
     els.reset.hidden = false;
-    els.reset.textContent = "Stop";
+    els.reset.textContent = ui.stop;
     if (els.extraNote) els.extraNote.hidden = true;
     showShare(false);
     markBeat(4);
-    announce("That is the method.");
+    announce(ui.doneAnnounce);
     showStill("idle");
     playClip("idle");
   }
@@ -506,7 +607,7 @@
     paintPhase(step.kicker, step.label, step.copy);
     els.start.hidden = true;
     els.reset.hidden = false;
-    els.reset.textContent = "Stop";
+    els.reset.textContent = ui.stop;
     if (els.card) {
       els.card.classList.remove("is-idle");
       els.card.classList.toggle("is-timing", step.kind === "count");
@@ -537,7 +638,7 @@
     els.next.disabled = false;
     if (step.optional) {
       els.next.hidden = false;
-      els.next.textContent = step.nextLabel || "Done";
+      els.next.textContent = step.nextLabel || ui.doneButton;
     } else {
       els.next.hidden = true;
     }
@@ -546,7 +647,7 @@
     lastShownSecond = seconds;
     els.unit.textContent = step.unit;
     setProgress(0);
-    announce(`${step.label}. ${step.copy} ${seconds} seconds.`);
+    announce(`${step.label}. ${step.copy} ${seconds} ${ui.secondsWord}.`);
 
     const tick = (now) => {
       if (myToken !== token || !running) return;
@@ -586,7 +687,7 @@
 
   function reset() {
     renderIdle();
-    announce("Stopped.");
+    announce(ui.stopped);
   }
 
   els.start.addEventListener("click", start);

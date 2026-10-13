@@ -5,7 +5,17 @@ root="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$root"
 
 fail=0
-pages=(index.html why/index.html when/index.html privacy/index.html 404.html)
+pages=(
+  index.html
+  why/index.html
+  when/index.html
+  privacy/index.html
+  404.html
+  es/index.html
+  es/why/index.html
+  es/when/index.html
+  es/privacy/index.html
+)
 
 extract_nav() {
   awk -v marker="$2" '
@@ -16,8 +26,16 @@ extract_nav() {
 }
 
 for page in "${pages[@]}"; do
-  nav="$(extract_nav "$page" 'aria-label="Primary"')"
-  if printf '%s\n' "$nav" | grep -qi 'privacy'; then
+  if [[ "$page" == es/* ]]; then
+    nav="$(extract_nav "$page" 'aria-label="Principal"')"
+    privacy_href='href="/es/privacy/"'
+    footer_label='aria-label="Pie"'
+  else
+    nav="$(extract_nav "$page" 'aria-label="Primary"')"
+    privacy_href='href="/privacy/"'
+    footer_label='aria-label="Footer"'
+  fi
+  if printf '%s\n' "$nav" | grep -qiE 'privacy|privacidad'; then
     echo "FAIL: $page primary nav contains Privacy"
     fail=1
   fi
@@ -26,8 +44,8 @@ for page in "${pages[@]}"; do
     echo "FAIL: $page primary nav has $links links (expected exactly 3)"
     fail=1
   fi
-  footer="$(extract_nav "$page" 'aria-label="Footer"')"
-  if ! printf '%s\n' "$footer" | grep -qi 'href="/privacy/"'; then
+  footer="$(extract_nav "$page" "$footer_label")"
+  if ! printf '%s\n' "$footer" | grep -q "$privacy_href"; then
     echo "FAIL: $page footer is missing Privacy"
     fail=1
   fi

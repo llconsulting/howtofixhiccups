@@ -1,5 +1,5 @@
 [build]
-  command = "bash scripts/check-primary-nav.sh"
+  command = "bash scripts/check-primary-nav.sh && python3 scripts/check-locale.py"
   publish = "."
 
 # preview-html runs on every host. noindex-netlify-host is disabled until
@@ -296,6 +296,30 @@
 [[redirects]]
   from = "/privacy/index.html"
   to = "/privacy/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/es/index.html"
+  to = "/es/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/es/why/index.html"
+  to = "/es/why/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/es/when/index.html"
+  to = "/es/when/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/es/privacy/index.html"
+  to = "/es/privacy/"
   status = 301
   force = true
 
